@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <title> The Quiz Game </title>
+</head>
+<body>
+
+
+<div class="container">
+
+    <div class="header">   Welcome to Quiz Game </div>
+
+    <div class="start-page-container show"> 
+        <div class="select-number-container">
+            <label for="num-select">Select Number of Question : </label>
+            <select name="number" id="num-select">
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    <option value="four">4</option>
+                    <option value="five">5</option>
+            </select>
+        </div>
+        <button type="submit" class="start-button"> Start </button>
+    </div> 
+
+
+    <div class="question-container" >
+
+        <h1 class="question-container-title" > Question Number 1 </h1>
+
+        <form>
+            <p class="question">Who is the president of Mars ? </p>
+            <input type="radio" name="gender" value="male" class="option-1-radio"><span class="option-1-text">Male</span> <br>
+            <input type="radio" name="gender" value="female" class="option-2-radio" ><span class="option-2-text">Male</span><br>
+            <input type="radio" name="gender" value="other" class="option-3-radio"><span class="option-3-text">Male</span><br>  
+            
+            <input type="submit" value="Next >" class="next-question-button">
+        </form>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+    <script src="script.js" ></script>
+</body>
+
+
+</html>
