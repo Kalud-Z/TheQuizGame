@@ -14,12 +14,14 @@
 
     <div class="header">   Welcome to Quiz Game </div>
 
-      <div class="start-page-container show"> 
+
+    <div class="start-page-container show"> 
         <div class="select-number-container">
             <label for="num-select">Select Number of Question : </label>
             <select name="number" id="num-select" class="number-of-questions-to-play">
+                <option value="four">4</option>
+                    <option value="two">2</option>
                     <option value="three">3</option>
-                    <option value="four">4</option>
                     <option value="five">5</option>
                     <option value="two">2</option>
             </select>
@@ -28,7 +30,7 @@
     </div>   
 
 
-    <div class="question-container" >
+    <div class="question-container">
 
         <h1 class="question-container-title" > Question Number 1 </h1>
 
@@ -45,7 +47,7 @@
 
     </div>
 
-    <div class="results-container" >
+    <div class="results-container">
 
         <h1 class="results-title" > You Final Score is : </h1>
         <p class="results-score"> 80/100 </p>
@@ -60,6 +62,42 @@
 
 
     </div>
+
+    <div class="answers-container">
+        <table class="table-content ">
+            <thead>
+                <tr>
+                    <th> Question Nr </th>
+                    <th> The Question </th>
+                    <th> Correct Answer </th>
+                    <th> Your Answer </th>
+                    <!-- <th> status </th> -->
+
+                </tr>
+            </thead>
+
+            <tbody class="table-body">
+               <!--  <tr>
+                    <td> 1 </td>
+                    <td> What is the coolest programming language in the world ? </td>
+                    <td> JavaScript </td>
+                    <td> JavaScript </td>
+                    <td> &#10003; </td>
+                </tr>
+ -->
+                <!-- <tr>
+                    <td> %number% </td>
+                    <td> %questioon% </td>
+                    <td> %correct-answer% </td>
+                    <td> %chosen-answer% </td>
+                    <td> %status% </td>
+                </tr> -->
+                
+            </tbody>
+        </table>
+    </div>
+
+
 
 </div>
 

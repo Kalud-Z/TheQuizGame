@@ -7,7 +7,7 @@ var QuizController = (function() {
         this.possibeAnswers = possibeAnswers;
         this.correctAnswer  = correctAnswer;
         this.chosenAnswer   = 0;
-        this.score = 0;
+        this.score          = 0;
     }
 
     theQuiz.prototype.addChosenAnswer = function(index) {
@@ -33,41 +33,78 @@ var QuizController = (function() {
     quiz3.question = 'Are you a badass programmer ?';
     quiz3.possibeAnswers = ['no' , 'yes','Hell yeah'];
     quiz3.correctAnswer = 2;
-    
-    var allQuestions = [quiz1 , quiz2 , quiz3];
 
+    var quiz4 = new theQuiz();
+    quiz4.question = 'am I your daddy ? ?';
+    quiz4.possibeAnswers = ['Obama' , 'Jesus','Lana Rohdes daddy'];
+    quiz4.correctAnswer = 2;
+
+    var quiz5 = new theQuiz();
+    quiz5.question = 'why are you so lame ?';
+    quiz5.possibeAnswers = ['Im not !' , 'my dad hates me' , 'f##k U'];
+    quiz5.correctAnswer = 1;
+    
+    var allQuestions = [quiz1 , quiz2 , quiz3 , quiz4 , quiz5];
+
+    var finalListOfQuestions = allQuestions;
+
+    var shuffle = function(array) {
+        var i = array.length, j = 0, temp;
+        while (i--) {
+            j = Math.floor(Math.random() * (i+1));
+            // swap randomly chosen element with current element
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
+      
     var calcTotalScore = function() {
         var sum = 0;
 
-        for(var i = 0; i < allQuestions.length ; i++) {
-            allQuestions[i].calcScoreEach();
+        for(var i = 0; i < finalListOfQuestions.length ; i++) {
+            finalListOfQuestions[i].calcScoreEach();
         }
         
-        for(var i = 0; i < allQuestions.length ; i++) {
-            sum = sum + allQuestions[i].score;
+        for(var i = 0; i < finalListOfQuestions.length ; i++) {
+            sum = sum + finalListOfQuestions[i].score;
         }
 
         console.log(sum);
         return sum;
     };
 
-    var calcMaximumScore = function() {
-       return allQuestions.length * 25 ; 
-    }
+    var calcMaximumScore = function() {  return finalListOfQuestions.length * 25 ;  }
 
     return {
+
+        setNumberOfQuestions: function(num) {
+            var newArray = shuffle(allQuestions);
+            finalListOfQuestions = newArray.slice(0,num);
+            console.log(finalListOfQuestions);
+            console.log(allQuestions);
+        },
+
         getQuestions: function() {
-            return allQuestions;
+            return finalListOfQuestions;
         },
 
         getMaxScore: function() {
             return calcMaximumScore();
         },
 
-
         getFinalScore: function() {
             return calcTotalScore();
             // console.log(allQuestions);
+        },
+
+        resetData: function() {
+            for(var i = 0 ; i < allQuestions.length ; i++) {
+                allQuestions[i].chosenAnswer = 0;
+                allQuestions[i].score = 0;
+            }
+            console.log(allQuestions);
         }
     }
 
@@ -82,6 +119,7 @@ var QuizController = (function() {
 var UIController = (function() {
 
     var DOMStrings = {
+            numOfQuestionsToPlay: document.querySelector('.number-of-questions-to-play'),
             startButton: document.querySelector('.start-button'),
             numOfQuestionsInput: document.querySelector('.number-of-questions-to-play'),
             startPageContainer: document.querySelector('.start-page-container'),
@@ -94,7 +132,11 @@ var UIController = (function() {
             option_2_text: document.querySelector('.option-2-text'),
             option_3_text: document.querySelector('.option-3-text'),
             resultsContainer: document.querySelector('.results-container'),
-            scoreOutput: document.querySelector('.results-score')
+            scoreOutput: document.querySelector('.results-score'),
+            playAgainButton: document.querySelector('.play-again-button'),
+            answersContainer: document.querySelector('.answers-container'),
+            tableBody: document.querySelector('.table-body'),
+            answersButton: document.querySelector('.answers-button')
     };
 
     var clearRadioButtons = function() {
@@ -106,11 +148,37 @@ var UIController = (function() {
 
 
 
-
-
     return {
         getDOMStrings: function(){
             return DOMStrings;
+        },
+
+        NumberOfQuestionsInput: function() {
+            var q , q_text , q_final;
+            q = DOMStrings.numOfQuestionsToPlay;  // this is the select element.
+            // q = document.querySelector('.number-of-questions-to-play');
+            q_text = q.options[q.selectedIndex].text;
+            
+            q_final = parseInt(q_text);
+            console.log(q_final);
+            console.log(typeof(q_final));
+
+            return q_final;
+        },
+
+        startQuiz: function() {
+            DOMStrings.startPageContainer.classList.remove('show');
+            DOMStrings.questionContainer.classList.add('show');
+        },
+
+        
+        displayQuestion: function(quiz){
+            clearRadioButtons();
+            // debugger;
+            DOMStrings.theQuestion.innerText      = quiz.question;
+            DOMStrings.option_1_text.innerText    = quiz.possibeAnswers[0];
+            DOMStrings.option_2_text.innerText    = quiz.possibeAnswers[1];
+            DOMStrings.option_3_text.innerText    = quiz.possibeAnswers[2];
         },
 
         
@@ -126,32 +194,62 @@ var UIController = (function() {
             return checkedItem;
         },
     
-        startQuiz: function() {
-            DOMStrings.startPageContainer.classList.remove('show');
-            DOMStrings.questionContainer.classList.add('show');
-        },
-
-        displayQuestion: function(quiz){
-            clearRadioButtons();
-            DOMStrings.theQuestion.innerText = quiz.question;
-            DOMStrings.option_1_text.innerText    = quiz.possibeAnswers[0];
-            DOMStrings.option_2_text.innerText    = quiz.possibeAnswers[1];
-            DOMStrings.option_3_text.innerText    = quiz.possibeAnswers[2];
-        },
 
         showScoreButton: function(){
             DOMStrings.nextButton.classList.remove('show');
             DOMStrings.scoreButton.classList.add('show');
         },
 
-        showScorePage: function() {
+        loadScorePage: function() {
             DOMStrings.questionContainer.classList.remove('show');
             DOMStrings.resultsContainer.classList.add('show');
         },
 
         displayFinalScore: function(finalScore , maxScore) {
             DOMStrings.scoreOutput.innerText =  finalScore + '/' + maxScore;
+        },
+
+        displayAnswers: function(questions) {
+            var html , newHtml, status, choseAnswerClass;
+
+            for(var i = 0 ; i < questions.length ; i++) {
+                html = '<tr><td> %number% </td><td> %question% </td><td class="table-correct-answer"> %correct-answer% </td><td class="%chosen-answer-class%"> %chosen-answer% </td><td> %status% </td></tr>';
+                newHtml = html.replace('%number%', i+1);
+                newHtml = newHtml.replace('%question%', questions[i].question);
+                newHtml = newHtml.replace('%correct-answer%', questions[i].possibeAnswers[questions[i].correctAnswer]);
+                newHtml = newHtml.replace('%chosen-answer%', questions[i].possibeAnswers[questions[i].chosenAnswer]);
+                
+                if(questions[i].score === 0) {
+                    status = '&#10060;';
+                    choseAnswerClass = 'chosen-answer-is-incorrect';
+                } 
+                else {
+                    status = '&#10004;';
+                    choseAnswerClass = 'chosen-answer-is-correct';
+                }
+                
+                newHtml = newHtml.replace('%status%', status);
+                newHtml = newHtml.replace('%chosen-answer-class%', choseAnswerClass);
+                
+                //insert HTML into the DOM
+                console.log(newHtml);
+                DOMStrings.tableBody.insertAdjacentHTML('beforeend' , newHtml);  // inserted as a last child of the element. 
+            }
+        },
+
+        loadAnswersPage: function() {
+            DOMStrings.questionContainer.classList.remove('show');
+            DOMStrings.resultsContainer.classList.remove('show');
+            DOMStrings.startPageContainer.classList.remove('show');
+            DOMStrings.answersContainer.classList.add('show');
+        },
+
+        loadStartPage: function() {
+            DOMStrings.questionContainer.classList.remove('show');
+            DOMStrings.resultsContainer.classList.remove('show');
+            DOMStrings.startPageContainer.classList.add('show');
         }
+
     };
 
 })();
@@ -164,18 +262,25 @@ var UIController = (function() {
 var controller = (function(QuizCtrl , UICtrl) {
     var nextQuestionIndex = 0;
     var questions = QuizCtrl.getQuestions();
+    // debugger;
 
     var setupEventListeners = function() {
         var DOM = UICtrl.getDOMStrings();
         DOM.startButton.addEventListener('click', ctrlStartQuiz);
-        DOM.nextButton.addEventListener('click', gotoNextQuestion);
+        DOM.nextButton.addEventListener('click', ctrlGotoNextQuestion);
         DOM.scoreButton.addEventListener('click', ctrlShowScore);
+        DOM.playAgainButton.addEventListener('click', ctrlPlayAgain);
+        DOM.answersButton.addEventListener('click', ctrlDisplayAnswers);
     };
 
 
     var ctrlStartQuiz = function() { 
         // console.log(UICtrl.getNumberOfQuestionToPlay());
         // console.log(questions);
+
+        var numOfQuestionsInput = UICtrl.NumberOfQuestionsInput();
+        QuizCtrl.setNumberOfQuestions(numOfQuestionsInput);
+        // debugger;
         UICtrl.startQuiz();
         UICtrl.displayQuestion(questions[nextQuestionIndex]);
         nextQuestionIndex++;
@@ -186,7 +291,7 @@ var controller = (function(QuizCtrl , UICtrl) {
          questions[nextQuestionIndex-1].addChosenAnswer(answerIndex);
     };
 
-    var gotoNextQuestion = function(){
+    var ctrlGotoNextQuestion = function(){
         // if all questions displayed, go to the score page.
         if(nextQuestionIndex === questions.length-1) {
              UICtrl.showScoreButton();
@@ -206,7 +311,7 @@ var controller = (function(QuizCtrl , UICtrl) {
         //add the chosen answer to the current question object.
         ctrlAddChosenAnswer();
 
-        UICtrl.showScorePage();
+        UICtrl.loadScorePage();
         
         console.log(questions);
 
@@ -216,6 +321,15 @@ var controller = (function(QuizCtrl , UICtrl) {
         UICtrl.displayFinalScore(finalScore,maxScore);
     };
 
+    var ctrlPlayAgain = function() {
+        QuizCtrl.resetData();
+        UICtrl.loadStartPage();
+    };
+
+    var ctrlDisplayAnswers = function() {
+        UICtrl.loadAnswersPage();
+        UICtrl.displayAnswers(questions);
+    }
 
 
     return {
@@ -232,53 +346,59 @@ controller.init();
 
 
 
-/* 
 
-var getSelectedOption = function(sel) {
-    var opt;
-    for ( var i = 0, len = sel.options.length; i < len; i++ ) {
-        opt = sel.options[i];
-        if ( opt.selected === true ) {
-            break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*      IT DIDNT WORK !
+
+
+setNumberOfQuestions: function(num) {
+    var randomIndex;
+    var alreadyPickedIndexList = [9999];
+    var indexAlreadyPicked = 0   // 1 : yes it was picked | 0 : no it wasnt picked
+    for(var i = 0; i < num ; i++) {
+           
+        randomIndex =  Math.floor(Math.random() * allQuestions.length  ); //=> between 0 and last index
+        while(indexAlreadyPicked === 1) {
+             randomIndex =  Math.floor(Math.random() * allQuestions.length );
+             for(var j = 0 ; j < alreadyPickedIndexList.length ; j++) {
+                 if(randomIndex === alreadyPickedIndexList[j]) {
+                     indexAlreadyPicked = 1;
+                     break;
+                 } else { indexAlreadyPicked = 0 ;}
+             }
         }
+        alreadyPickedIndexList.push(randomIndex);
+        finalListOfQuestions.push(allQuestions[randomIndex]);
     }
-    return opt;
-}
-
-var numberOfQuestionToPlay = getSelectedOption(DOMStrings.numOfQuestionsInput);
+    console.log(finalListOfQuestions);
+    console.log(alreadyPickedIndexList);
+},
  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
