@@ -14,18 +14,18 @@
 
     <div class="header">   Welcome to Quiz Game </div>
 
-    <div class="start-page-container show"> 
+      <div class="start-page-container show"> 
         <div class="select-number-container">
             <label for="num-select">Select Number of Question : </label>
-            <select name="number" id="num-select">
-                    <option value="two">2</option>
+            <select name="number" id="num-select" class="number-of-questions-to-play">
                     <option value="three">3</option>
                     <option value="four">4</option>
                     <option value="five">5</option>
+                    <option value="two">2</option>
             </select>
         </div>
-        <button type="submit" class="start-button"> Start </button>
-    </div> 
+        <button type="submit" class="btn start-button"> Start </button>
+    </div>   
 
 
     <div class="question-container" >
@@ -34,12 +34,29 @@
 
         <form>
             <p class="question">Who is the president of Mars ? </p>
-            <input type="radio" name="gender" value="male" class="option-1-radio"><span class="option-1-text">Male</span> <br>
-            <input type="radio" name="gender" value="female" class="option-2-radio" ><span class="option-2-text">Male</span><br>
-            <input type="radio" name="gender" value="other" class="option-3-radio"><span class="option-3-text">Male</span><br>  
+            <input type="radio" name="possible-answer" value="option1" class="option-1-radio"><span class="option-1-text">Male</span> <br>
+            <input type="radio" name="possible-answer" value="option2" class="option-2-radio" ><span class="option-2-text">Male</span><br>
+            <input type="radio" name="possible-answer" value="option3" class="option-3-radio"><span class="option-3-text">Male</span><br>  
             
-            <input type="submit" value="Next >" class="next-question-button">
+            <input type="button" value="Next >" class="btn next-question-button show">
+            <input type="button" value="See results >" class="btn score-button">
         </form>
+
+
+    </div>
+
+    <div class="results-container" >
+
+        <h1 class="results-title" > You Final Score is : </h1>
+        <p class="results-score"> 80/100 </p>
+
+        <div class="score-buttons-containter">
+
+            <input type="button" value="Check out Answers >" class="btn answers-button">
+            <input type="button" value="play again" class="btn play-again-button">
+
+        </div>
+       
 
 
     </div>
