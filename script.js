@@ -46,19 +46,7 @@ var QuizController = (function() {
     
     var allQuestions = [quiz1 , quiz2 , quiz3 , quiz4 , quiz5];
 
-    var finalListOfQuestions = allQuestions;
-
-    var shuffle = function(array) {
-        var i = array.length, j = 0, temp;
-        while (i--) {
-            j = Math.floor(Math.random() * (i+1));
-            // swap randomly chosen element with current element
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-        return array;
-    }
+    var finalListOfQuestions = [];
       
     var calcTotalScore = function() {
         var sum = 0;
@@ -80,8 +68,7 @@ var QuizController = (function() {
     return {
 
         setNumberOfQuestions: function(num) {
-            var newArray = shuffle(allQuestions);
-            finalListOfQuestions = newArray.slice(0,num);
+            finalListOfQuestions = allQuestions.slice(0,num);
             console.log(finalListOfQuestions);
             console.log(allQuestions);
         },
@@ -261,7 +248,8 @@ var UIController = (function() {
 //  GLOBAL APP CONTROLLER ###############################################################################################
 var controller = (function(QuizCtrl , UICtrl) {
     var nextQuestionIndex = 0;
-    var questions = QuizCtrl.getQuestions();
+    var questions;
+    
     // debugger;
 
     var setupEventListeners = function() {
@@ -282,6 +270,7 @@ var controller = (function(QuizCtrl , UICtrl) {
         QuizCtrl.setNumberOfQuestions(numOfQuestionsInput);
         // debugger;
         UICtrl.startQuiz();
+        questions = QuizCtrl.getQuestions();
         UICtrl.displayQuestion(questions[nextQuestionIndex]);
         nextQuestionIndex++;
     };
