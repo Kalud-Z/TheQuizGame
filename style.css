@@ -213,6 +213,24 @@ input[type='radio'] {
     background-color: rgba(196, 9, 171, 0.692);
 } 
 
+.go-back-button {
+    width: 12rem;
+    height: 2.85rem;
+    background-color: rgba(0, 174, 255, 0.692);
+    color: beige;
+    font-weight: 800;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    margin-left: -40rem;
+}
+
+.go-back-button:hover {
+    background-color: rgba(0, 102, 255, 0.63);
+}
+
 
 
 /* TABLE ############################################################ */
