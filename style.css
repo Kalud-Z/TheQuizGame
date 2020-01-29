@@ -11,20 +11,34 @@ light       : #569834
 */
 
 
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+ html { /* // this defines what 1 rem is : 1rem = 10px */
+    font-size: 62%;  /* this is the root font-size ! | and = 62.5% of the default browser font-size which is usually 16px ==> final value 10px */ 
+}
+
 
 .show {
     display: block !important;
 }
 
 body {
+    
     box-sizing: border-box;
-    font-weight: 400;
     /* font-size: 1.6rem; */
     line-height: 1.7;
     color: black;
     /* background-color: #172e7c; */
     background-image: linear-gradient(#172e7c , #55983400);
     /* border:1px solid black; */
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 
 }
 
@@ -34,6 +48,8 @@ body {
     background-color: white;
     margin: 0 auto;
     text-align: center;
+    border-radius: 1rem 1rem 0 0;
+
 }
 
 
@@ -45,6 +61,8 @@ body {
     text-align: center;
     padding: 2.5rem 0;
     background-color: #becaf3;
+    border-radius: 1rem 1rem 0 0;
+    font-weight: 700;
 }
 
 
@@ -61,6 +79,7 @@ body {
     margin-top: 1rem;
     font-size: 1.6rem;
     padding: .5rem;
+    border-radius: 0.3rem 0.3rem 0 0;
 }
 
 .select-number-container label { width: 40%;}
@@ -75,25 +94,26 @@ body {
     /* background-color: #d9d9d9; */
     background-color: #d9d9d9;
     width: 70%;
-    height: 27rem;
+    height: 25rem;
     margin: 0 auto;
     margin-top: 1rem;
     font-size: 1rem;
     display:none;
+    border-radius: 0.3rem;
 }
 
 .question-container-title {
     padding: 1.5rem 0;
     border-bottom: 1.5px solid black;
     font-size: 1.5rem;
-    z-index: 222;
+    font-weight: 600;
 }
 
 form {
     text-align: left;
     padding: .4rem 1rem;
     font-size: 1.6rem;
-    margin-top:-2rem;
+    margin-top:2rem;
 }
 
 form p {
@@ -142,6 +162,7 @@ input[type='radio'] {
     transition: all 0.3s;
     text-transform: uppercase;
     outline: none;
+    font-family: 'Raleway', sans-serif;
 }
 
     
@@ -152,7 +173,7 @@ input[type='radio'] {
     margin-top: 2.5rem;
     background-color: #569834;
     color: beige;
-    font-weight: 500;
+    /* font-weight: 600; */
     border-radius: 1rem;
     font-size: 1.6rem;
     letter-spacing: 0.25rem;

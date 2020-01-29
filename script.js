@@ -124,6 +124,7 @@ var UIController = (function() {
             numOfQuestionsInput: document.querySelector('.number-of-questions-to-play'),
             startPageContainer: document.querySelector('.start-page-container'),
             questionContainer: document.querySelector('.question-container'),
+            questionNumberDisplay: document.querySelector('.question-container-title'),
             allPossibleAnswer: document.getElementsByName('possible-answer'),
             nextButton: document.querySelector('.next-question-button'),
             scoreButton: document.querySelector('.score-button'),
@@ -171,12 +172,13 @@ var UIController = (function() {
             DOMStrings.questionContainer.classList.add('show');
         },
 
-        displayQuestion: function(quiz){
+        displayQuestion: function(quiz,index){
             clearRadioButtons();
-            DOMStrings.theQuestion.innerText      = quiz.question;
-            DOMStrings.option_1_text.innerText    = quiz.possibeAnswers[0];
-            DOMStrings.option_2_text.innerText    = quiz.possibeAnswers[1];
-            DOMStrings.option_3_text.innerText    = quiz.possibeAnswers[2];
+            DOMStrings.questionNumberDisplay.innerText  = 'Question Number ' + (index+1); 
+            DOMStrings.theQuestion.innerText            = quiz.question;
+            DOMStrings.option_1_text.innerText          = quiz.possibeAnswers[0];
+            DOMStrings.option_2_text.innerText          = quiz.possibeAnswers[1];
+            DOMStrings.option_3_text.innerText          = quiz.possibeAnswers[2];
         },
     
         selectedAnswersIndex: function() {
@@ -296,7 +298,7 @@ var controller = (function(QuizCtrl , UICtrl) {
         // debugger;
         UICtrl.startQuiz();
         questions = QuizCtrl.getQuestions();
-        UICtrl.displayQuestion(questions[nextQuestionIndex]);
+        UICtrl.displayQuestion(questions[nextQuestionIndex],nextQuestionIndex);
         nextQuestionIndex++;
         console.log(nextQuestionIndex);
 
@@ -317,7 +319,7 @@ var controller = (function(QuizCtrl , UICtrl) {
         ctrlAddChosenAnswer();
 
         //display next question
-        UICtrl.displayQuestion(questions[nextQuestionIndex]);
+        UICtrl.displayQuestion(questions[nextQuestionIndex] , nextQuestionIndex);
         // console.log(questions);
 
         nextQuestionIndex++;
