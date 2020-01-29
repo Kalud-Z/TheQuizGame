@@ -46,7 +46,19 @@ var QuizController = (function() {
     
     var allQuestions = [quiz1 , quiz2 , quiz3 , quiz4 , quiz5];
 
-    var finalListOfQuestions = [];
+    var finalListOfQuestions = allQuestions;
+
+    var shuffle = function(array) {
+        var i = array.length, j = 0, temp;
+        while (i--) {
+            j = Math.floor(Math.random() * (i+1));
+            // swap randomly chosen element with current element
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
       
     var calcTotalScore = function() {
         var sum = 0;
@@ -87,11 +99,12 @@ var QuizController = (function() {
         },
 
         resetData: function() {
-            for(var i = 0 ; i < allQuestions.length ; i++) {
-                allQuestions[i].chosenAnswer = 0;
-                allQuestions[i].score = 0;
+            for(var i = 0 ; i < finalListOfQuestions.length ; i++) {
+                finalListOfQuestions[i].chosenAnswer = 0;
+                finalListOfQuestions[i].score = 0;
             }
             console.log(allQuestions);
+            console.log(finalListOfQuestions);
         }
     }
 
@@ -123,7 +136,8 @@ var UIController = (function() {
             playAgainButton: document.querySelector('.play-again-button'),
             answersContainer: document.querySelector('.answers-container'),
             tableBody: document.querySelector('.table-body'),
-            answersButton: document.querySelector('.answers-button')
+            answersButton: document.querySelector('.answers-button'),
+            goBackButton: document.querySelector('.go-back-button')
     };
 
     var clearRadioButtons = function() {
@@ -132,7 +146,6 @@ var UIController = (function() {
             optionsList[i].checked = false;
         }
     }
-
 
 
     return {
@@ -158,17 +171,14 @@ var UIController = (function() {
             DOMStrings.questionContainer.classList.add('show');
         },
 
-        
         displayQuestion: function(quiz){
             clearRadioButtons();
-            // debugger;
             DOMStrings.theQuestion.innerText      = quiz.question;
             DOMStrings.option_1_text.innerText    = quiz.possibeAnswers[0];
             DOMStrings.option_2_text.innerText    = quiz.possibeAnswers[1];
             DOMStrings.option_3_text.innerText    = quiz.possibeAnswers[2];
         },
-
-        
+    
         selectedAnswersIndex: function() {
             var optionsList = DOMStrings.allPossibleAnswer;
             var checkedItem;
@@ -181,10 +191,14 @@ var UIController = (function() {
             return checkedItem;
         },
     
-
         showScoreButton: function(){
             DOMStrings.nextButton.classList.remove('show');
             DOMStrings.scoreButton.classList.add('show');
+        },
+
+        hideScoreButton: function(){
+            DOMStrings.nextButton.classList.add('show');
+            DOMStrings.scoreButton.classList.remove('show');
         },
 
         loadScorePage: function() {
@@ -235,7 +249,15 @@ var UIController = (function() {
             DOMStrings.questionContainer.classList.remove('show');
             DOMStrings.resultsContainer.classList.remove('show');
             DOMStrings.startPageContainer.classList.add('show');
+        },
+
+        goBack:function() {
+            DOMStrings.questionContainer.classList.remove('show');
+            DOMStrings.resultsContainer.classList.add('show');
+            DOMStrings.startPageContainer.classList.remove('show');
+            DOMStrings.answersContainer.classList.remove('show');
         }
+
 
     };
 
@@ -248,9 +270,10 @@ var UIController = (function() {
 //  GLOBAL APP CONTROLLER ###############################################################################################
 var controller = (function(QuizCtrl , UICtrl) {
     var nextQuestionIndex = 0;
+    console.log(nextQuestionIndex);
+
     var questions;
-    
-    // debugger;
+  
 
     var setupEventListeners = function() {
         var DOM = UICtrl.getDOMStrings();
@@ -259,6 +282,8 @@ var controller = (function(QuizCtrl , UICtrl) {
         DOM.scoreButton.addEventListener('click', ctrlShowScore);
         DOM.playAgainButton.addEventListener('click', ctrlPlayAgain);
         DOM.answersButton.addEventListener('click', ctrlDisplayAnswers);
+        DOM.goBackButton.addEventListener('click' , ctrlGoBack)
+
     };
 
 
@@ -273,6 +298,8 @@ var controller = (function(QuizCtrl , UICtrl) {
         questions = QuizCtrl.getQuestions();
         UICtrl.displayQuestion(questions[nextQuestionIndex]);
         nextQuestionIndex++;
+        console.log(nextQuestionIndex);
+
     };
 
     var ctrlAddChosenAnswer = function() {
@@ -294,6 +321,8 @@ var controller = (function(QuizCtrl , UICtrl) {
         // console.log(questions);
 
         nextQuestionIndex++;
+        console.log(nextQuestionIndex);
+
     };
 
     var ctrlShowScore = function() {
@@ -311,8 +340,11 @@ var controller = (function(QuizCtrl , UICtrl) {
     };
 
     var ctrlPlayAgain = function() {
+        nextQuestionIndex = 0;
+        // console.log(nextQuestionIndex);
         QuizCtrl.resetData();
         UICtrl.loadStartPage();
+        UICtrl.hideScoreButton();
     };
 
     var ctrlDisplayAnswers = function() {
@@ -320,6 +352,9 @@ var controller = (function(QuizCtrl , UICtrl) {
         UICtrl.displayAnswers(questions);
     }
 
+    var ctrlGoBack = function() {
+        UICtrl.goBack();
+    }
 
     return {
         init: function() {
