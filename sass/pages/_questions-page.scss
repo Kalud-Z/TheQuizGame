@@ -13,6 +13,11 @@
     -moz-box-shadow: 0px 0px 5px 0px rgba(243,123,67,1);
     box-shadow: 0px 0px 5px 0px rgba(243,123,67,1);
 
+    @include respond(phone) {
+        max-width: 83%;
+        margin: 10% auto;
+    }
+
     &__title {
         padding: 1.5rem 0;
         border-bottom: 1.5px solid black;

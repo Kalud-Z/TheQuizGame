@@ -7,19 +7,34 @@
     padding: 0;
     box-sizing: inherit;
 
-    border: 1px solid red; 
+    // border: 1px solid red; 
 }
 
- html { /* // this defines what 1 rem is : 1rem = 5px */
-    font-size: 70%;   
-    /* this is the root font-size ! | and = 62.5% of the default browser font-size which is usually 16px ==> final value 5px */
+ html { 
+    font-size: 70%;   // 1 rem = 11.2px
+
+    @include respond(tab-land) {
+        font-size: 60% ; // 1rem = 9px
+    }
+
+    @include respond(tab-port) {
+        font-size: 50% ; // 1rem = 7px
+    }
+
+    @include respond(phone) {
+        font-size: 55% ; // 1rem = 5px
+    }
+
+
 }
 
 
 body {
     box-sizing: border-box;
-    padding-top: 2rem;
+    padding-top: 3vh;
     background-image: linear-gradient(#172e7c , #55983400);
+
+    @include respond(phone) { padding-top: 1vh;}
 }
 
 
@@ -29,6 +44,11 @@ body {
     background-color: rgba(255, 255, 255, 0.979);
     margin: 0 auto;
     border-radius: 1rem 1rem 0 0;
+
+    @include respond(tab-port) { height : 60rem; }
+
+    @include respond(phone) { height : 99vh; }
+    
 }
 
 

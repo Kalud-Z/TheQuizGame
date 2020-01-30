@@ -1,20 +1,53 @@
+/*
+0 - 600px       :phone
+600 - 900px     :tablet portrait
+900 - 1200px    :tablet landscape
+[1200px - 1800px] => where out normal styles apply  (Desktop first approach)
+1800px          :big desktop
+*/
+/*
+$breakpoint argument choices :
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+/* 
+WI/
+
+tab-land  : done
+tab- port : done
+phone     : 
+
+
+
+  */
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-  border: 1px solid red; }
+  box-sizing: inherit; }
 
 html {
-  /* // this defines what 1 rem is : 1rem = 5px */
-  font-size: 70%;
-  /* this is the root font-size ! | and = 62.5% of the default browser font-size which is usually 16px ==> final value 5px */ }
+  font-size: 70%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 60%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 55%; } }
 
 body {
   box-sizing: border-box;
-  padding-top: 2rem;
+  padding-top: 3vh;
   background-image: linear-gradient(#172e7c, #55983400); }
+  @media (max-width: 37.5em) {
+    body {
+      padding-top: 1vh; } }
 
 .container {
   width: 80%;
@@ -22,6 +55,12 @@ body {
   background-color: rgba(255, 255, 255, 0.979);
   margin: 0 auto;
   border-radius: 1rem 1rem 0 0; }
+  @media (max-width: 56.25em) {
+    .container {
+      height: 60rem; } }
+  @media (max-width: 37.5em) {
+    .container {
+      height: 99vh; } }
 
 /* .heading-primary {
     font-size: 2rem;
@@ -43,6 +82,9 @@ body {
 .center-element {
   text-align: center; }
 
+.full-height {
+  height: 97vh !important; }
+
 /* 
 //Margins ##############################################################
 
@@ -57,18 +99,27 @@ body {
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-  border: 1px solid red; }
+  box-sizing: inherit; }
 
 html {
-  /* // this defines what 1 rem is : 1rem = 5px */
-  font-size: 70%;
-  /* this is the root font-size ! | and = 62.5% of the default browser font-size which is usually 16px ==> final value 5px */ }
+  font-size: 70%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 60%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 55%; } }
 
 body {
   box-sizing: border-box;
-  padding-top: 2rem;
+  padding-top: 3vh;
   background-image: linear-gradient(#172e7c, #55983400); }
+  @media (max-width: 37.5em) {
+    body {
+      padding-top: 1vh; } }
 
 .container {
   width: 80%;
@@ -76,6 +127,12 @@ body {
   background-color: rgba(255, 255, 255, 0.979);
   margin: 0 auto;
   border-radius: 1rem 1rem 0 0; }
+  @media (max-width: 56.25em) {
+    .container {
+      height: 60rem; } }
+  @media (max-width: 37.5em) {
+    .container {
+      height: 99vh; } }
 
 .header {
   font-size: 2.2rem;
@@ -93,6 +150,9 @@ body {
   text-transform: uppercase;
   outline: none;
   font-family: 'Roboto Slab', serif; }
+  @media (hover: none) {
+    .btn a:hover {
+      color: inherit; } }
 
 .start-button {
   width: 12.5rem;
@@ -194,6 +254,9 @@ input[type='radio'] {
   max-width: 90%;
   margin: 0 auto;
   margin-bottom: 2rem; }
+  @media (max-width: 37.5em) {
+    .table {
+      max-width: 99.5%; } }
   .table th, .table td {
     padding: 0.8rem 1rem;
     border-left: 1px solid black;
@@ -206,6 +269,9 @@ input[type='radio'] {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     z-index: 2222; }
+    .table__head tr th:first-child {
+      opacity: 0;
+      visibility: hidden; }
   .table__body tr {
     border-bottom: 1px solid black;
     background-color: rgba(255, 0, 0, 0.075); }
@@ -221,12 +287,22 @@ input[type='radio'] {
   margin: 0 auto;
   background-color: rgba(0, 0, 255, 0.041);
   width: 77%;
-  max-height: 47rem;
+  max-height: 41rem;
   overflow-y: auto;
   margin-top: 2rem;
   -webkit-box-shadow: 0px 0px 5px 0px #f37b43;
   -moz-box-shadow: 0px 0px 5px 0px #f37b43;
   box-shadow: 0px 0px 5px 0px #f37b43; }
+  @media (max-width: 75em) {
+    .answers-container {
+      max-height: 37rem; } }
+  @media (max-width: 56.25em) {
+    .answers-container {
+      max-height: 47rem; } }
+  @media (max-width: 37.5em) {
+    .answers-container {
+      max-height: 42rem;
+      width: 99%; } }
 
 .chosen-answer-is-correct {
   color: green; }
@@ -247,6 +323,10 @@ input[type='radio'] {
   -webkit-box-shadow: 0px 0px 5px 0px #f37b43;
   -moz-box-shadow: 0px 0px 5px 0px #f37b43;
   box-shadow: 0px 0px 5px 0px #f37b43; }
+  @media (max-width: 37.5em) {
+    .question-container {
+      max-width: 83%;
+      margin: 10% auto; } }
   .question-container__title {
     padding: 1.5rem 0;
     border-bottom: 1.5px solid black;
@@ -261,6 +341,9 @@ input[type='radio'] {
   font-size: 1rem;
   border: 4px solid red;
   display: none; }
+  @media (max-width: 37.5em) {
+    .results-container {
+      width: 89%; } }
   .results-container__title {
     font-size: 2rem;
     font-weight: 500;

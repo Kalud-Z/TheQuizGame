@@ -121,6 +121,7 @@ var QuizController = (function() {
 var UIController = (function() {
 
     var DOMStrings = {
+            container: document.querySelector('.container'),
             numOfQuestionsToPlay: document.querySelector('.number-of-questions-to-play'),
             startButton: document.querySelector('.start-button'),
             numOfQuestionsInput: document.querySelector('.number-of-questions-to-play'),
@@ -242,11 +243,17 @@ var UIController = (function() {
             }
         },
 
+        deleteDisplayedAnswers: function() {
+            DOMStrings.tableBody.innerHTML = ''  // inserted as a last child of the element. 
+        },
+
         loadAnswersPage: function() {
             DOMStrings.questionContainer.classList.remove('show');
             DOMStrings.resultsContainer.classList.remove('show');
             DOMStrings.startPageContainer.classList.remove('show');
             DOMStrings.answersContainer.classList.add('show');
+            DOMStrings.container.classList.add('full-height');
+
         },
 
         loadStartPage: function() {
@@ -260,9 +267,8 @@ var UIController = (function() {
             DOMStrings.resultsContainer.classList.add('show');
             DOMStrings.startPageContainer.classList.remove('show');
             DOMStrings.answersContainer.classList.remove('show');
+            DOMStrings.container.classList.remove('full-height');
         }
-
-
     };
 
 })();
@@ -347,6 +353,7 @@ var controller = (function(QuizCtrl , UICtrl) {
         nextQuestionIndex = 0;
         // console.log(nextQuestionIndex);
         QuizCtrl.resetData();
+        UICtrl.deleteDisplayedAnswers();
         UICtrl.loadStartPage();
         UICtrl.hideScoreButton();
     };
