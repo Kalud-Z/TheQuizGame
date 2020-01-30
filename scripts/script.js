@@ -78,12 +78,14 @@ var QuizController = (function() {
     var calcMaximumScore = function() {  return finalListOfQuestions.length * 25 ;  }
 
     return {
-
+        
         setNumberOfQuestions: function(num) {
-            finalListOfQuestions = allQuestions.slice(0,num);
+           var newArray = shuffle(allQuestions);
+            finalListOfQuestions = newArray.slice(0,num);
             console.log(finalListOfQuestions);
             console.log(allQuestions);
-        },
+        }, 
+
 
         getQuestions: function() {
             return finalListOfQuestions;
