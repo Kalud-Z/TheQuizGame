@@ -1,0 +1,21 @@
+
+.start-page-container {
+    display: none;
+
+    &__select-number-container  {
+        background-color: #d9d9d9;
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 1rem;
+        font-size: 1.6rem;
+        padding: .5rem;
+        border-radius: 0.3rem 0.3rem 0 0;
+
+        & label { width: 40%;}
+
+        & select  {
+            width: auto;
+            font-size: 1.6rem;
+        }
+    }
+}

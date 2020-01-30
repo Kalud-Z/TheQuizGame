@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
 
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
@@ -20,12 +20,11 @@
 
 
 <div class="container">
-    <div class="header">   Welcome to Quiz Game </div>
+    <div class="header center-element">   Welcome to Quiz Game </div>
 
 
-    
-    <div class="start-page-container show"> <!-- ##################################################################################### --> 
-        <div class="select-number-container">
+    <div class="start-page-container  center-element  show  "> <!-- ##################################################################################### --> 
+        <div class="start-page-container__select-number-container">
             <label for="num-select">Select Number of Question : </label>
             <select name="number" id="num-select" class="number-of-questions-to-play">
                 <option value="two">2</option>
@@ -37,8 +36,8 @@
         <button type="submit" class="btn start-button"> play </button>
     </div>   
 
-    <div class="question-container "> <!-- ##################################################################################### -->
-        <h1 class="question-container-title" > Question Number 1 </h1>
+    <div class="question-container   "> <!-- ##################################################################################### -->
+        <h1 class="question-container__title" > Question Number 1 </h1>
 
         <form>
             <p class="question">Who is the president of Mars ? </p>
@@ -53,12 +52,12 @@
 
     </div>
 
-    <div class="results-container "> <!-- ##################################################################################### -->
+    <div class="results-container center-element  "> <!-- ##################################################################################### -->
 
-        <h1 class="results-title" > You Final Score is : </h1>
-        <p class="results-score"> 80/100 </p>
+        <h1 class="results-container__title" > You Final Score is : </h1>
+        <p class="results-container__score"> 80/100 </p>
 
-        <div class="score-buttons-containter">
+        <div class="results-container__buttons-container">
             <input type="button" value="Check out Answers" class="btn answers-button">
             <input type="button" value="play again" class="btn play-again-button">
         </div>
@@ -67,12 +66,12 @@
 
     </div>
 
-    <div class="answers-container "> <!-- ##################################################################################### -->
+    <div class="answers-container    "> <!-- ##################################################################################### -->
 
         <button class="btn go-back-button"> <   Go back </button>
 
-        <table class="table-content ">
-            <thead>
+        <table class="table">
+            <thead class="table__head">
                 <tr>
                     <th> Question Nr </th>
                     <th> The Question </th>
@@ -83,7 +82,7 @@
                 </tr>
             </thead>
 
-            <tbody class="table-body">
+            <tbody class="table__body">
                 <!-- <tr>
                     <td> 1 </td>
                     <td> What is the coolest programming language in the world ? </td>
@@ -91,7 +90,7 @@
                     <td> JavaScript </td>
                     <td> &#10003; </td>
                 </tr> -->
-                 <!-- <tr>
+                 <!--  <tr>
                     <td> %number% </td>
                     <td> %questioon% </td>
                     <td> %correct-answer% </td>
@@ -122,7 +121,7 @@
                     <td> %correct-answer% </td>
                     <td> %chosen-answer% </td>
                     <td> %status% </td>
-                </tr>  -->
+                </tr> --> 
             </tbody>
         </table>
 
@@ -135,7 +134,7 @@
 
 
 
-    <script src="script.js" ></script>
+    <script src="scripts/script.js"></script>
 </body>
 
 

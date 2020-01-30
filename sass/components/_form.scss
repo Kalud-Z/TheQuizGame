@@ -1,0 +1,21 @@
+
+form {
+    text-align: left;
+    padding: 0rem 1.5rem;
+    font-size: 1.6rem;
+
+    & * { margin-bottom: 1.5rem; }
+
+    & p  {
+        font-style: italic;
+        font-weight: 500;
+        margin-right: 1rem;
+        padding-left:1rem !important;
+    }
+}
+
+input[type='radio'] {
+    transform: scale(1.75);
+    margin-right: 1rem;
+    cursor: pointer;
+}

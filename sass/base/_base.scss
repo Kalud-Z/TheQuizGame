@@ -1,0 +1,39 @@
+
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+
+    // border: 1px solid red; 
+}
+
+ html { /* // this defines what 1 rem is : 1rem = 5px */
+    font-size: 70%;   
+    /* this is the root font-size ! | and = 62.5% of the default browser font-size which is usually 16px ==> final value 5px */
+}
+
+
+body {
+    box-sizing: border-box;
+    padding-top: 2rem;
+    background-image: linear-gradient(#172e7c , #55983400);
+}
+
+
+
+.container {
+    width: 80%;
+    min-height: 92vh;
+    background-color: rgba(255, 255, 255, 0.979);
+    margin: 0 auto;
+    border-radius: 1rem 1rem 0 0;
+}
+
+
+
+
+
+

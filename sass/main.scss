@@ -1,0 +1,47 @@
+////############################# importing partial files ///////////////////////////
+
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/animation";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
+
+@import "base/base"; 
+
+@import "layout/header";
+
+@import "components/buttons";
+@import "components/form";
+@import "components/table";
+
+@import "pages/answers-page";
+@import "pages/questions-page";
+@import "pages/results-page";
+@import "pages/start-page";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

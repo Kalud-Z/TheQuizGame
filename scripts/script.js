@@ -35,7 +35,7 @@ var QuizController = (function() {
     quiz3.correctAnswer = 2;
 
     var quiz4 = new theQuiz();
-    quiz4.question = 'am I your daddy ? ?';
+    quiz4.question = 'am I your daddy  ???????? ??????????????????????????????????? ??????????????? ????????? ??????';
     quiz4.possibeAnswers = ['Obama' , 'Jesus','Lana Rohdes daddy'];
     quiz4.correctAnswer = 2;
 
@@ -46,7 +46,19 @@ var QuizController = (function() {
     
     var allQuestions = [quiz1 , quiz2 , quiz3 , quiz4 , quiz5];
 
-    var finalListOfQuestions = [];
+    var finalListOfQuestions = allQuestions;
+
+    var shuffle = function(array) {
+        var i = array.length, j = 0, temp;
+        while (i--) {
+            j = Math.floor(Math.random() * (i+1));
+            // swap randomly chosen element with current element
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
       
     var calcTotalScore = function() {
         var sum = 0;
@@ -112,6 +124,7 @@ var UIController = (function() {
             numOfQuestionsInput: document.querySelector('.number-of-questions-to-play'),
             startPageContainer: document.querySelector('.start-page-container'),
             questionContainer: document.querySelector('.question-container'),
+            questionNumberDisplay: document.querySelector('.question-container__title'),
             allPossibleAnswer: document.getElementsByName('possible-answer'),
             nextButton: document.querySelector('.next-question-button'),
             scoreButton: document.querySelector('.score-button'),
@@ -120,10 +133,10 @@ var UIController = (function() {
             option_2_text: document.querySelector('.option-2-text'),
             option_3_text: document.querySelector('.option-3-text'),
             resultsContainer: document.querySelector('.results-container'),
-            scoreOutput: document.querySelector('.results-score'),
+            scoreOutput: document.querySelector('.results-container__score'),
             playAgainButton: document.querySelector('.play-again-button'),
             answersContainer: document.querySelector('.answers-container'),
-            tableBody: document.querySelector('.table-body'),
+            tableBody: document.querySelector('.table__body'),
             answersButton: document.querySelector('.answers-button'),
             goBackButton: document.querySelector('.go-back-button')
     };
@@ -159,12 +172,13 @@ var UIController = (function() {
             DOMStrings.questionContainer.classList.add('show');
         },
 
-        displayQuestion: function(quiz){
+        displayQuestion: function(quiz,index){
             clearRadioButtons();
-            DOMStrings.theQuestion.innerText      = quiz.question;
-            DOMStrings.option_1_text.innerText    = quiz.possibeAnswers[0];
-            DOMStrings.option_2_text.innerText    = quiz.possibeAnswers[1];
-            DOMStrings.option_3_text.innerText    = quiz.possibeAnswers[2];
+            DOMStrings.questionNumberDisplay.innerText  = 'Question Number ' + (index+1); 
+            DOMStrings.theQuestion.innerText            = quiz.question;
+            DOMStrings.option_1_text.innerText          = quiz.possibeAnswers[0];
+            DOMStrings.option_2_text.innerText          = quiz.possibeAnswers[1];
+            DOMStrings.option_3_text.innerText          = quiz.possibeAnswers[2];
         },
     
         selectedAnswersIndex: function() {
@@ -258,15 +272,10 @@ var UIController = (function() {
 //  GLOBAL APP CONTROLLER ###############################################################################################
 var controller = (function(QuizCtrl , UICtrl) {
     var nextQuestionIndex = 0;
-<<<<<<< HEAD
-    var questions;
-    
-    // debugger;
-=======
     console.log(nextQuestionIndex);
 
     var questions;
->>>>>>> feature-random-questions
+  
 
     var setupEventListeners = function() {
         var DOM = UICtrl.getDOMStrings();
@@ -289,7 +298,7 @@ var controller = (function(QuizCtrl , UICtrl) {
         // debugger;
         UICtrl.startQuiz();
         questions = QuizCtrl.getQuestions();
-        UICtrl.displayQuestion(questions[nextQuestionIndex]);
+        UICtrl.displayQuestion(questions[nextQuestionIndex],nextQuestionIndex);
         nextQuestionIndex++;
         console.log(nextQuestionIndex);
 
@@ -310,7 +319,7 @@ var controller = (function(QuizCtrl , UICtrl) {
         ctrlAddChosenAnswer();
 
         //display next question
-        UICtrl.displayQuestion(questions[nextQuestionIndex]);
+        UICtrl.displayQuestion(questions[nextQuestionIndex] , nextQuestionIndex);
         // console.log(questions);
 
         nextQuestionIndex++;
