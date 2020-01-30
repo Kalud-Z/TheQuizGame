@@ -20,29 +20,29 @@ var QuizController = (function() {
     }
     
     var quiz1 = new theQuiz();
-    quiz1.question = 'What is the coolest programming language in the world ?';
-    quiz1.possibeAnswers = ['Java' , 'Pascal' , 'JavaScript'];
-    quiz1.correctAnswer = 2;
+    quiz1.question = 'What term describes a newly born horse?';
+    quiz1.possibeAnswers = ['Kit' , 'Foal' , 'Puppy'];
+    quiz1.correctAnswer = 1;
     
     var quiz2 = new theQuiz();
-    quiz2.question = 'Who is your fav teacher in the world ?';
-    quiz2.possibeAnswers = ['Eli the computer guy' , 'Jonas' , 'Jesus'];
-    quiz2.correctAnswer = 1;
+    quiz2.question = 'Which field of physics deals with the actions and relations of heat?';
+    quiz2.possibeAnswers = ['Fluid Mechanics' , 'Astrology' , 'Thermodynamics'];
+    quiz2.correctAnswer = 2;
     
     var quiz3 = new theQuiz();
-    quiz3.question = 'Are you a badass programmer ?';
-    quiz3.possibeAnswers = ['no' , 'yes','Hell yeah'];
+    quiz3.question = 'What is the SI unit of force?';
+    quiz3.possibeAnswers = ['Sagan' , 'Einstein', 'Newton'];
     quiz3.correctAnswer = 2;
 
     var quiz4 = new theQuiz();
-    quiz4.question = 'am I your daddy  ???????? ??????????????????????????????????? ??????????????? ????????? ??????';
-    quiz4.possibeAnswers = ['Obama' , 'Jesus','Lana Rohdes daddy'];
+    quiz4.question = 'Which type of electromagnetic radiation has the shortest wavelength?';
+    quiz4.possibeAnswers = ['Microwaves' , 'Hand waves','Gamma Rays'];
     quiz4.correctAnswer = 2;
 
     var quiz5 = new theQuiz();
-    quiz5.question = 'why are you so lame ?';
-    quiz5.possibeAnswers = ['Im not !' , 'my dad hates me' , 'f##k U'];
-    quiz5.correctAnswer = 1;
+    quiz5.question = 'Which term describes light as it changes direction when going from one medium into another?';
+    quiz5.possibeAnswers = ['Refraction' , 'Metamorphosis' , 'Assimilation'];
+    quiz5.correctAnswer = 0;
     
     var allQuestions = [quiz1 , quiz2 , quiz3 , quiz4 , quiz5];
 
