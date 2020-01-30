@@ -3,7 +3,8 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+  border: 1px solid red; }
 
 html {
   /* // this defines what 1 rem is : 1rem = 5px */
@@ -17,7 +18,7 @@ body {
 
 .container {
   width: 80%;
-  min-height: 92vh;
+  height: 50rem;
   background-color: rgba(255, 255, 255, 0.979);
   margin: 0 auto;
   border-radius: 1rem 1rem 0 0; }
@@ -56,7 +57,8 @@ body {
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+  border: 1px solid red; }
 
 html {
   /* // this defines what 1 rem is : 1rem = 5px */
@@ -70,7 +72,7 @@ body {
 
 .container {
   width: 80%;
-  min-height: 92vh;
+  height: 50rem;
   background-color: rgba(255, 255, 255, 0.979);
   margin: 0 auto;
   border-radius: 1rem 1rem 0 0; }
