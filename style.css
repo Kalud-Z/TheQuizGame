@@ -7,7 +7,6 @@ medium      : #bb302d
 
 light       : #569834
 
-
 */
 
 
@@ -22,7 +21,8 @@ light       : #569834
 }
 
  html { /* // this defines what 1 rem is : 1rem = 5px */
-    font-size: 62%;  /* this is the root font-size ! | and = 62.5% of the default browser font-size which is usually 16px ==> final value 5px */ 
+    font-size: 70%;   
+    /* this is the root font-size ! | and = 62.5% of the default browser font-size which is usually 16px ==> final value 5px */
 }
 
 
