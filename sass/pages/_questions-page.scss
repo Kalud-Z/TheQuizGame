@@ -18,6 +18,9 @@
         margin: 10% auto;
     }
 
+    @include respond(phone-small) { max-width: calc( 100% - #{$body-padding-top}); }
+
+
     &__title {
         padding: 1.5rem 0;
         border-bottom: 1.5px solid black;

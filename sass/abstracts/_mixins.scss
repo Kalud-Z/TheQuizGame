@@ -14,7 +14,8 @@
 //ORDER : base + typography > general layout + grid > page layout > components 
 
 /*
-0 - 600px       :phone
+0   - 360px     :phone-small
+360 - 600px     :phone
 600 - 900px     :tablet portrait
 900 - 1200px    :tablet landscape
 [1200px - 1800px] => where out normal styles apply  (Desktop first approach)
@@ -24,6 +25,7 @@
 
 /*
 $breakpoint argument choices :
+- phone-small
 - phone
 - tab-port
 - tab-land
@@ -31,6 +33,12 @@ $breakpoint argument choices :
 */
 
 @mixin respond($breakpoint) {
+    
+    @if $breakpoint == phone-small {
+        // @media (max-width:22.5em) { @content };  //360px  //* content : allows us to pass a block of code into the mixin    
+        @media (max-width:31em) { @content };  //497px  //* content : allows us to pass a block of code into the mixin    
+    }
+
     @if $breakpoint == phone {
         @media (max-width:37.5em) { @content };  //600px  //* content : allows us to pass a block of code into the mixin    
     }

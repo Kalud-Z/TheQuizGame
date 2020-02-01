@@ -1,5 +1,6 @@
 /*
-0 - 600px       :phone
+0   - 360px     :phone-small
+360 - 600px     :phone
 600 - 900px     :tablet portrait
 900 - 1200px    :tablet landscape
 [1200px - 1800px] => where out normal styles apply  (Desktop first approach)
@@ -7,6 +8,7 @@
 */
 /*
 $breakpoint argument choices :
+- phone-small
 - phone
 - tab-port
 - tab-land
@@ -61,6 +63,9 @@ body {
   @media (max-width: 37.5em) {
     .container {
       height: 99vh; } }
+  @media (max-width: 31em) {
+    .container {
+      width: calc( 100% - 3vh); } }
 
 /* .heading-primary {
     font-size: 2rem;
@@ -133,6 +138,9 @@ body {
   @media (max-width: 37.5em) {
     .container {
       height: 99vh; } }
+  @media (max-width: 31em) {
+    .container {
+      width: calc( 100% - 3vh); } }
 
 .header {
   font-size: 2.2rem;
@@ -209,6 +217,15 @@ body {
   border-radius: 0.4rem;
   font-size: 1.2rem;
   letter-spacing: 0.1rem; }
+  @media (max-width: 31em) {
+    .answers-button, .play-again-button {
+      display: block;
+      margin: 0 auto !important; }
+      .answers-button:first-child, .play-again-button:first-child {
+        margin-bottom: 1.5rem !important;
+        background-color: rgba(0, 128, 0, 0.781); }
+      .answers-button:last-child, .play-again-button:last-child {
+        width: 40%; } }
   .answers-button:hover, .play-again-button:hover {
     background-color: rgba(196, 9, 171, 0.829); }
 
@@ -327,6 +344,9 @@ input[type='radio'] {
     .question-container {
       max-width: 83%;
       margin: 10% auto; } }
+  @media (max-width: 31em) {
+    .question-container {
+      max-width: calc( 100% - 3vh); } }
   .question-container__title {
     padding: 1.5rem 0;
     border-bottom: 1.5px solid black;

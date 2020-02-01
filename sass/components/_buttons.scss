@@ -79,6 +79,16 @@
     font-size: 1.2rem;
     letter-spacing: 0.1rem;
 
+    @include respond(phone-small) {
+        display: block;
+        margin:0 auto !important;
+        &:first-child {
+            margin-bottom: 1.5rem !important;
+            background-color: rgba(0, 128, 0, 0.781);
+        }
+        &:last-child { width: 40%; }
+    }
+
     &:hover {
         background-color: rgba(196, 9, 171, 0.829);
     }

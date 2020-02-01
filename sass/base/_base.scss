@@ -49,7 +49,12 @@ body {
 
     @include respond(phone) { height : 99vh; }
     
+    @include respond(phone-small) { width :  calc( 100% - #{$body-padding-top}); }
+
 }
+
+
+
 
 
 
