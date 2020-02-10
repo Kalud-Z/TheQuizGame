@@ -4,7 +4,7 @@
   "description": "website for practice",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+    "watch:sass": "node-sass sass/main.scss css/style.css -w"
   },
   "author": "Kalud",
   "license": "ISC",
