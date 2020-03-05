@@ -275,16 +275,14 @@ var UIController = (function() {
 
 
 
-
 // ######################################################################################################################
 //  GLOBAL APP CONTROLLER ###############################################################################################
 var controller = (function(QuizCtrl , UICtrl) {
     var nextQuestionIndex = 0;
-    console.log(nextQuestionIndex);
+    // console.log(nextQuestionIndex);
 
     var questions;
   
-
     var setupEventListeners = function() {
         var DOM = UICtrl.getDOMStrings();
         DOM.startButton.addEventListener('click', ctrlStartQuiz);
@@ -293,9 +291,7 @@ var controller = (function(QuizCtrl , UICtrl) {
         DOM.playAgainButton.addEventListener('click', ctrlPlayAgain);
         DOM.answersButton.addEventListener('click', ctrlDisplayAnswers);
         DOM.goBackButton.addEventListener('click' , ctrlGoBack)
-
     };
-
 
     var ctrlStartQuiz = function() { 
         // console.log(UICtrl.getNumberOfQuestionToPlay());
