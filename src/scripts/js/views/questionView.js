@@ -1,25 +1,14 @@
 import { elements } from './base'
 
-const generateOptionsMarkup = allOptions => {
-    let finalStr = '';
-    allOptions.forEach((el,index) => {
-        finalStr += `<input type="radio" name="possible-answer" value="option${index+1}" class="option-${index+1}-radio">
-        <span class="option-${index+1}-text">${el}</span> <br>`;
-    })
-
-    return finalStr;
-}
 
 
 export const displayQuestion = (questionObj,index) => {
     elements.questionContainer.innerHTML = '';
     clearRadioButtons();
 
-    // insert everything inside the question container
-    
     const allOptions =  [...questionObj.incorrect_answers , questionObj.correct_answer];
     const optionsMarkup =  generateOptionsMarkup(allOptions);
-
+    
     const markup = 
         `<h1 class="question-container__title" > Question Number ${index+1} </h1> 
         <form>
@@ -32,13 +21,16 @@ export const displayQuestion = (questionObj,index) => {
         </form>
         `;
 
+    // insert everything inside the question container
     elements.questionContainer.insertAdjacentHTML('afterbegin', markup); 
 }
 
 
 export const getChosenAnswer = () => {
     let returnVal;
-    Array.from(elements.allOptions).forEach(el => { if(el.previousSibling.checked) returnVal = el.innerText; })  
+    const allOptions = document.querySelectorAll(`span[class^="option"]`); // i had to rewrite the query. whyy ????
+    
+    allOptions.forEach( el => {if(el.previousElementSibling.checked) returnVal = el.innerText;} )  
     return returnVal;
 }
 
@@ -73,3 +65,57 @@ const clearRadioButtons = () => {
     // for(var i = 0 ; i < optionsList.length ; i++) {  optionsList[i].checked = false;}
     optionsList.forEach(el => el.checked = false);
 }
+
+
+const shuffleArray = array => {
+    var i = array.length,
+        j = 0,
+        temp;
+
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1));
+
+        // swap randomly chosen element with current element
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    return array;
+}
+
+
+const generateOptionsMarkup = allOptions => {
+
+    const newAllOptions = shuffleArray(allOptions);
+
+    let finalStr = '';
+    newAllOptions.forEach((el,index) => {
+        finalStr += `<input type="radio" name="possible-answer" value="option${index+1}" class="option-${index+1}-radio">
+        <span class="option-${index+1}-text">${el}</span> <br>`;
+    })
+
+    return finalStr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,4 @@
+import { elements } from './views/base'
 import Start                from './models/start'
 import * as score           from './models/score'
 import * as startView       from './views/startView'
@@ -5,7 +6,6 @@ import * as questionView    from './views/questionView'
 import * as scoreView       from './views/scoreView'
 import * as answersView       from './views/answersView'
 
-import { elements } from './views/base'
 
 
 // state.questionsObj.questions ==> Questions : array of objects 
@@ -35,12 +35,13 @@ const ctrlStartQuiz = async () => {
 
 const ctrlGotoNextQuestion = () => {
     // get the chosen answer from the user input & added it to the current question object.
+    // elements.allOpt'ions
     const chosenAnswer = questionView.getChosenAnswer();
     state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
-
-    // display the next question. we pass the whole question object.
     
+    // display the next question. we pass the whole question object.
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
+    
 
     
     // if it is the last questin. display 'showScoreButton' , instead of 'nextQuestionButton'
