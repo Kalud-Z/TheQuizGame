@@ -11,6 +11,7 @@ export const elements = {
     allPossibleAnswers: document.getElementsByName('possible-answer'),
     nextButton: document.querySelector('.next-question-button'),
     scoreButton: document.querySelector('.score-button'),
+    questionAndOptionsContainer: document.querySelector('.questionAndOptionsContainer'),
     theQuestion: document.querySelector('.question'),
     option_1_text: document.querySelector('.option-1-text'),
     option_2_text: document.querySelector('.option-2-text'),

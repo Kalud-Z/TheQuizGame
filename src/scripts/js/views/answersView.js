@@ -10,8 +10,6 @@ export const loadAnswersPage = () => {
     elements.container.classList.add('full-height');
 } 
 
-
-
 export const generateAnswers = questions => {
 
     let html , status, choseAnswerClass;
@@ -41,11 +39,14 @@ export const generateAnswers = questions => {
         })
 }
 
-
 export const goBack = () => {
     elements.questionContainer.classList.remove('show');
     elements.resultsContainer.classList.add('show');
     elements.startPageContainer.classList.remove('show');
     elements.answersContainer.classList.remove('show');
     elements.container.classList.remove('full-height');
+}
+
+export const resetAnswersPage = () => {
+    elements.tableBody.innerHTML = '';
 }

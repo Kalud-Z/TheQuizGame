@@ -27,7 +27,6 @@ const ctrlStartQuiz = async () => {
     // we start the quiz
     startView.startQuiz();
     
-    
     // display the next question (in this case the first one.) . we pass the whole question object.
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
 
@@ -35,20 +34,18 @@ const ctrlStartQuiz = async () => {
 };
 
 const ctrlGotoNextQuestion = () => {
-    // if all questions displayed, go to the score page.
-    if(state.nextQuestionIndex === state.questionsObj.numOfQuestions -1) { 
-        // UICtrl.showScoreButton();
-        questionView.showScoreButton();
-        console.log('now we show the score button');
-    }
-
     // get the chosen answer from the user input & added it to the current question object.
     const chosenAnswer = questionView.getChosenAnswer();
     state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
 
     // display the next question. we pass the whole question object.
+    
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
 
+    
+    // if it is the last questin. display 'showScoreButton' , instead of 'nextQuestionButton'
+    if(state.nextQuestionIndex === state.questionsObj.numOfQuestions - 1) { questionView.showScoreButton()}
+    
     state.nextQuestionIndex++; 
 }
 
@@ -75,6 +72,7 @@ const ctrlPlayAgain = () => {
     // UI RESET method.
     startView.loadStartPage();
     questionView.hideScoreButton();
+    answersView.resetAnswersPage();
 }
 
 const ctrlDisplayAnswers = () => {
@@ -96,11 +94,11 @@ const ctrlGoBackToScore = () => {
 // clicking start button after choosing how many questions to play.
 elements.startButton.addEventListener('click', ctrlStartQuiz);
 
-// trigger : going to next question
-elements.nextButton.addEventListener('click', ctrlGotoNextQuestion);
-
-// show score . button
-elements.scoreButton.addEventListener('click', ctrlShowScore);
+// triiger : nextQuestionButton OR showScoreButton. delegate event to the parent.
+elements.questionContainer.addEventListener('click', e => {
+    if(e.target.matches('.next-question-button')) { ctrlGotoNextQuestion(); }
+    else if(e.target.matches('.score-button')) { ctrlShowScore(); }
+})
 
 // play again button
 elements.playAgainButton.addEventListener('click', ctrlPlayAgain);
