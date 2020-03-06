@@ -23,14 +23,26 @@
         text-align: center;
         font-weight: bold;
         font-size: 1.4rem;
-        border-top:  1px solid black;
+        // border-top:  1px solid black;
         border-bottom:  1px solid black;
         z-index: 2222;
+
+        & th { border-top:  1px solid black; }
         
-        & th:first-child {
-            opacity: 0;
+        & th:last-child {
             visibility: hidden;
+            border-top: none;
+            border-right: none;
+         }
+
+        & th:first-child {
+            visibility: hidden;
+            border-top: none;
+            border-left: none;
         }
+
+
+        
     }
 
     &__body tr {

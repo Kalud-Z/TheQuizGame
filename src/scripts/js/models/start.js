@@ -1,14 +1,14 @@
 import axios from 'axios'
 
 export default class Start {
-    constructor(query = 10) { this.query = query; }
+    constructor(numOfQuestions = 10) { this.numOfQuestions = numOfQuestions; }
 
     async getResults() {
         try {
-            const res = await axios(`https://opentdb.com/api.php?amount=${this.query}&category=17`);
+            const res = await axios(`https://opentdb.com/api.php?amount=${this.numOfQuestions}&category=17`);
 
-            this.results = res.data.results;
-            console.log(this.results);
+            this.questions = res.data.results;
+            console.log(this.questions);
         }
         catch (err) { alert('Error')};
     }
