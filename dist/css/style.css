@@ -99,6 +99,10 @@ body {
 .show {
   display: block !important; }
 
+.turn-visible {
+  opacity: 1 !important;
+  visibility: visible !important; }
+
 *,
 *::after,
 *::before {
@@ -177,6 +181,22 @@ body {
   .start-button:hover {
     background-color: #365f21;
     color: white; }
+
+.prev-question-button {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  display: none; }
+  .prev-question-button:hover svg {
+    fill: rgba(199, 108, 23, 0.884); }
+  .prev-question-button svg {
+    height: 3.5rem;
+    width: 3.5rem;
+    fill: rgba(238, 50, 44, 0.884); }
 
 .next-question-button {
   width: 8.5rem;
@@ -375,6 +395,7 @@ body {
   color: #cc0707; }
 
 .question-container {
+  position: relative;
   text-align: center;
   background-color: #d9d9d9;
   max-width: 80%;

@@ -1,4 +1,4 @@
-import { elements , renderLoader} from './base'
+import { elements , DOMString ,  renderLoader} from './base'
 
 
 
@@ -7,11 +7,15 @@ export const displayQuestion = (questionObj,index) => {
     clearRadioButtons();
 
     const allOptions =  [...questionObj.incorrect_answers , questionObj.correct_answer];
-    const optionsMarkup =  generateOptionsMarkup(allOptions);
     
+    //we pass the chosen answer . so if we open an already answered question. we would know which option to check.
+    const  optionsMarkup = generateOptionsMarkup(allOptions, questionObj.chosen_answer);
+
 
     const markup = 
-        `<h1 class="question-container__title" > Question Number ${index+1} </h1> 
+        `
+        <button class="prev-question-button"> <svg> <use href="./img/symbol-defs.svg#icon-circle-left"></use> </svg> </button>  
+        <h1 class="question-container__title" > Question Number ${index+1} </h1> 
         <form>
             <div class="questionAndOptionsContainer" >
             <p class="question"> ${questionObj.question} </p> ${optionsMarkup} 
@@ -59,6 +63,17 @@ export const hideScoreButton = () => {
 
 }
 
+export const showPrevQuestionButton = () => {
+    // document.querySelector('.prev-question-button').classList.add('turn-visible');  
+    document.querySelector('.'+DOMString.prevQuestionButton).classList.add('show');   // is this how we select a dynamically generated element ???
+}
+
+
+export const hidePrevQuestionButton = () => {
+    // document.querySelector('.prev-question-button').classList.add('turn-visible');  
+    document.querySelector('.'+DOMString.prevQuestionButton).classList.remove('show');   // is this how we select a dynamically generated element ???
+}
+
 export const loadWaitingPage = () => {
     elements.startPageContainer.classList.remove('show');
     renderLoader(elements.container);
@@ -93,15 +108,14 @@ const shuffleArray = array => {
 }
 
 
-const generateOptionsMarkup = allOptions => {
-
+const generateOptionsMarkup = (allOptions , chosenAnswerStr) => {
     const newAllOptions = shuffleArray(allOptions);
 
     let finalStr = '';
     newAllOptions.forEach((el,index) => {
         finalStr += `
         <div class="form__radio-group">
-            <input type="radio" name="possible-answer" value="option${index+1}" class="form__radio-input" id="option-${index+1}">
+            <input type="radio" name="possible-answer" value="option${index+1}" class="form__radio-input" id="option-${index+1}" ${ el === chosenAnswerStr ? 'checked' : '' }>
             <label for="option-${index+1}" class="form__radio-label">
                 <span class="form__radio-button"></span>
                 <span class="option-${index+1}-text">${el}</span>

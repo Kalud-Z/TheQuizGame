@@ -32,6 +32,27 @@
     }
 }
 
+.prev-question-button {
+    cursor: pointer;
+    position:  absolute;
+    top:5px;
+    left: 5px;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    // start hidden . only shows startin from question 2
+    display: none;
+
+    &:hover svg {  fill: rgba(199, 108, 23, 0.884); }
+    
+
+    & svg {
+        height: 3.5rem;
+        width: 3.5rem;
+        fill: rgba(238, 50, 44, 0.884);
+    }
+}
+
 
 .next-question-button {
     width: 8.5rem;
