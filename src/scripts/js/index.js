@@ -1,4 +1,4 @@
-import { elements , DOMString , renderLoader , clearLoader } from './views/base'
+import { elements , DOMString  } from './views/base'
 import Start                from './models/start'
 import * as score           from './models/score'
 import * as startView       from './views/startView'
@@ -54,9 +54,7 @@ const ctrlGotoNextQuestion = () => {
     
     // if it is the last questin. display 'showScoreButton' , instead of 'nextQuestionButton'
     if(state.nextQuestionIndex === state.questionsObj.numOfQuestions - 1) { questionView.showScoreButton()}
-    
-     
-    console.log('thisi is the nextquestion index : ' + state.nextQuestionIndex)
+        
 }
 
 const ctrlGotoPrevQuestion = () => {
@@ -81,7 +79,7 @@ const ctrlGotoPrevQuestion = () => {
 const ctrlShowScore = () => {
     // get the chosen answer from the user input & added it to the current question object.
     const chosenAnswer = questionView.getChosenAnswer();
-    state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
+    state.questionsObj.questions[state.nextQuestionIndex].chosen_answer = chosenAnswer;
 
     // we hide the prevQuestionButton
     questionView.hidePrevQuestionButton();
@@ -224,11 +222,11 @@ window.addEventListener('keydown', event => {
 
 
 
-
+/* 
 window.addEventListener('click', el => {
    console.log(el.target)
 })
-
+ */
 
 
 

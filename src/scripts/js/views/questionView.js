@@ -34,9 +34,6 @@ export const displayQuestion = (questionObj,index) => {
 export const getChosenAnswer = () => {
     let returnVal;
     const allOptions = document.querySelectorAll(`span[class^="option"]`); // i had to rewrite the query. whyy ????
-    
-    console.log('this is all the optins')
-    console.log(allOptions);
 
     allOptions.forEach( el => {if(el.parentElement.previousElementSibling.checked) returnVal = el.innerText;} )  
     return returnVal;

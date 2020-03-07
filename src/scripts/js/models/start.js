@@ -6,9 +6,7 @@ export default class Start {
     async getResults() {
         try {
             const res = await axios(`https://opentdb.com/api.php?amount=${this.numOfQuestions}&category=17`);
-
             this.questions = res.data.results;
-            console.log(this.questions);
         }
         catch (err) { alert('Error')};
     }
