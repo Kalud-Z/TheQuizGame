@@ -7,8 +7,8 @@ export const getNumOfQuestionsInput = () => {
     q_text = q.options[q.selectedIndex].text;
     
     q_final = parseInt(q_text);
-    console.log(q_final);
-    console.log(typeof(q_final));
+    // console.log(q_final);
+    // console.log(typeof(q_final));
 
     return q_final;
 }

@@ -136,8 +136,24 @@ window.addEventListener('keypress', event => {
 
 // up and down arrows
 window.addEventListener('keydown', event => {
+
     // if up OR down is pressed.
     if([38, 40].includes(event.keyCode)) {
+
+        // if we are in the start page. then we do our work
+        if(elements.startPageContainer.matches('.show')) {
+            const selectElement = elements.numOfQuestionsToPlay;
+            const allOptionsLength = selectElement.childElementCount;
+
+            if(event.keyCode === 38) { //if UP is pressed. then index decreases
+                if(selectElement.selectedIndex > 0)  selectElement.selectedIndex -= 1;
+            }
+
+            if(event.keyCode === 40) { //if DOWN is pressed. then index increases
+                if(selectElement.selectedIndex < allOptionsLength - 1)  selectElement.selectedIndex += 1;
+            }
+        }
+
         // if the we are in the question view. then we do our work
         if(elements.questionContainer.matches('.show')) {
 
@@ -161,16 +177,18 @@ window.addEventListener('keydown', event => {
             }
 
         }
+
     }
 })
 
 
 
 
-
-
-
-
+/* 
+window.addEventListener('click', el => {
+   console.log(el.target)
+})
+ */
 
 
 
