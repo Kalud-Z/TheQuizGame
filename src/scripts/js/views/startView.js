@@ -1,4 +1,4 @@
-import { elements } from './base'
+import { elements , clearLoader } from './base'
 
 
 export const getNumOfQuestionsInput = () => {
@@ -14,8 +14,9 @@ export const getNumOfQuestionsInput = () => {
 }
 
 
+
 export const startQuiz = () => {
-    elements.startPageContainer.classList.remove('show');
+    clearLoader();
     elements.questionContainer.classList.add('show');
 }
  

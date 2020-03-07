@@ -1,4 +1,4 @@
-import { elements } from './views/base'
+import { elements , renderLoader , clearLoader } from './views/base'
 import Start                from './models/start'
 import * as score           from './models/score'
 import * as startView       from './views/startView'
@@ -20,9 +20,15 @@ const ctrlStartQuiz = async () => {
     
     // we create a new object.
     state.questionsObj = new Start(numOfQuestions);
-    
+
+    // we show the user the waiting page. till the Data comes from the API.
+    questionView.loadWaitingPage();
+
     // we fetch the questions from the API
-    await state.questionsObj.getResults();  //we wait till data comes back from the server.
+    try {
+        await state.questionsObj.getResults();  //we wait till data comes back from the server.
+    } 
+    catch(err) { console.log('Error : Questions Not Found !') }
     
     // we start the quiz
     startView.startQuiz();

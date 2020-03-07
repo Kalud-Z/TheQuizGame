@@ -329,6 +329,22 @@ body {
     .table__body tr td:nth-child(3) {
       color: green; }
 
+.loader {
+  margin: 5rem auto;
+  text-align: center; }
+  .loader svg {
+    height: 15.5rem;
+    width: 15.5rem;
+    fill: #F59A83;
+    transform-origin: 44% 50%;
+    animation: rotate 1.5s infinite linear; }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+
 .answers-container {
   display: none;
   border-radius: 0.3rem;

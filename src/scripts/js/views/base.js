@@ -27,3 +27,14 @@ export const elements = {
     goBackToScoreButton: document.querySelector('.go-back-button')
 }
 
+
+export const renderLoader = parent => {
+    const loader = ` <div class="loader"> <svg> <use href="./img/icons.svg#icon-cw"></use> </svg> </div> `;
+    parent.insertAdjacentHTML('beforeend', loader);
+}
+
+export const clearLoader = () => {
+    const loader = document.querySelector('.loader');
+    if(loader) { loader.parentElement.removeChild(loader); }
+}
+

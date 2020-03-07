@@ -1,4 +1,4 @@
-import { elements } from './base'
+import { elements , renderLoader} from './base'
 
 
 
@@ -59,6 +59,10 @@ export const hideScoreButton = () => {
 
 }
 
+export const loadWaitingPage = () => {
+    elements.startPageContainer.classList.remove('show');
+    renderLoader(elements.container);
+}
 
 
 
