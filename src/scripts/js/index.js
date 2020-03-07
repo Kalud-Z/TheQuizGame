@@ -89,13 +89,15 @@ const ctrlGoBackToScore = () => {
     answersView.goBack();
 }
 
-// Event Listeners ########################################################################
-// ##########################################################################################
+// Event Listeners ###################################################################################################################################################
+// ####################################################################################################################################################################
+
+// click buttons Event Listeners §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
 
 // clicking start button after choosing how many questions to play.
 elements.startButton.addEventListener('click', ctrlStartQuiz);
 
-// triiger : nextQuestionButton OR showScoreButton. delegate event to the parent.
+// triger : nextQuestionButton OR showScoreButton. delegate event to the parent.
 elements.questionContainer.addEventListener('click', e => {
     if(e.target.matches('.next-question-button')) { ctrlGotoNextQuestion(); }
     else if(e.target.matches('.score-button')) { ctrlShowScore(); }
@@ -112,7 +114,59 @@ elements.goBackToScoreButton.addEventListener('click' , ctrlGoBackToScore)
 
 
 
-// window.addEventListener('click', e => { console.log(e.target); })
+// Keypress Event Listeners §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§ 
+
+// Enter
+window.addEventListener('keypress', event => {
+    if(event.keyCode === 13) {
+        // if we are in the start page ###############
+        if(elements.startPageContainer.matches('.show')) { ctrlStartQuiz(); }
+
+        // if we are in the question page ############
+        else if(elements.questionContainer.matches('.show')) {
+
+            // if score button is shown.
+            if(document.querySelector('.score-button').matches('.show')) { ctrlShowScore();  } //sometimes I just CANT use the elements object from base.js !!!!!!!!
+
+            // otherwise the showScore button is shown.
+            else { ctrlGotoNextQuestion();}
+        }
+    }    
+});
+
+// up and down arrows
+window.addEventListener('keydown', event => {
+    // if up OR down is pressed.
+    if([38, 40].includes(event.keyCode)) {
+        // if the we are in the question view. then we do our work
+        if(elements.questionContainer.matches('.show')) {
+
+            const allOptions = document.querySelectorAll(`span[class^="option"]`);
+
+            // find which one is checked
+            let checkedOptionIndex = -1
+            allOptions.forEach((el,i) => { if(el.parentElement.previousElementSibling.checked === true) checkedOptionIndex = i; });
+              
+            // if the no one is checked. we ALWAYS check the first option
+            if(checkedOptionIndex === -1) allOptions[0].parentElement.previousElementSibling.checked = true;
+
+            if(event.keyCode === 38) { //if UP is pressed.
+                // if one of them is checked we check the one above it.
+                if(checkedOptionIndex > 0) allOptions[checkedOptionIndex -1].parentElement.previousElementSibling.checked = true;
+            }
+
+            if(event.keyCode === 40) { //if DOWN is pressed.
+                // if one of them is checked we check the one below it.
+                if(checkedOptionIndex < allOptions.length) allOptions[checkedOptionIndex + 1].parentElement.previousElementSibling.checked = true;
+            }
+
+        }
+    }
+})
+
+
+
+
 
 
 
