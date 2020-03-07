@@ -9,6 +9,7 @@ export const displayQuestion = (questionObj,index) => {
     const allOptions =  [...questionObj.incorrect_answers , questionObj.correct_answer];
     const optionsMarkup =  generateOptionsMarkup(allOptions);
     
+
     const markup = 
         `<h1 class="question-container__title" > Question Number ${index+1} </h1> 
         <form>
@@ -30,7 +31,10 @@ export const getChosenAnswer = () => {
     let returnVal;
     const allOptions = document.querySelectorAll(`span[class^="option"]`); // i had to rewrite the query. whyy ????
     
-    allOptions.forEach( el => {if(el.previousElementSibling.checked) returnVal = el.innerText;} )  
+    console.log('this is all the optins')
+    console.log(allOptions);
+
+    allOptions.forEach( el => {if(el.parentElement.previousElementSibling.checked) returnVal = el.innerText;} )  
     return returnVal;
 }
 
@@ -91,8 +95,21 @@ const generateOptionsMarkup = allOptions => {
 
     let finalStr = '';
     newAllOptions.forEach((el,index) => {
-        finalStr += `<input type="radio" name="possible-answer" value="option${index+1}" class="option-${index+1}-radio">
-        <span class="option-${index+1}-text">${el}</span> <br>`;
+        finalStr += `
+        <div class="form__radio-group">
+            <input type="radio" name="possible-answer" value="option${index+1}" class="form__radio-input" id="option-${index+1}">
+            <label for="option-${index+1}" class="form__radio-label">
+                <span class="form__radio-button"></span>
+                <span class="option-${index+1}-text">${el}</span>
+            </label>
+        </div>
+        `
+
+
+/* 
+
+         `<input type="radio" name="possible-answer" value="option${index+1}" class="option-${index+1}-radio">
+          <span class="option-${index+1}-text">${el}</span> <br>`; */
     })
 
     return finalStr;

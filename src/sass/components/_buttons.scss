@@ -43,7 +43,8 @@
     font-size: 1.3rem;
     letter-spacing: 0.15rem;
     margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin-top: 3rem;
+    margin-left: 2rem;
     display:none;
     &:hover {
         background-color: rgba(255, 8, 0, 0.692);
@@ -62,7 +63,8 @@
     font-size: 1rem;
     letter-spacing: 0.15rem;
     margin-bottom: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 3rem;
+    margin-left: 2rem;
     &:hover {
         background-color: rgb(51, 61, 201);
     }
@@ -70,8 +72,9 @@
 
 
 .answers-button , .play-again-button  {
-    width: 18rem;
+    // width: 18rem;
     height: 3.65rem;
+    padding: 0 1rem;
     background-color: rgba(255, 0, 221, 0.692);
     color: beige;
     font-weight: 800;
