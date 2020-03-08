@@ -1,0 +1,29 @@
+
+
+.questions-track-bar {
+    width : 100%;
+    height: 1rem;
+    border-radius: 5px;
+
+    margin: 0 auto;
+    // margin-top: -4rem;
+
+    // background-color: rgba(245, 16, 176, 0.089);
+
+    display: flex;
+    justify-content: stretch;
+
+    &__child { 
+        background: linear-gradient(to right, rgba(245, 16, 176, 0.5) 50%, rgba(245, 16, 176, 0.089) 50%);  // blue is the starting color of the div. then it transition into red upon hover.
+        background-size: 200% 100%;
+        background-position:right bottom;
+        transition:all 1s ease;
+        
+        // flex : 0 0 25%;
+        border-right: 3px solid white;
+        &:last-child { border: none; }
+    }
+}
+
+
+

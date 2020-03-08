@@ -33,10 +33,12 @@ const ctrlStartQuiz = async () => {
     // we start the quiz
     startView.startQuiz();
     
+    // we generate the track-bar and display it
+    questionView.generateAndDisplayTrackBar(numOfQuestions);
+
     // display the next question (in this case the first one.) . we pass the whole question object.
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
 
-    // state.nextQuestionIndex++; 
 };
 
 const ctrlGotoNextQuestion = () => {

@@ -7,6 +7,8 @@ export const elements = {
     numOfQuestionsInput:            document.querySelector('.number-of-questions-to-play'),
     startPageContainer:             document.querySelector('.start-page-container'),
     questionContainer:              document.querySelector('.question-container'),
+    trackBar:                       document.querySelector('.questions-track-bar'),
+    trackBarChild:                  document.querySelector('.questions-track-bar__child'),
     questionNumberDisplay:          document.querySelector('.question-container__title'),
     allPossibleAnswers:             document.getElementsByName('possible-answer'),
     prevQuestionButton:             document.querySelector('.prev-question-button'),
@@ -29,7 +31,9 @@ export const elements = {
 }
 
 export const DOMString = {   
-    prevQuestionButton : 'prev-question-button'
+    prevQuestionButton : 'prev-question-button',
+    trackBar: 'questions-track-bar',
+    trackBarChild: 'questions-track-bar__child'
 }
 
 export const renderLoader = parent => {

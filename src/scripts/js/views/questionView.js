@@ -1,10 +1,32 @@
 import { elements , DOMString ,  renderLoader} from './base'
 
 
+export const generateAndDisplayTrackBar =  numOfQuestions => {
+    //first we delete the trackbar if it exists.
+    const trackBar = document.querySelector('.'+DOMString.trackBar); 
+    if(trackBar) { 
+        // console.log('we ara abotu to delete');
+        trackBar.parentElement.removeChild(trackBar);
+    }
+
+    
+    let trackBarChildren = '';
+    for(let i = 0 ; i < numOfQuestions ; i++) {  trackBarChildren += `<div class="questions-track-bar__child" id="trackBarChild-${i}">&nbsp;</div>` }
+
+    const markup = `<div class="questions-track-bar"> ${trackBarChildren} </div>`
+    
+    elements.questionContainer.insertAdjacentHTML('afterbegin', markup);
+
+    // adjust length of the chidren.
+    // when it is a dynamically generated element. you have to write a new query each time you wanna use it. 
+    document.querySelectorAll('.'+DOMString.trackBarChild).forEach(el => el.style.flex = '1');    
+}
+
 
 export const displayQuestion = (questionObj,index) => {
-    elements.questionContainer.innerHTML = '';
-    clearRadioButtons();
+    // elements.questionContainer.innerHTML = '';
+    removeAllChildrenExpectFirst(elements.questionContainer);
+    clearRadioButtons();  //this one is not necessary.
 
     const allOptions =  [...questionObj.incorrect_answers , questionObj.correct_answer];
     
@@ -26,8 +48,11 @@ export const displayQuestion = (questionObj,index) => {
         </form>
         `;
 
-    // insert everything inside the question container
-    elements.questionContainer.insertAdjacentHTML('afterbegin', markup); 
+    // insert everything after the track-bar
+    document.querySelector(`.${DOMString.trackBar}`) .insertAdjacentHTML('afterend', markup); 
+
+    // update track bar : we make the current bar child highlighted.
+    updateTrackBar(index);        
 }
 
 
@@ -60,6 +85,7 @@ export const hideScoreButton = () => {
 
 }
 
+
 export const showPrevQuestionButton = () => {
     // document.querySelector('.prev-question-button').classList.add('turn-visible');  
     document.querySelector('.'+DOMString.prevQuestionButton).classList.add('show');   // is this how we select a dynamically generated element ???
@@ -70,6 +96,7 @@ export const hidePrevQuestionButton = () => {
     // document.querySelector('.prev-question-button').classList.add('turn-visible');  
     document.querySelector('.'+DOMString.prevQuestionButton).classList.remove('show');   // is this how we select a dynamically generated element ???
 }
+
 
 export const loadWaitingPage = () => {
     elements.startPageContainer.classList.remove('show');
@@ -128,6 +155,19 @@ const generateOptionsMarkup = (allOptions , chosenAnswerStr) => {
     })
 
     return finalStr;
+}
+
+
+// remove all child nodes except the first. Parameter : the target parent node.
+const removeAllChildrenExpectFirst = parentElement => {
+    while(parentElement.children.length > 1) {
+        parentElement.removeChild(parentElement.children[1]);
+    }
+}
+
+// update track bar.
+const updateTrackBar = index => {
+    document.querySelector(`#trackBarChild-${index}`).classList.add('fill-bar');
 }
 
 
