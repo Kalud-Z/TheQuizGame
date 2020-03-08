@@ -22,6 +22,7 @@
 
 <div class="container">
 
+
     <!-- <p> What does the term &quot;isolation&quot; refer to in microbiology? </p> -->
 
     <div class="header center-element">   Welcome to Quiz Game </div>
@@ -30,33 +31,50 @@
     <div class="start-page-container  center-element  show   "> <!-- ##################################################################################### --> 
         <div class="start-page-container__select-number-container">
             <label for="num-select">Select Number of Question : </label>
-            <select name="number" id="num-select" class="number-of-questions-to-play">
+            <select name="number" id="num-select" class="number-of-questions-to-play" autofocus>
                 <option value="two">2</option>
-                <option value="three">3</option>
                 <option value="four">4</option>
-                <option value="five">5</option>
+                <option value="six">6</option>
+                <option value="eight">8</option>
+                <option value="ten">10</option>
+              
             </select>
         </div>
         <button type="submit" class="btn start-button"> play </button>
     </div>   
 
-    <div class="question-container   "> <!-- ##################################################################################### -->
-   <!--       <h1 class="question-container__title" > Question Number 1 </h1> 
 
+   <!--  <div class="questions-track-bar">
+        <div class="questions-track-bar__child" id="0">&nbsp;</div>
+        <div class="questions-track-bar__child" id="1">&nbsp;</div>
+        <div class="questions-track-bar__child" id="2">&nbsp;</div>
+        <div class="questions-track-bar__child" id="3">&nbsp;</div>
+    </div> -->
+
+    <div class="question-container  "> <!-- ##################################################################################### -->
+        
+        <!-- <button class="prev-question-button"> <svg> <use href="./img/symbol-defs.svg#icon-circle-left"></use> </svg> </button>   -->
+        <!-- <h1 class="question-container__title" > Question Number 1 </h1>  -->
+<!--
         <form>
             <div class="questionAndOptionsContainer" >
                 
                 <p class="question">Who is the president of Mars ? </p>
-                <input type="radio" name="possible-answer" value="option1" class="option-1-radio"><span class="option-1-text">Male</span> <br>
-                <input type="radio" name="possible-answer" value="option2" class="option-2-radio" ><span class="option-2-text">Male</span><br>
-                <input type="radio" name="possible-answer" value="option3" class="option-3-radio"><span class="option-3-text">Male</span><br>  
-             
+
+                <div class="form__radio-group">
+                    <input type="radio" name="possible-answer" value="option1" class="form__radio-input" id='option-1'>
+                    <label for="option-1" class="form__radio-label">
+                        <span class="form__radio-button"></span>
+                        <span class="option-1-text">Male</span>
+                    </label>
+                </div>
+
             </div>
             
             <input type="button" value="Next >" class="btn next-question-button show">
             <input type="button" value="See results >" class="btn score-button">
         </form>
- -->
+  -->
 
     </div>
 

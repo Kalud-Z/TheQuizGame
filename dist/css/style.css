@@ -53,7 +53,7 @@ body {
 
 .container {
   width: 85vw;
-  min-height: 97vh;
+  height: 95vh;
   padding-bottom: 5vh;
   background-color: rgba(255, 255, 255, 0.979);
   margin: 0 auto;
@@ -136,7 +136,7 @@ body {
 
 .container {
   width: 85vw;
-  min-height: 97vh;
+  height: 95vh;
   padding-bottom: 5vh;
   background-color: rgba(255, 255, 255, 0.979);
   margin: 0 auto;
@@ -190,7 +190,7 @@ body {
 .prev-question-button {
   cursor: pointer;
   position: absolute;
-  top: 17px;
+  top: 7%;
   left: 5px;
   border: none;
   background-color: transparent;
