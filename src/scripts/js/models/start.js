@@ -3,7 +3,7 @@ import axios from 'axios'
 export default class Start {
     constructor(numOfQuestions = 10, selectedCategoryID) {
         this.numOfQuestions = numOfQuestions;
-        this.categoryID = selectedCategoryID;
+        this.categoryID     = selectedCategoryID;
     }
 
     async getResults() {

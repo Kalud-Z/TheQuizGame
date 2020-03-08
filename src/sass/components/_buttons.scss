@@ -17,31 +17,30 @@
 .start-button {
     width: 12.5rem;
     height: 5rem;
-    // margin: 0 auto;
-    // margin-top: 2.5rem;
     background-color: #5598345b;
-    color: blue;
+    color: rgba(0, 0, 255, 0.199);
     border-radius: 0.5rem;
     font-size: 1.6rem;
     letter-spacing: 0.25rem;
-    border:0.1rem solid  #207db3;
+    border:0.1rem solid  #207db341;
 
     position: absolute;
     top:50%;
     right:-47%;
     transform: translate(-50%,-50%);
 
-    &:hover {
-        background-color: #f2f3f2;
-        color: black
-    }
+}
 
+
+.start-button-activated {
+    background-color: #f2f3f2;
+    animation:blink .5s infinite;
 }
 
 .prev-question-button {
     cursor: pointer;
     position:  absolute;
-    top:7%;
+    top:2rem;
     left: 5px;
     border: none;
     background-color: transparent;

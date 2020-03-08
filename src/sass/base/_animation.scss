@@ -1,0 +1,13 @@
+
+
+@keyframes rotate {
+    0% {  transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+  
+
+@keyframes blink {
+    0% { color: rgb(0, 0, 255);  }
+    100% { color: rgb(223, 39, 39); }
+}
+

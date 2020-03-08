@@ -12,12 +12,23 @@ export const getNumOfQuestionsInput = () => {
     return q_final;
 }
 
+const activatePlayBtn = () => {
+    elements.startButton.classList.add('start-button-activated');
+}
+
+const deactivatePlayBtn = () => {
+    elements.startButton.classList.remove('start-button-activated');
+}
+
 
 export const selectCategory = clickedCategory => {
     resetCategories();
 
     // add the chosen-cat class to the clicked cat
     clickedCategory.classList.add('chosen-cat');
+
+    // we make the start-button active
+    activatePlayBtn();
 } 
 
 export const getSelectedCategoryID = () => {
@@ -44,6 +55,7 @@ export const loadStartPage =  () => {
     elements.questionContainer.classList.remove('show');
     elements.resultsContainer.classList.remove('show');
     elements.startPageContainer.classList.add('show-startPage');
+    deactivatePlayBtn();
 }
 
 
