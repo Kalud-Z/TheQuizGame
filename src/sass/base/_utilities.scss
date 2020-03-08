@@ -15,6 +15,10 @@
 
 .show {  display: block !important; }
 
+.show-startPage {
+    display: flex !important;
+}
+
 .turn-visible {
     opacity: 1 !important;
     visibility: visible !important;

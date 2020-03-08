@@ -13,6 +13,26 @@ export const getNumOfQuestionsInput = () => {
 }
 
 
+export const selectCategory = clickedCategory => {
+    resetCategories();
+
+    // add the chosen-cat class to the clicked cat
+    clickedCategory.classList.add('chosen-cat');
+} 
+
+export const getSelectedCategoryID = () => {
+    let idStr , id;
+    elements.catergories.forEach(el => {
+        if(el.matches('.chosen-cat')) idStr = el.id
+    })
+    id = idStr.slice(4);
+    return id;
+}
+
+export const resetCategories = () => {
+    elements.catergories.forEach(el => el.classList.remove('chosen-cat'));
+}
+
 
 export const startQuiz = () => {
     clearLoader();
@@ -20,11 +40,10 @@ export const startQuiz = () => {
 }
  
 
-
 export const loadStartPage =  () => {
     elements.questionContainer.classList.remove('show');
     elements.resultsContainer.classList.remove('show');
-    elements.startPageContainer.classList.add('show');
+    elements.startPageContainer.classList.add('show-startPage');
 }
 
 

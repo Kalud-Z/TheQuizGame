@@ -99,7 +99,7 @@ export const hidePrevQuestionButton = () => {
 
 
 export const loadWaitingPage = () => {
-    elements.startPageContainer.classList.remove('show');
+    elements.startPageContainer.classList.remove('show-startPage');
     renderLoader(elements.container);
 }
 

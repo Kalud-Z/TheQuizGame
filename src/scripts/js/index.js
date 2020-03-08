@@ -15,11 +15,12 @@ const state = { nextQuestionIndex: 0 };
 window.q = state;
 
 const ctrlStartQuiz = async () => { 
-    // we get the number of questions from the user
-    const numOfQuestions = startView.getNumOfQuestionsInput();
+    // we get the number of questions from the user. and the selected Category
+    const numOfQuestions        = startView.getNumOfQuestionsInput();
+    const selectedCategoryID    = startView.getSelectedCategoryID();
     
     // we create a new object.
-    state.questionsObj = new Start(numOfQuestions);
+    state.questionsObj = new Start(numOfQuestions, selectedCategoryID);
 
     // we show the user the waiting page. till the Data comes from the API.
     questionView.loadWaitingPage();
@@ -39,6 +40,8 @@ const ctrlStartQuiz = async () => {
     // display the next question (in this case the first one.) . we pass the whole question object.
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
 
+    // we reset the selected category
+    startView.resetCategories();
 };
 
 const ctrlGotoNextQuestion = () => {
@@ -125,10 +128,18 @@ const ctrlGoBackToScore = () => {
 
 // click buttons Event Listeners §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
 
+
+
+// choose caterogy listener
+elements.categoriesContainer.addEventListener('click', e => {
+    if(e.target.matches('.'+DOMString.category))
+    startView.selectCategory(e.target);
+})
+
 // clicking start button after choosing how many questions to play.
 elements.startButton.addEventListener('click', ctrlStartQuiz);
 
-// triger : nextQuestionButton OR prevQuestionButton OR showScoreButton. delegate event to the parent.
+// attached to nextQuestionButton OR prevQuestionButton OR showScoreButton. delegate event to the parent.
 elements.questionContainer.addEventListener('click', e => {
     if(e.target.matches('.next-question-button')) { ctrlGotoNextQuestion(); }
     else if(e.target.matches('.score-button')) { ctrlShowScore(); }
@@ -153,7 +164,7 @@ elements.goBackToScoreButton.addEventListener('click' , ctrlGoBackToScore)
 window.addEventListener('keypress', event => {
     if(event.keyCode === 13) {
         // if we are in the start page ###############
-        if(elements.startPageContainer.matches('.show')) { ctrlStartQuiz(); }
+        if(elements.startPageContainer.matches('.show-startPage')) { ctrlStartQuiz(); }
 
         // if we are in the question page ############
         else if(elements.questionContainer.matches('.show')) {
