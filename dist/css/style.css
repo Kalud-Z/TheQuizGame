@@ -558,7 +558,8 @@ select {
     margin-top: 2%; }
   .results-container__score {
     font-size: 4.2rem;
-    font-weight: 500; }
+    font-weight: 500;
+    font-family: 'Merienda One', cursive; }
   .results-container__buttons-container {
     width: 99%;
     margin: 0 auto;
