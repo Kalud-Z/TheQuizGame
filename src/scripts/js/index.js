@@ -175,7 +175,6 @@ elements.answersButton.addEventListener('click', ctrlDisplayAnswers);
 elements.goBackToScoreButton.addEventListener('click' , ctrlGoBackToScore)
 
 
-
 // Keypress Event Listeners §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§ 
 
 // Enter  (* start quiz . | *go next question)
@@ -252,14 +251,17 @@ window.addEventListener('keydown', event => {
 });
 
 
-// Handle Media queries
+// Display Images nicely. And , if necessary , Handle Media queries 
 window.addEventListener('load', () => {
-    console.log('load event is acled')
+    //generate the category elements. 
     const tab_land = 1200;
     const windowWidth = document.documentElement.clientWidth;   // returns the width of the screen in pixels.
     if(windowWidth <= tab_land) {
         mediaQueries.rotateCategories();
     }
+
+    // display images
+    startView.displayImages();
 })
 
 

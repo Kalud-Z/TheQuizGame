@@ -3,6 +3,7 @@
     position: relative;
     margin-top: 4rem;
     width: 50%;
+
    
     & table {
         border-collapse:separate; 
@@ -52,7 +53,11 @@
 .category__image {
     width: 100%;
     border-radius: 4px;
-    transition: all 1s;
+    transition:all .5s;
+
+    // start hidden. so onload we can display them artistically
+    opacity: 0;
+    // visibility: hidden;
 }
 
 

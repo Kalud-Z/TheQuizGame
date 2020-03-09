@@ -119,6 +119,9 @@ body {
 .show {
   display: block !important; }
 
+.showImage {
+  opacity: 1 !important; }
+
 .show-startPage {
   display: flex !important; }
 
@@ -462,7 +465,8 @@ select {
 .category__image {
   width: 100%;
   border-radius: 4px;
-  transition: all 1s; }
+  transition: all .5s;
+  opacity: 0; }
 
 .chosen-cat {
   border: 3px solid red;

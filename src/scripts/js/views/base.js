@@ -7,6 +7,7 @@ export const elements = {
     categoriesContainer:            document.querySelector('.categories-container'),
     categoriesTableBody:            document.querySelector('.categories__table-body'),
     catergories:                    document.querySelectorAll('.category-name'),
+    catergoriesImages:              document.querySelectorAll('.category__image'),
     startButton:                    document.querySelector('.start-button'),
     numOfQuestionsInput:            document.querySelector('.number-of-questions-to-play'),
     startPageContainer:             document.querySelector('.start-page-container'),
@@ -38,7 +39,8 @@ export const DOMString = {
     prevQuestionButton : 'prev-question-button',
     trackBar: 'questions-track-bar',
     trackBarChild: 'questions-track-bar__child',
-    category: 'category-name'
+    category: 'category-name',
+    catergoryImage: 'category__image'
 }
 
 export const renderLoader = parent => {

@@ -1,6 +1,19 @@
 import { elements , clearLoader, DOMString } from './base'
 
 
+export const displayImages = () => {
+     // it displays the coupons when we first load the page.
+        const allImages = document.querySelectorAll('.'+DOMString.catergoryImage)
+
+        for(let i = 0 ; i < allImages.length ; i++) {
+            (function() {
+                    setTimeout(function(){  // display coupons one after the other ==> Nice Animation
+                    const allImages = document.querySelectorAll('.'+DOMString.catergoryImage)
+                    allImages[i].classList.add('showImage');
+                } ,222 * i); //you need to wait a lil bit.
+            })(i);
+         }
+}
 
 export const getSelectedCategoryID = () => {
     let idStr , id;
@@ -10,6 +23,7 @@ export const getSelectedCategoryID = () => {
     id = idStr.slice(4);
     return id;
 }
+
 
 export const getDifficulty = () => {
     let selectElement , selectElement_value;
@@ -31,9 +45,11 @@ export const getNumOfQuestionsInput = () => {
     return q_final;
 }
 
+
 const activatePlayBtn = () => {
     elements.startButton.classList.add('start-button-activated');
 }
+
 
 const deactivatePlayBtn = () => {
     elements.startButton.classList.remove('start-button-activated');
