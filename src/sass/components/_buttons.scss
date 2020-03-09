@@ -23,11 +23,21 @@
     font-size: 1.6rem;
     letter-spacing: 0.25rem;
     border:0.1rem solid  #207db341;
+    margin-top: 3rem;
 
-    position: absolute;
-    top:50%;
-    right:-47%;
-    transform: translate(-50%,-50%);
+   
+
+    @media only screen and (min-width: 75em) {
+        position: absolute;
+        top:50%;
+        right:-47%;
+        transform: translate(-50%,-50%); 
+        margin-top: 0;
+    }
+
+    /* @include respond(tab-land) {
+        position: relative;
+    } */
 
 }
 

@@ -1,4 +1,4 @@
-import { elements , clearLoader } from './base'
+import { elements , clearLoader, DOMString } from './base'
 
 
 export const getNumOfQuestionsInput = () => {
@@ -33,7 +33,7 @@ export const selectCategory = clickedCategory => {
 
 export const getSelectedCategoryID = () => {
     let idStr , id;
-    elements.catergories.forEach(el => {
+    document.querySelectorAll('.'+DOMString.category).forEach(el => {
         if(el.matches('.chosen-cat')) idStr = el.id
     })
     id = idStr.slice(4);
@@ -41,7 +41,7 @@ export const getSelectedCategoryID = () => {
 }
 
 export const resetCategories = () => {
-    elements.catergories.forEach(el => el.classList.remove('chosen-cat'));
+    document.querySelectorAll('.'+DOMString.category).forEach(el => el.classList.remove('chosen-cat'));
 }
 
 

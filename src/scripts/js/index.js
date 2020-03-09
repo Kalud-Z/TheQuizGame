@@ -5,6 +5,7 @@ import * as startView       from './views/startView'
 import * as questionView    from './views/questionView'
 import * as scoreView       from './views/scoreView'
 import * as answersView       from './views/answersView'
+import * as mediaQueries       from './views/media-queries'
 
 
 
@@ -234,6 +235,15 @@ window.addEventListener('keydown', event => {
 });
 
 
+// Handle Media queries
+window.addEventListener('load', () => {
+    console.log('load event is acled')
+    const tab_land = 1200;
+    const windowWidth = document.documentElement.clientWidth;   // returns the width of the screen in pixels.
+    if(windowWidth <= tab_land) {
+        mediaQueries.rotateCategories();
+    }
+})
 
 /* 
 window.addEventListener('click', el => {

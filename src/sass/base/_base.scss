@@ -40,15 +40,15 @@ body {
 
 .container {
     width: 85vw;
-    height: 95vh;
+    min-height: 95vh;
     padding-bottom: 5vh;
     background-color: rgba(255, 255, 255, 0.979);
     margin: 0 auto;
     border-radius: 1rem 1rem 0 0;
 
-    @include respond(tab-port) { height : 60rem; }
+    @include respond(tab-port) { min-height : 60rem; }
 
-    @include respond(phone) { height : 99vh; }
+    @include respond(phone) { min-height : 99vh; }
     
     @include respond(phone-small) { width :  calc( 100% - #{$body-padding-top}); }
 

@@ -4,6 +4,7 @@ export const elements = {
     container:                      document.querySelector('.container'),
     numOfQuestionsToPlay:           document.querySelector('.number-of-questions-to-play'),
     categoriesContainer:            document.querySelector('.categories-container'),
+    categoriesTableBody:            document.querySelector('.categories__table-body'),
     catergories:                    document.querySelectorAll('.category-name'),
     startButton:                    document.querySelector('.start-button'),
     numOfQuestionsInput:            document.querySelector('.number-of-questions-to-play'),
