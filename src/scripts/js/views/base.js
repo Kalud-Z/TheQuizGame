@@ -3,6 +3,7 @@
 export const elements = {
     container:                      document.querySelector('.container'),
     numOfQuestionsToPlay:           document.querySelector('.number-of-questions-to-play'),
+    difficulty:                     document.querySelector('.difficulty'), //this is the select element 
     categoriesContainer:            document.querySelector('.categories-container'),
     categoriesTableBody:            document.querySelector('.categories__table-body'),
     catergories:                    document.querySelectorAll('.category-name'),

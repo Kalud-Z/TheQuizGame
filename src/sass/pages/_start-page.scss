@@ -8,14 +8,24 @@
 
     display:none;
 
-    &__select-number-container  {
+    
+    &__select-number-container {
+        margin-right: .3rem;
+        border-top-left-radius: 5px;
+    }
+
+    &__select-difficulty-container {
+        border-top-right-radius: 5px;
+    }
+
+
+    &__select-number-container , &__select-difficulty-container  {
+        width:30rem;
         background-color: #d9d9d9;
-        width: 60%;
-        margin: 0 auto;
-        margin-top: 1rem;
+        // width: 60%;
         font-size: 1.6rem;
-        padding: .5rem;
-        border-radius: 0.3rem 0.3rem 0 0;
+        padding: 1.5rem;
+
 
         & label { width: 40%;}
 
@@ -27,17 +37,25 @@
         }
 
     }
+
+}
+
+
+.selectNumberAndDifficultyWrapper {
+    margin-top: 2rem;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+   
 }
 
 
 
-select:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 #000;
-}
-select {
-    background: transparent;
-}
+
+
+
+
+
 
 
 

@@ -48,12 +48,22 @@ body {
 
     @include respond(tab-port) { min-height : 60rem; }
 
-    @include respond(phone) { min-height : 99vh; }
+    @include respond(phone) { minheight : 99vh; }
     
     @include respond(phone-small) { width :  calc( 100% - #{$body-padding-top}); }
 
 }
 
+
+
+// just for firefox
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+select {
+    background: transparent;
+}
 
 
 

@@ -1,6 +1,25 @@
 import { elements , clearLoader, DOMString } from './base'
 
 
+
+export const getSelectedCategoryID = () => {
+    let idStr , id;
+    document.querySelectorAll('.'+DOMString.category).forEach(el => {
+        if(el.matches('.chosen-cat')) idStr = el.id
+    })
+    id = idStr.slice(4);
+    return id;
+}
+
+export const getDifficulty = () => {
+    let selectElement , selectElement_value;
+    selectElement = elements.difficulty;  // this is the select element.
+    selectElement_value = selectElement.options[selectElement.selectedIndex].value;
+
+    return selectElement_value;
+}
+
+
 export const getNumOfQuestionsInput = () => {
     let q , q_text , q_final;
     q = elements.numOfQuestionsToPlay;  // this is the select element.
@@ -31,14 +50,6 @@ export const selectCategory = clickedCategory => {
     activatePlayBtn();
 } 
 
-export const getSelectedCategoryID = () => {
-    let idStr , id;
-    document.querySelectorAll('.'+DOMString.category).forEach(el => {
-        if(el.matches('.chosen-cat')) idStr = el.id
-    })
-    id = idStr.slice(4);
-    return id;
-}
 
 export const resetCategories = () => {
     document.querySelectorAll('.'+DOMString.category).forEach(el => el.classList.remove('chosen-cat'));

@@ -16,12 +16,15 @@ const state = { nextQuestionIndex: 0 };
 window.q = state;
 
 const ctrlStartQuiz = async () => { 
-    // we get the number of questions from the user. and the selected Category
+    // we get the number of questions from the user ,  the selected Category , and the difficulty
     const numOfQuestions        = startView.getNumOfQuestionsInput();
     const selectedCategoryID    = startView.getSelectedCategoryID();
+    const difficulty            = startView.getDifficulty();
+
+    
     
     // we create a new object.
-    state.questionsObj = new Start(numOfQuestions, selectedCategoryID);
+    state.questionsObj = new Start(numOfQuestions, selectedCategoryID , difficulty);
 
     // we show the user the waiting page. till the Data comes from the API.
     questionView.loadWaitingPage();
