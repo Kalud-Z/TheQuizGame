@@ -57,7 +57,6 @@ html {
 
 body {
   box-sizing: border-box;
-  padding-top: 3vh;
   background-image: linear-gradient(#172e7c, #55983400); }
   @media (max-width: 37.5em) {
     body {
@@ -66,10 +65,12 @@ body {
 .container {
   width: 85vw;
   min-height: 95vh;
+  margin-top: 3vh;
   padding-bottom: 5vh;
   background-color: rgba(255, 255, 255, 0.979);
   margin: 0 auto;
-  border-radius: 1rem 1rem 0 0; }
+  border-radius: 1rem 1rem 0 0;
+  filter: blur(0px); }
   @media (max-width: 56.25em) {
     .container {
       min-height: 60rem; } }
@@ -104,18 +105,25 @@ body {
   line-height: 1.7;
   color: black; }
 
+.show-popupContainer {
+  opacity: 1 !important;
+  visibility: visible !important; }
+
+.show-popup {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translate(-50%, -50%) scale(1) !important; }
+
 .center-element {
   text-align: center; }
 
 .full-height {
   height: 97vh !important; }
 
-/* 
-//Margins ##############################################################
+.start-button-activated {
+  background-color: #f2f3f2;
+  animation: blink .5s infinite; }
 
-.margin-bottom-small { margin-bottom: 1rem; }
-.margin-bottom-medium { margin-bottom: 2rem; }
-.margin-bottom-big    { margin-bottom: 4rem; } */
 .show {
   display: block !important; }
 
@@ -153,7 +161,6 @@ html {
 
 body {
   box-sizing: border-box;
-  padding-top: 3vh;
   background-image: linear-gradient(#172e7c, #55983400); }
   @media (max-width: 37.5em) {
     body {
@@ -162,10 +169,12 @@ body {
 .container {
   width: 85vw;
   min-height: 95vh;
+  margin-top: 3vh;
   padding-bottom: 5vh;
   background-color: rgba(255, 255, 255, 0.979);
   margin: 0 auto;
-  border-radius: 1rem 1rem 0 0; }
+  border-radius: 1rem 1rem 0 0;
+  filter: blur(0px); }
   @media (max-width: 56.25em) {
     .container {
       min-height: 60rem; } }
@@ -224,25 +233,27 @@ select {
       transform: translate(-50%, -50%);
       margin-top: 0; } }
 
-.start-button-activated {
-  background-color: #f2f3f2;
-  animation: blink .5s infinite; }
-
-.prev-question-button {
+.prev-question-button, .exit-button {
   cursor: pointer;
   position: absolute;
   top: 2rem;
-  left: 5px;
   border: none;
   background-color: transparent;
   padding: 0;
   display: none; }
-  .prev-question-button:hover svg {
-    fill: rgba(199, 108, 23, 0.884); }
-  .prev-question-button svg {
+  .prev-question-button svg, .exit-button svg {
     height: 3.5rem;
-    width: 3.5rem;
+    width: 3.5rem; }
+
+.prev-question-button {
+  left: 5px; }
+  .prev-question-button svg {
     fill: rgba(238, 50, 44, 0.884); }
+
+.exit-button {
+  right: 5px; }
+  .exit-button svg {
+    fill: black; }
 
 .next-question-button {
   width: 8.5rem;
@@ -315,6 +326,19 @@ select {
   margin-left: 1rem; }
   .go-back-button:hover {
     background-color: rgba(0, 102, 255, 0.63); }
+
+.yes, .no {
+  width: 7rem;
+  padding: 1rem 0;
+  background-color: #a3218e;
+  color: #eee4e4;
+  border: none;
+  border-radius: 3px; }
+  .yes:hover, .no:hover {
+    background-color: #771266; }
+
+.yes {
+  margin-right: 4rem; }
 
 .form {
   padding-left: 4rem !important; }
@@ -473,6 +497,28 @@ select {
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
   opacity: 1; }
 
+.exit-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  height: 20rem;
+  width: 60rem;
+  background-image: linear-gradient(to top, #4a260300, #4a260386, #4a2603);
+  transition: all .5s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden; }
+  .exit-popup p {
+    font-size: 2rem;
+    margin-bottom: 3.2rem;
+    color: #eee4e4;
+    font-weight: 700; }
+
 .answers-container {
   display: none;
   border-radius: 0.3rem;
@@ -605,3 +651,12 @@ select {
   display: flex;
   align-items: stretch;
   justify-content: space-evenly; }
+
+.popups {
+  z-index: 222;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.137);
+  opacity: 0;
+  visibility: hidden; }

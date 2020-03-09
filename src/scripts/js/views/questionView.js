@@ -3,9 +3,10 @@ import { elements , DOMString ,  renderLoader} from './base'
 
 export const generateAndDisplayTrackBar =  numOfQuestions => {
     //first we delete the trackbar if it exists.
+
     const trackBar = document.querySelector('.'+DOMString.trackBar); 
     if(trackBar) { 
-        // console.log('we ara abotu to delete');
+        console.log('we deleting the trackbar');
         trackBar.parentElement.removeChild(trackBar);
     }
 
@@ -27,19 +28,20 @@ export const isAnswerSelected = () => getChosenAnswer()
 
 
 export const displayQuestion = (questionObj,index) => {
-    // elements.questionContainer.innerHTML = '';
-    removeAllChildrenExpectFirst(elements.questionContainer);
+    removeAllChildrenExpectFirstTwo(elements.questionContainer);  //because the first two elements are buttons.
     clearRadioButtons();  //this one is not necessary.
+
+    console.log('removeAllChildrenExpectFirstTwo and this s the question container now : ')
+    console.log(elements.questionContainer.childNodes)
 
     const allOptions =  [...questionObj.incorrect_answers , questionObj.correct_answer];
     
     //we pass the chosen answer . so if we open an already answered question. we would know which option to check.
     const  optionsMarkup = generateOptionsMarkup(allOptions, questionObj.chosen_answer);
 
-
     const markup = 
-        `
-        <button class="prev-question-button"> <svg> <use href="./img/symbol-defs.svg#icon-circle-left"></use> </svg> </button>  
+        `<button class="prev-question-button"> <svg> <use href="./img/symbol-defs.svg#icon-circle-left"></use> </svg> </button>
+        <button class="exit-button"> <svg> <use href="./img/symbol-defs.svg#icon-cancel-circle"></use> </svg> </button>  
         <h1 class="question-container__title" > Question Number ${index+1} </h1> 
         <form>
             <div class="questionAndOptionsContainer" >
@@ -52,7 +54,7 @@ export const displayQuestion = (questionObj,index) => {
         `;
 
     // insert everything after the track-bar
-    document.querySelector(`.${DOMString.trackBar}`) .insertAdjacentHTML('afterend', markup); 
+    document.querySelector(`.${DOMString.trackBar}`).insertAdjacentHTML('afterend', markup); 
 
     // update track bar : we make the current bar child highlighted.
     updateTrackBar(index);        
@@ -94,11 +96,22 @@ export const showPrevQuestionButton = () => {
     document.querySelector('.'+DOMString.prevQuestionButton).classList.add('show');   // is this how we select a dynamically generated element ???
 }
 
-
 export const hidePrevQuestionButton = () => {
     // document.querySelector('.prev-question-button').classList.add('turn-visible');  
     document.querySelector('.'+DOMString.prevQuestionButton).classList.remove('show');   // is this how we select a dynamically generated element ???
 }
+
+
+
+export const showExitButton = () => {
+    document.querySelector('.'+DOMString.exitButton).classList.add('show');   // is this how we select a dynamically generated element ???
+}
+
+
+export const hideExitButton = () => {
+    document.querySelector('.'+DOMString.exitButton).classList.remove('show');   // is this how we select a dynamically generated element ???
+}
+
 
 
 export const loadWaitingPage = () => {
@@ -162,9 +175,10 @@ const generateOptionsMarkup = (allOptions , chosenAnswerStr) => {
 
 
 // remove all child nodes except the first. Parameter : the target parent node.
-const removeAllChildrenExpectFirst = parentElement => {
-    while(parentElement.children.length > 1) {
-        parentElement.removeChild(parentElement.children[1]);
+const removeAllChildrenExpectFirstTwo = parentElement => {
+    while(parentElement.children.length > 2) {
+        console.log(parentElement.children);
+        parentElement.removeChild(parentElement.children[2]);
     }
 }
 

@@ -1,16 +1,25 @@
 
+.show-popupContainer {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+.show-popup {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate(-50%,-50%) scale(1) !important;
+}
 
 .center-element { text-align: center;}
 
 .full-height { height : 97vh !important;}
 
 
-/* 
-//Margins ##############################################################
-
-.margin-bottom-small { margin-bottom: 1rem; }
-.margin-bottom-medium { margin-bottom: 2rem; }
-.margin-bottom-big    { margin-bottom: 4rem; } */
+.start-button-activated {
+    background-color: #f2f3f2;
+    animation:blink .5s infinite;
+}
 
 
 .show {  display: block !important; }
@@ -31,6 +40,7 @@
     // background-color: rgba(245, 16, 176, 0.5);
     background-position:left bottom !important; //upon hover : red comes from left to right , and it covers the whole surface
 }
+
 
 
 

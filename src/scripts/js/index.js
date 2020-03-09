@@ -5,6 +5,7 @@ import * as startView       from './views/startView'
 import * as questionView    from './views/questionView'
 import * as scoreView       from './views/scoreView'
 import * as answersView       from './views/answersView'
+import * as popupView       from './views/popupView'
 import * as mediaQueries       from './views/media-queries'
 
 
@@ -21,7 +22,6 @@ const ctrlStartQuiz = async () => {
     const selectedCategoryID    = startView.getSelectedCategoryID();
     const difficulty            = startView.getDifficulty();
 
-    
     
     // we create a new object.
     state.questionsObj = new Start(numOfQuestions, selectedCategoryID , difficulty);
@@ -44,6 +44,9 @@ const ctrlStartQuiz = async () => {
     // display the next question (in this case the first one.) . we pass the whole question object.
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
 
+    // display exit button
+    questionView.showExitButton();
+
     // we reset the selected category
     startView.resetCategories();
 };
@@ -60,11 +63,16 @@ const ctrlGotoNextQuestion = () => {
         // display the next question. we pass the whole question object.
         questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
         
-        // we expose the prev-question button
+        // we expose the prev-question AND exit buttons
         questionView.showPrevQuestionButton(); 
+        questionView.showExitButton();
         
-        // if it is the last questin. display 'showScoreButton' , instead of 'nextQuestionButton'
-        if(state.nextQuestionIndex === state.questionsObj.numOfQuestions - 1) { questionView.showScoreButton()}
+        // if it is the last question. display 'showScoreButton' , instead of 'nextQuestionButton'
+        //  AND hide the exit button.
+        if(state.nextQuestionIndex === state.questionsObj.numOfQuestions - 1) {
+            questionView.showScoreButton();
+            questionView.hideExitButton();
+        }
     }
 
     else {
@@ -86,9 +94,38 @@ const ctrlGotoPrevQuestion = () => {
 
     // we expose the prev-question button
     questionView.showPrevQuestionButton();
+    questionView.showExitButton();
+
 
     // we hide the prev question button if we are  in the first question
     if(state.nextQuestionIndex === 0) questionView.hidePrevQuestionButton();
+}
+
+const ctrlExit = () => {
+    // show pop up. making u wanna exit.
+    popupView.showExitPopup();
+
+        
+    // Exit popup listerns
+    elements.exitPopup.addEventListener('click', e => {
+        if(e.target.matches('.no')) {
+            // we close the popup
+            popupView.hideExitPopup();
+        }
+        else if(e.target.matches('.yes')) {
+            // we close the popup
+            popupView.hideExitPopup();
+
+            // we start all over !
+            ctrlPlayAgain();
+
+            // we hide the buttons
+            questionView.hidePrevQuestionButton();
+            questionView.hideExitButton(); 
+        }
+    });
+
+
 }
 
 const ctrlShowScore = () => {
@@ -147,7 +184,6 @@ const ctrlGoBackToScore = () => {
 // click buttons Event Listeners §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
 
 
-
 // choose caterogy listener
 elements.categoriesContainer.addEventListener('click', e => {
     if(e.target.matches('.'+DOMString.category))
@@ -162,7 +198,7 @@ elements.questionContainer.addEventListener('click', e => {
     if(e.target.matches('.next-question-button')) { ctrlGotoNextQuestion(); }
     else if(e.target.matches('.score-button')) { ctrlShowScore(); }
     else if(e.target.matches(`.${DOMString.prevQuestionButton} , .${DOMString.prevQuestionButton} *`)) { ctrlGotoPrevQuestion(); }
-    
+    else if(e.target.matches(`.${DOMString.exitButton} , .${DOMString.exitButton} *`)) { ctrlExit(); }
 })
 
 // play again button
@@ -250,6 +286,8 @@ window.addEventListener('keydown', event => {
     }
 });
 
+
+// Other Event Listeners §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§ 
 
 // Display Images nicely. And , if necessary , Handle Media queries 
 window.addEventListener('load', () => {

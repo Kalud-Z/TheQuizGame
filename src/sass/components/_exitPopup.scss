@@ -1,0 +1,35 @@
+
+
+.exit-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.7);
+
+    height: 20rem;
+    width: 60rem;
+    background-image: linear-gradient(to top, #4a260300 , #4a260386 , #4a2603);
+    transition: all .5s ease-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    border-radius: 4px;
+
+    // starts hidden and scaled down
+    opacity: 0;
+    visibility: hidden;
+
+
+    & p {
+        font-size: 2rem;
+        margin-bottom: 3.2rem;
+        color: rgb(238, 228, 228);
+        // color: black;
+        font-weight: 700;
+    }
+
+}
+

@@ -1,6 +1,8 @@
 // Stuff reused accross different modules
 
 export const elements = {
+    popupContainer:                 document.querySelector('.popups'),
+    exitPopup:                      document.querySelector('.exit-popup'),
     container:                      document.querySelector('.container'),
     numOfQuestionsToPlay:           document.querySelector('.number-of-questions-to-play'),
     difficulty:                     document.querySelector('.difficulty'), //this is the select element 
@@ -17,6 +19,7 @@ export const elements = {
     questionNumberDisplay:          document.querySelector('.question-container__title'),
     allPossibleAnswers:             document.getElementsByName('possible-answer'),
     prevQuestionButton:             document.querySelector('.prev-question-button'),
+    exitButton:                     document.querySelector('.exit-button'),
     nextButton:                     document.querySelector('.next-question-button'),
     scoreButton:                    document.querySelector('.score-button'),
     questionAndOptionsContainer:    document.querySelector('.questionAndOptionsContainer'),
@@ -40,7 +43,8 @@ export const DOMString = {
     trackBar: 'questions-track-bar',
     trackBarChild: 'questions-track-bar__child',
     category: 'category-name',
-    catergoryImage: 'category__image'
+    catergoryImage: 'category__image',
+    exitButton: 'exit-button'
 }
 
 export const renderLoader = parent => {
