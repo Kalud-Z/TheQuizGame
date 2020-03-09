@@ -186,7 +186,7 @@ window.addEventListener('keydown', event => {
     if([38, 40].includes(event.keyCode)) {
 
         // if we are in the start page. then we do our work
-        if(elements.startPageContainer.matches('.show')) {
+        if(elements.startPageContainer.matches('.show-startPage')) {
             const selectElement = elements.numOfQuestionsToPlay;
             const allOptionsLength = selectElement.childElementCount;
 

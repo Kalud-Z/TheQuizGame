@@ -569,4 +569,13 @@ body {
       width: 40%; }
     .start-page-container__select-number-container select {
       width: auto;
-      font-size: 1.6rem; }
+      font-size: 1.6rem;
+      border-radius: 4px;
+      color: #9c0c0c; }
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000; }
+
+select {
+  background: transparent; }

@@ -22,13 +22,22 @@
         & select  {
             width: auto;
             font-size: 1.6rem;
+            border-radius: 4px;
+            color: rgb(156, 12, 12);
         }
+
     }
 }
 
 
 
-
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+select {
+    background: transparent;
+}
 
 
 
