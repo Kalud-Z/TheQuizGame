@@ -46,20 +46,27 @@ const ctrlStartQuiz = async () => {
 };
 
 const ctrlGotoNextQuestion = () => {
-    state.nextQuestionIndex++;
+    // we go through with the function only if the one answer is chosen.
+    if(questionView.isAnswerSelected()) {
+        state.nextQuestionIndex++;
 
-    // get the chosen answer from the user input & added it to the current question object.
-    const chosenAnswer = questionView.getChosenAnswer();
-    state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
-    
-    // display the next question. we pass the whole question object.
-    questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
-    
-    // we expose the prev-question button
-    questionView.showPrevQuestionButton(); 
-    
-    // if it is the last questin. display 'showScoreButton' , instead of 'nextQuestionButton'
-    if(state.nextQuestionIndex === state.questionsObj.numOfQuestions - 1) { questionView.showScoreButton()}
+        // get the chosen answer from the user input & added it to the current question object.
+        const chosenAnswer = questionView.getChosenAnswer();
+        state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
+        
+        // display the next question. we pass the whole question object.
+        questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
+        
+        // we expose the prev-question button
+        questionView.showPrevQuestionButton(); 
+        
+        // if it is the last questin. display 'showScoreButton' , instead of 'nextQuestionButton'
+        if(state.nextQuestionIndex === state.questionsObj.numOfQuestions - 1) { questionView.showScoreButton()}
+    }
+
+    else {
+        alert('ATTENTION : NO ANSWER IS SELECTED !!!!')
+    }
         
 }
 
@@ -77,28 +84,35 @@ const ctrlGotoPrevQuestion = () => {
     // we expose the prev-question button
     questionView.showPrevQuestionButton();
 
-
     // we hide the prev question button if we are  in the first question
     if(state.nextQuestionIndex === 0) questionView.hidePrevQuestionButton();
 }
 
 const ctrlShowScore = () => {
-    // get the chosen answer from the user input & added it to the current question object.
-    const chosenAnswer = questionView.getChosenAnswer();
-    state.questionsObj.questions[state.nextQuestionIndex].chosen_answer = chosenAnswer;
+    // we go through with the function only if one answer is selected for the last question
+    if(questionView.isAnswerSelected()) {
+        // get the chosen answer from the user input & added it to the current question object.
+        const chosenAnswer = questionView.getChosenAnswer();
+        state.questionsObj.questions[state.nextQuestionIndex].chosen_answer = chosenAnswer;
 
-    // we hide the prevQuestionButton
-    questionView.hidePrevQuestionButton();
+        // we hide the prevQuestionButton
+        questionView.hidePrevQuestionButton();
 
-    // load score page
-    scoreView.loadScorePage();
-      
-    // get final score from score model.
-    const finalScore = score.getFinalScore(state.questionsObj.questions);
-    const maxScore =   state.questionsObj.numOfQuestions * score.pointsPerCorrentAnswer;
+        // load score page
+        scoreView.loadScorePage();
+        
+        // get final score from score model.
+        const finalScore = score.getFinalScore(state.questionsObj.questions);
+        const maxScore =   state.questionsObj.numOfQuestions * score.pointsPerCorrentAnswer;
+        
+        // display Final score
+        scoreView.displayFinalScore(finalScore,maxScore);
+    } 
+    else {
+        alert('ATTENTION : NO ANSWER IS SELECTED !!!!')
+    }
+
     
-    // display Final score
-    scoreView.displayFinalScore(finalScore,maxScore);
 }
 
 const ctrlPlayAgain = () => {
@@ -244,6 +258,10 @@ window.addEventListener('load', () => {
         mediaQueries.rotateCategories();
     }
 })
+
+
+
+
 
 /* 
 window.addEventListener('click', el => {

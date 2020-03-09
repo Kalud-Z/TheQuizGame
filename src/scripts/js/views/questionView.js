@@ -23,6 +23,9 @@ export const generateAndDisplayTrackBar =  numOfQuestions => {
 }
 
 
+export const isAnswerSelected = () => getChosenAnswer()
+
+
 export const displayQuestion = (questionObj,index) => {
     // elements.questionContainer.innerHTML = '';
     removeAllChildrenExpectFirst(elements.questionContainer);
