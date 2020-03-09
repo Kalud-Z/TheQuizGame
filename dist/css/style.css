@@ -450,6 +450,9 @@ select {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
+  @media (max-width: 56.25em) {
+    .category-name {
+      height: 97%; } }
   @media (max-width: 37.5em) {
     .category-name {
       font-size: 1.5rem; } }
@@ -581,6 +584,9 @@ select {
     background-color: #d9d9d9;
     font-size: 1.6rem;
     padding: 1.5rem; }
+    @media (max-width: 37.5em) {
+      .start-page-container__select-number-container, .start-page-container__select-difficulty-container {
+        width: 25rem; } }
     .start-page-container__select-number-container label, .start-page-container__select-difficulty-container label {
       width: 40%; }
     .start-page-container__select-number-container select, .start-page-container__select-difficulty-container select {

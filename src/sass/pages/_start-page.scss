@@ -20,7 +20,7 @@
 
 
     &__select-number-container , &__select-difficulty-container  {
-        width:30rem;
+        width:30rem; @include respond(phone) { width:25rem; }
         background-color: #d9d9d9;
         // width: 60%;
         font-size: 1.6rem;
