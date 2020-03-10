@@ -6,7 +6,6 @@ export const generateAndDisplayTrackBar =  numOfQuestions => {
 
     const trackBar = document.querySelector('.'+DOMString.trackBar); 
     if(trackBar) { 
-        console.log('we deleting the trackbar');
         trackBar.parentElement.removeChild(trackBar);
     }
 
@@ -30,9 +29,6 @@ export const isAnswerSelected = () => getChosenAnswer()
 export const displayQuestion = (questionObj,index) => {
     removeAllChildrenExpectFirstTwo(elements.questionContainer);  //because the first two elements are buttons.
     clearRadioButtons();  //this one is not necessary.
-
-    console.log('removeAllChildrenExpectFirstTwo and this s the question container now : ')
-    console.log(elements.questionContainer.childNodes)
 
     const allOptions =  [...questionObj.incorrect_answers , questionObj.correct_answer];
     
@@ -60,6 +56,34 @@ export const displayQuestion = (questionObj,index) => {
     updateTrackBar(index);        
 }
 
+
+export const resetTimer = () => {
+    // we remove it from the DOM
+    // elements.questionTimer.parentElement.removeChild(elements.questionTimer);
+    document.querySelector('.'+DOMString.questionTimer).parentElement.removeChild(document.querySelector('.'+DOMString.questionTimer));
+    // document.querySelector('.'+DOMString.questionTimer)
+
+
+    const markup = `<div class="foreground"></div>`;
+
+    // we reinsert the timer to the DOM.
+    // elements.questionTimerContainer.appendChild(removedEl);          
+    elements.questionTimerContainer.insertAdjacentHTML('beforeend', markup);
+
+}
+
+export const showTimer = () => {
+    elements.questionTimerContainer.classList.add('turn-visible')
+}
+
+export const activateTimer = () => {
+    document.querySelector('.'+DOMString.questionTimer).classList.add('start-timer');
+}
+
+export const hideTimer = () => {
+    console.log('remove timer is called')
+    elements.questionTimerContainer.classList.remove('turn-visible');
+}
 
 export const getChosenAnswer = () => {
     let returnVal;
@@ -177,7 +201,6 @@ const generateOptionsMarkup = (allOptions , chosenAnswerStr) => {
 // remove all child nodes except the first. Parameter : the target parent node.
 const removeAllChildrenExpectFirstTwo = parentElement => {
     while(parentElement.children.length > 2) {
-        console.log(parentElement.children);
         parentElement.removeChild(parentElement.children[2]);
     }
 }

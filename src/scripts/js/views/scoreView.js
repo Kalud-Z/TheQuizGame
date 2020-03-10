@@ -10,13 +10,19 @@ export const loadScorePage = () => {
 export const displayFinalScore = (finalScore , maxScore) => {
     const finalScoreInPercentage = (finalScore * 100) / maxScore;
 
+    console.log('display final score is called and thisi the final score ')
+    console.log(finalScoreInPercentage)
+
+    elements.scoreOutput.innerText =  finalScoreInPercentage + '%';
+
+    /* 
     var counter = 0;
     const func = () => {
         elements.scoreOutput.innerText =  counter + '%';
         counter++;
     }
 
-    setDeceleratingTimeout(func, 1 , finalScoreInPercentage);
+    setDeceleratingTimeout(func, 1 , finalScoreInPercentage); */
 }
 
 

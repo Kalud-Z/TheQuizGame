@@ -16,6 +16,28 @@ const state = { nextQuestionIndex: 0 };
 
 window.q = state;
 
+
+const timerGoToNextQuestionOrShowScore = type => {
+    console.log('we are inside the timer now')
+    var counter = 3;
+    const timer = setInterval((type) => {
+        counter--;
+        if(counter === 0) { 
+            // we go to the next question
+            console.log('the type isssss')
+            console.log(type);
+            if(type === 'question') { ctrlGotoNextQuestion(); }
+            else if (type === 'score') {  ctrlShowScore(); }
+            clearInterval(timer); 
+        }
+        console.log(counter);
+        
+    }, 1000, type);
+
+}
+
+
+
 const ctrlStartQuiz = async () => { 
     // we get the number of questions from the user ,  the selected Category , and the difficulty
     const numOfQuestions        = startView.getNumOfQuestionsInput();
@@ -44,40 +66,51 @@ const ctrlStartQuiz = async () => {
     // display the next question (in this case the first one.) . we pass the whole question object.
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
 
-    // display exit button
+    // display exit button and Activate timer
     questionView.showExitButton();
+
+    // we show and we activate the timer
+    questionView.showTimer()
+    questionView.activateTimer();
+    timerGoToNextQuestionOrShowScore('question');
+
 
     // we reset the selected category
     startView.resetCategories();
 };
 
 const ctrlGotoNextQuestion = () => {
-    // we go through with the function only if the one answer is chosen.
-    if(questionView.isAnswerSelected()) {
+    console.log('we are caling the go to next question')
+    // we go through with the function only if  one answer is chosen.
+    // if(questionView.isAnswerSelected()) {
         state.nextQuestionIndex++;
 
         // get the chosen answer from the user input & added it to the current question object.
-        const chosenAnswer = questionView.getChosenAnswer();
+        var chosenAnswer = questionView.getChosenAnswer();
+        if(typeof chosenAnswer === 'undefined') { chosenAnswer = 'No Answer'; }
+        console.log('thisi the chosen asnwer')
+        console.log(chosenAnswer);
         state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
         
         // display the next question. we pass the whole question object.
         questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
         
-        // we expose the prev-question AND exit buttons
+        // we expose the prev-question AND exit buttons ALSO : activate question timer. in this case a track bar
         questionView.showPrevQuestionButton(); 
         questionView.showExitButton();
+
+        questionView.resetTimer();
+        setTimeout(() => { questionView.activateTimer() }, 10);
+        
+        timerGoToNextQuestionOrShowScore('next');
         
         // if it is the last question. display 'showScoreButton' , instead of 'nextQuestionButton'
         //  AND hide the exit button.
         if(state.nextQuestionIndex === state.questionsObj.numOfQuestions - 1) {
             questionView.showScoreButton();
             questionView.hideExitButton();
+            timerGoToNextQuestionOrShowScore('score');
         }
-    }
-
-    else {
-        alert('ATTENTION : NO ANSWER IS SELECTED !!!!')
-    }
         
 }
 
@@ -129,14 +162,17 @@ const ctrlExit = () => {
 }
 
 const ctrlShowScore = () => {
-    // we go through with the function only if one answer is selected for the last question
-    if(questionView.isAnswerSelected()) {
+    console.log('we are caling the ahow score')
         // get the chosen answer from the user input & added it to the current question object.
-        const chosenAnswer = questionView.getChosenAnswer();
-        state.questionsObj.questions[state.nextQuestionIndex].chosen_answer = chosenAnswer;
+        var chosenAnswer = questionView.getChosenAnswer();
+        if(!chosenAnswer) { chosenAnswer = 'No Answer'; }
+        console.log('thisi the chosen asnwer')
+        console.log(chosenAnswer);
+        state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
 
-        // we hide the prevQuestionButton
+        // we hide the prevQuestionButton , the timer
         questionView.hidePrevQuestionButton();
+        questionView.hideTimer();
 
         // load score page
         scoreView.loadScorePage();
@@ -147,12 +183,7 @@ const ctrlShowScore = () => {
         
         // display Final score
         scoreView.displayFinalScore(finalScore,maxScore);
-    } 
-    else {
-        alert('ATTENTION : NO ANSWER IS SELECTED !!!!')
-    }
 
-    
 }
 
 const ctrlPlayAgain = () => {

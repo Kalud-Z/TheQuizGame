@@ -1,0 +1,46 @@
+
+.timer-trackBar {
+    position: relative;
+    width: 100%;
+    // it start hidden. it will be displayed the momentwe display the question
+    opacity: 0;
+    visibility: hidden;
+ 
+}
+
+
+   
+.foreground {
+    width: 0%;
+    height: 1rem;
+    display:inline-block;
+    transition:all 3s;   //this is how long the user got to answer. ##################################################################
+    transition-timing-function: linear;
+    background-color: rgba(255, 0, 0, 0.397);
+
+    position: absolute;
+    top:0;
+    left:0;
+
+    margin-bottom: 8rem;
+
+   /*  &:hover {
+        width: 100%;
+        background: darken(red, 20%);
+    }  */
+}
+
+
+.background {
+    width: 100%;
+    height: 1rem;
+    display:inline-block;
+    background-color: rgba(128, 128, 128, 0.349);
+    // border: 1px solid black;
+
+    position: absolute;
+    top:0;
+    left:0;
+
+}
+

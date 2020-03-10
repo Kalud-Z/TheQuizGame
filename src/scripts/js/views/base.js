@@ -17,6 +17,8 @@ export const elements = {
     trackBar:                       document.querySelector('.questions-track-bar'),
     trackBarChild:                  document.querySelector('.questions-track-bar__child'),
     questionNumberDisplay:          document.querySelector('.question-container__title'),
+    questionTimerContainer:         document.querySelector('.timer-trackBar'),
+    questionTimer:                  document.querySelector('.foreground'),
     allPossibleAnswers:             document.getElementsByName('possible-answer'),
     prevQuestionButton:             document.querySelector('.prev-question-button'),
     exitButton:                     document.querySelector('.exit-button'),
@@ -44,7 +46,8 @@ export const DOMString = {
     trackBarChild: 'questions-track-bar__child',
     category: 'category-name',
     catergoryImage: 'category__image',
-    exitButton: 'exit-button'
+    exitButton: 'exit-button',
+    questionTimer: 'foreground'
 }
 
 export const renderLoader = parent => {
