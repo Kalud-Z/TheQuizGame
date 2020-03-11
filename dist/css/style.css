@@ -477,6 +477,12 @@ select {
   position: relative;
   margin-top: 4rem;
   width: 50%; }
+  @media (max-width: 31em) {
+    .categories-container {
+      margin-top: 3rem; } }
+  @media (max-width: 31em) {
+    .categories-container {
+      width: 75%; } }
   .categories-container table {
     border-collapse: separate;
     border-spacing: 16px 10px;
@@ -699,6 +705,9 @@ select {
     @media (max-width: 37.5em) {
       .start-page-container__select-number-container, .start-page-container__select-difficulty-container {
         width: 25rem; } }
+    @media (max-width: 31em) {
+      .start-page-container__select-number-container, .start-page-container__select-difficulty-container {
+        width: 18rem; } }
     .start-page-container__select-number-container label, .start-page-container__select-difficulty-container label {
       width: 40%; }
     .start-page-container__select-number-container select, .start-page-container__select-difficulty-container select {

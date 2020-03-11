@@ -1,9 +1,8 @@
 
 .categories-container {
     position: relative;
-    margin-top: 4rem;
-    width: 50%;
-
+    margin-top: 4rem; @include respond(phone-small) { margin-top: 3rem; }
+    width: 50%; @include respond(phone-small) { width: 75%; }
    
     & table {
         border-collapse:separate; 

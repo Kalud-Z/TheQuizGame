@@ -22,14 +22,32 @@
 </head>
 <body>
 
+    <div class="popups ">
+
+        <div class="exit-popup ">
+            <p> Your Answers won't be saved if you exit. <br> Are you sure you want to proceed ? </p>
+            <div class="buttonsContainer">
+                <button class="btn yes"> Yes </button>
+                <button class="btn no"> No </button>
+            </div>
+        </div>
+
+    </div>
 
 <div class="container">
 
 
 
-    <div class="header center-element">   Welcome to Quiz Game </div>
+    <div class="header center-element">   Welcome to Quiz Game 
+    <div class="go-back-button--replacement-Container "> <svg class="go-back-button--replacement"> <use href="./img/symbol-defs.svg#icon-arrow-left"></use> </svg> </div>
 
+    </div>
+    <div class="timer-trackBar">
+        <div class="background"></div> 
+        <div class="foreground"></div> 
+    </div>
 
+                                <!-- show-startPage -->
     <div class="start-page-container  center-element  show-startPage  "> <!-- ##################################################################################### --> 
        
         <div class="selectNumberAndDifficultyWrapper">
@@ -63,7 +81,7 @@
         </div>
        
 
-        <div class="categories-container">
+        <div class="categories-container  ">
 
             <table>
                 <tbody class="categories__table-body">
@@ -127,7 +145,7 @@
 
     </div>
 
-    <div class="results-container center-element  "> <!-- ##################################################################################### -->
+    <div class="results-container center-element "> <!-- ##################################################################################### -->
 
         <h1 class="results-container__title" > You Final Score is : </h1>
         <p class="results-container__score"> 80/100 </p>
@@ -141,11 +159,15 @@
 
     </div>
 
-    <div class="answers-container    "> <!-- ##################################################################################### -->
+
+    <div class="answers-container  "> <!-- ##################################################################################### -->
 
         <button class="btn go-back-button"> <   Go back </button>
+        
+        
 
         <table class="table">
+
             <thead class="table__head">
                 <tr>
                     <th> &nbsp; </th>
@@ -158,7 +180,8 @@
             </thead>
 
             <tbody class="table__body">
-                 <!-- <tr>
+<!-- 
+                   <tr>
                     <td> 1 </td>
                     <td> What is the coolest programming language in the world ? </td>
                     <td> JavaScript </td>
@@ -220,7 +243,8 @@
                     <td> %correct-answer% </td>
                     <td> %chosen-answer% </td>
                     <td> %status% </td>
-                </tr> --> 
+                </tr>  -->
+
             </tbody>
 
         </table>
