@@ -3,38 +3,20 @@ import Start                from './models/start'
 import * as score           from './models/score'
 import * as startView       from './views/startView'
 import * as questionView    from './views/questionView'
+import * as question        from './models/question'
 import * as scoreView       from './views/scoreView'
 import * as answersView       from './views/answersView'
 import * as popupView       from './views/popupView'
 import * as mediaQueries       from './views/media-queries'
 
 
-
 // state.questionsObj.questions ==> Questions : array of objects 
 // state.questions.questions[0]. question/correct_answer/difficulty/incorrect_answers(array of 3 strings)
-const state = { nextQuestionIndex: 0 };
+export const state = { nextQuestionIndex: 0 };
 
 window.q = state;
 
 
-const timerGoToNextQuestionOrShowScore = type => {
-    console.log('we are inside the timer now')
-    var counter = 3;
-    const timer = setInterval((type) => {
-        counter--;
-        if(counter === 0) { 
-            // we go to the next question
-            console.log('the type isssss')
-            console.log(type);
-            if(type === 'question') { ctrlGotoNextQuestion(); }
-            else if (type === 'score') {  ctrlShowScore(); }
-            clearInterval(timer); 
-        }
-        console.log(counter);
-        
-    }, 1000, type);
-
-}
 
 
 
@@ -70,47 +52,45 @@ const ctrlStartQuiz = async () => {
     questionView.showExitButton();
 
     // we show and we activate the timer
-    questionView.showTimer()
-    questionView.activateTimer();
-    timerGoToNextQuestionOrShowScore('question');
-
+    questionView.showTimerUI()
+    questionView.activateTimerUI();
+    question.startTimer();
+    
 
     // we reset the selected category
     startView.resetCategories();
 };
 
-const ctrlGotoNextQuestion = () => {
-    console.log('we are caling the go to next question')
+export const ctrlGotoNextQuestion = () => {
+    console.log('NEXT QUESTION IS CALLED')
     // we go through with the function only if  one answer is chosen.
     // if(questionView.isAnswerSelected()) {
-        state.nextQuestionIndex++;
+    state.nextQuestionIndex++;
 
-        // get the chosen answer from the user input & added it to the current question object.
-        var chosenAnswer = questionView.getChosenAnswer();
-        if(typeof chosenAnswer === 'undefined') { chosenAnswer = 'No Answer'; }
-        console.log('thisi the chosen asnwer')
-        console.log(chosenAnswer);
-        state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
-        
-        // display the next question. we pass the whole question object.
-        questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
-        
-        // we expose the prev-question AND exit buttons ALSO : activate question timer. in this case a track bar
-        questionView.showPrevQuestionButton(); 
-        questionView.showExitButton();
+    // get the chosen answer from the user input & added it to the current question object.
+    var chosenAnswer = questionView.getChosenAnswer();
+    if(typeof chosenAnswer === 'undefined') { chosenAnswer = 'No Answer'; console.log('NEXTQUESZION :no asnwer is assigned.') }
+    // console.log('thisi the chosen asnwer')
+    // console.log(chosenAnswer);
+    state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
+    
+    // display the next question. we pass the whole question object.
+    questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
+    
+    // we expose the prev-question AND exit buttons ALSO : activate question timer. in this case a track bar
+    questionView.showPrevQuestionButton(); 
+    questionView.showExitButton();
 
-        questionView.resetTimer();
-        setTimeout(() => { questionView.activateTimer() }, 10);
-        
-        timerGoToNextQuestionOrShowScore('next');
-        
-        // if it is the last question. display 'showScoreButton' , instead of 'nextQuestionButton'
-        //  AND hide the exit button.
-        if(state.nextQuestionIndex === state.questionsObj.numOfQuestions - 1) {
-            questionView.showScoreButton();
-            questionView.hideExitButton();
-            timerGoToNextQuestionOrShowScore('score');
-        }
+    questionView.resetTimerUI();
+    setTimeout(() => { questionView.activateTimerUI() }, 10);
+    
+    question.restartTimer();
+    
+    // if it is the last question.
+    if(state.nextQuestionIndex === state.questionsObj.numOfQuestions - 1) {
+        questionView.showScoreButton();
+        questionView.hideExitButton();
+    }
         
 }
 
@@ -161,18 +141,20 @@ const ctrlExit = () => {
 
 }
 
-const ctrlShowScore = () => {
-    console.log('we are caling the ahow score')
+export const ctrlShowScore = () => {
+        console.log('SHOW SCORE IS CALLED')
         // get the chosen answer from the user input & added it to the current question object.
         var chosenAnswer = questionView.getChosenAnswer();
-        if(!chosenAnswer) { chosenAnswer = 'No Answer'; }
-        console.log('thisi the chosen asnwer')
-        console.log(chosenAnswer);
-        state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
+        if(!chosenAnswer) { chosenAnswer = 'No Answer'; console.log('SHOW SCORE :no asnwer is assigned.') }
+        // console.log('thisi the chosen asnwer')
+        // console.log(chosenAnswer);
+        state.questionsObj.questions[state.nextQuestionIndex].chosen_answer = chosenAnswer;
 
         // we hide the prevQuestionButton , the timer
         questionView.hidePrevQuestionButton();
-        questionView.hideTimer();
+        questionView.hideTimerUI();
+
+        question.resetTimer();
 
         // load score page
         scoreView.loadScorePage();
@@ -194,6 +176,7 @@ const ctrlPlayAgain = () => {
     startView.loadStartPage();
     questionView.hideScoreButton();
     answersView.resetAnswersPage();
+    questionView.resetTimerUI();
 }
 
 const ctrlDisplayAnswers = () => {
@@ -342,6 +325,8 @@ window.addEventListener('click', el => {
    console.log(el.target)
 })
  */
+
+
 
 
 

@@ -533,17 +533,13 @@ select {
   width: 0%;
   height: 1rem;
   display: inline-block;
-  transition: all 3s;
+  transition: all 7s;
   transition-timing-function: linear;
   background-color: rgba(255, 0, 0, 0.397);
   position: absolute;
   top: 0;
   left: 0;
-  margin-bottom: 8rem;
-  /*  &:hover {
-        width: 100%;
-        background: darken(red, 20%);
-    }  */ }
+  margin-bottom: 8rem; }
 
 .background {
   width: 100%;

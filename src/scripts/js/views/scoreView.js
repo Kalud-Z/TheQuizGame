@@ -10,20 +10,16 @@ export const loadScorePage = () => {
 export const displayFinalScore = (finalScore , maxScore) => {
     const finalScoreInPercentage = (finalScore * 100) / maxScore;
 
-    console.log('display final score is called and thisi the final score ')
-    console.log(finalScoreInPercentage)
-
-    elements.scoreOutput.innerText =  finalScoreInPercentage + '%';
-
-    /* 
     var counter = 0;
     const func = () => {
         elements.scoreOutput.innerText =  counter + '%';
         counter++;
     }
 
-    setDeceleratingTimeout(func, 1 , finalScoreInPercentage); */
+    setDeceleratingTimeout(func, 1 , finalScoreInPercentage); 
+
 }
+
 
 
 
@@ -36,7 +32,7 @@ const setDeceleratingTimeout = (callback, factor, times) =>
             if (--tick >= 0) {
                 if(times >= 50 && times <= 100) { limit = (20 * times)/100 ; } else { limit = (25 * times)/100 }
                 if(tick < limit) { counter = counter + 10 } else { counter++ }
-                console.log(counter);
+                // console.log(counter);
                 window.setTimeout(internalCallback, counter * factor );
                 callback();
             }

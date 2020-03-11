@@ -57,7 +57,10 @@ export const displayQuestion = (questionObj,index) => {
 }
 
 
-export const resetTimer = () => {
+
+
+// timer track bar functions
+export const resetTimerUI = () => {
     // we remove it from the DOM
     // elements.questionTimer.parentElement.removeChild(elements.questionTimer);
     document.querySelector('.'+DOMString.questionTimer).parentElement.removeChild(document.querySelector('.'+DOMString.questionTimer));
@@ -72,18 +75,40 @@ export const resetTimer = () => {
 
 }
 
-export const showTimer = () => {
+export const showTimerUI = () => {
     elements.questionTimerContainer.classList.add('turn-visible')
 }
 
-export const activateTimer = () => {
+export const activateTimerUI = () => {
     document.querySelector('.'+DOMString.questionTimer).classList.add('start-timer');
 }
 
-export const hideTimer = () => {
-    console.log('remove timer is called')
+export const hideTimerUI = () => {
+    // console.log('remove timer is called')
     elements.questionTimerContainer.classList.remove('turn-visible');
 }
+
+
+// timer logic functions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const getChosenAnswer = () => {
     let returnVal;

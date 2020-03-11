@@ -14,7 +14,7 @@
     width: 0%;
     height: 1rem;
     display:inline-block;
-    transition:all 3s;   //this is how long the user got to answer. ##################################################################
+    transition:all 7s;   //this is how long the user got to answer. ##################################################################
     transition-timing-function: linear;
     background-color: rgba(255, 0, 0, 0.397);
 
@@ -23,11 +23,6 @@
     left:0;
 
     margin-bottom: 8rem;
-
-   /*  &:hover {
-        width: 100%;
-        background: darken(red, 20%);
-    }  */
 }
 
 
