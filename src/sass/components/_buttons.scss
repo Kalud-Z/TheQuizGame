@@ -154,13 +154,11 @@
 
         &-Container {
             position: absolute;
-            top: 120px;
-            // top: 12rem;
-            // left: -5rem;
-            left: -50px;
-            @include respond(tab-land) { left: -7.6rem; }
-            @include respond(tab-port) { left: -11rem; }
-            @include respond(phone) { left: -15rem; top:5rem; }
+            top: 122%;
+            left: 6%;
+ 
+            @include respond(tab-port) { left: 5%; }
+            @include respond(phone) { top: 61%; left:-1%; } 
             transition:all .5s;
 
             // it start hidden. it appears on scroll
@@ -168,12 +166,13 @@
             visibility: hidden;
             cursor: pointer;
 
-            // &:hover 
         }
 
+        width: 46px;  // I had to ! because otherwise , the SVG would have uncalled-for margins in Firefox !
         height: 3rem;
         fill:  rgba(0, 174, 255, 0.692);
         &:hover { fill: rgba(0, 102, 255, 0.63); }
+        // &:hover { fill: yellow }
 
     }
 }
@@ -181,7 +180,6 @@
 .yes , .no {
     width: 7rem;
     padding: 1rem 0;
-    // background-color: #018989;
     background-color: #a3218e ;
     color: rgb(238, 228, 228);
     border:none;

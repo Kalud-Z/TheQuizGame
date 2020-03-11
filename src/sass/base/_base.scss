@@ -48,6 +48,8 @@ body {
     border-radius: 1rem 1rem 0 0;
     margin-top: 3vh;
 
+    position: relative;
+
     filter: blur(0px);  //we make it blurry when popup is displayed. 3px
 
     @include respond(tab-port) { min-height : 60rem; }

@@ -62,15 +62,12 @@ export const displayQuestion = (questionObj,index) => {
 // timer track bar functions
 export const resetTimerUI = () => {
     // we remove it from the DOM
-    // elements.questionTimer.parentElement.removeChild(elements.questionTimer);
-    document.querySelector('.'+DOMString.questionTimer).parentElement.removeChild(document.querySelector('.'+DOMString.questionTimer));
-    // document.querySelector('.'+DOMString.questionTimer)
 
+    document.querySelector('.'+DOMString.questionTimer).parentElement.removeChild(document.querySelector('.'+DOMString.questionTimer));
 
     const markup = `<div class="foreground"></div>`;
 
-    // we reinsert the timer to the DOM.
-    // elements.questionTimerContainer.appendChild(removedEl);          
+    // we reinsert the timer to the DOM.        
     elements.questionTimerContainer.insertAdjacentHTML('beforeend', markup);
 
 }

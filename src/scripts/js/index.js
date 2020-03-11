@@ -84,7 +84,7 @@ export const ctrlGotoNextQuestion = () => {
     questionView.showExitButton();
 
     questionView.resetTimerUI();
-    setTimeout(() => { questionView.activateTimerUI() }, 10);
+    setTimeout(() => { questionView.activateTimerUI() }, 100);
     
     question.restartTimer();
     
@@ -323,22 +323,6 @@ window.addEventListener('load', () => {
 })
 
 
-
-
-
-/* 
-window.addEventListener('click', el => {
-   console.log(el.target)
-})
- */
-
-
-
-
-
-
-
-
 const changeGobackBtnOnScroll = () => {
 
     elements.answersContainer.onscroll = function() {
@@ -349,8 +333,8 @@ const changeGobackBtnOnScroll = () => {
         // we show the new button
             answersView.showGoBackToScoreButtonReplacementContainer();
             elements.goBackToScoreButtonReplacementContainer.addEventListener('click' , () => {
-                ctrlGoBackToScore();
                 answersView.hideGoBackToScoreButtonReplacementContainer();
+                ctrlGoBackToScore();
             })
         } 
         else {
@@ -362,9 +346,19 @@ const changeGobackBtnOnScroll = () => {
     
     }
 }
+ 
 
 
 
+
+
+
+
+/* 
+window.addEventListener('click', el => {
+   console.log(el.target)
+})
+ */
 
 
 

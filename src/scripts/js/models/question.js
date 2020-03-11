@@ -15,7 +15,6 @@ const timerMain = () => {
     console.log(counter);
 
     if(counter === 7) {
-        // after 5 seconds . we go to next question
         restartTimer();
         if(state.nextQuestionIndex === state.questionsObj.numOfQuestions-1) { 
             ctrlShowScore();

@@ -8,13 +8,19 @@
  
 }
 
+$timeToAnswer : 6.9s;
 
    
 .foreground {
     width: 0%;
     height: 1rem;
     display:inline-block;
-    transition:all 7s;   //this is how long the user got to answer. ##################################################################
+
+    transition:all $timeToAnswer;   //this is how long the user got to answer. ##################################################################
+    -webkit-transition: all $timeToAnswer;
+    -moz-transition: all $timeToAnswer;
+    -o-transition: all $timeToAnswer;
+    
     transition-timing-function: linear;
     background-color: rgba(255, 0, 0, 0.397);
 
