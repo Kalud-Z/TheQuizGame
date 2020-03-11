@@ -8,16 +8,23 @@ export const loadScorePage = () => {
 }
 
 export const displayFinalScore = (finalScore , maxScore) => {
-    const finalScoreInPercentage = (finalScore * 100) / maxScore;
+    const finalScoreInPercentage = Math.ceil((finalScore * 100) / maxScore); 
 
-    var counter = 0;
-    const func = () => {
-        elements.scoreOutput.innerText =  counter + '%';
-        counter++;
+    console.log('finalScoreInPercentage' , finalScoreInPercentage )
+
+    if(finalScoreInPercentage === 0) {
+        elements.scoreOutput.innerText =  0 + '%';
+    } 
+    else {
+        var counter = 1;
+        const func = () => {
+            elements.scoreOutput.innerText =  counter.toString() + '%';
+            counter++;
+        }
+    
+        setDeceleratingTimeout(func, 1 , finalScoreInPercentage);     
     }
-
-    setDeceleratingTimeout(func, 1 , finalScoreInPercentage); 
-
+   
 }
 
 

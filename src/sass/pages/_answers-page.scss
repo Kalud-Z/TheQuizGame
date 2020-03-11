@@ -8,6 +8,7 @@
     max-height: 37rem;
     // overflow: hidden;
     overflow-y: auto;
+    overflow-x: hidden;
     margin-top: 2rem;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(243,123,67,1);
     -moz-box-shadow: 0px 0px 5px 0px rgba(243,123,67,1);
@@ -31,3 +32,9 @@
     color:rgb(204, 7, 7);
 }
 
+
+.go-back-buttonContainer {
+    background-color: yellow;
+    width: 100%;
+    position: fixed;
+}
