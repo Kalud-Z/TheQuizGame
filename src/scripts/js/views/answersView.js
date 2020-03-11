@@ -50,3 +50,11 @@ export const goBack = () => {
 export const resetAnswersPage = () => {
     elements.tableBody.innerHTML = '';
 }
+
+export const showGoBackToScoreButtonReplacementContainer = () => {
+    elements.goBackToScoreButtonReplacementContainer.classList.add('turn-visible')
+}
+
+export const hideGoBackToScoreButtonReplacementContainer = () => {
+    elements.goBackToScoreButtonReplacementContainer.classList.remove('turn-visible')
+}

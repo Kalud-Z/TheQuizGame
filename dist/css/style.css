@@ -65,11 +65,11 @@ body {
 .container {
   width: 85vw;
   min-height: 95vh;
-  margin-top: 3vh;
   padding-bottom: 5vh;
   background-color: rgba(255, 255, 255, 0.979);
   margin: 0 auto;
   border-radius: 1rem 1rem 0 0;
+  margin-top: 3vh;
   filter: blur(0px); }
   @media (max-width: 56.25em) {
     .container {
@@ -173,11 +173,11 @@ body {
 .container {
   width: 85vw;
   min-height: 95vh;
-  margin-top: 3vh;
   padding-bottom: 5vh;
   background-color: rgba(255, 255, 255, 0.979);
   margin: 0 auto;
   border-radius: 1rem 1rem 0 0;
+  margin-top: 3vh;
   filter: blur(0px); }
   @media (max-width: 56.25em) {
     .container {
@@ -203,7 +203,8 @@ select {
   padding: 2.5rem 0;
   background-color: #becaf3;
   border-radius: 1rem 1rem 0 0;
-  font-weight: 700; }
+  font-weight: 700;
+  position: relative; }
 
 .btn {
   text-align: center;
@@ -330,6 +331,29 @@ select {
   margin-left: 1rem; }
   .go-back-button:hover {
     background-color: rgba(0, 102, 255, 0.63); }
+  .go-back-button--replacement {
+    height: 3rem;
+    fill: rgba(0, 174, 255, 0.692); }
+    .go-back-button--replacement-Container {
+      position: absolute;
+      top: 120px;
+      left: -50px;
+      transition: all .5s;
+      opacity: 0;
+      visibility: hidden;
+      cursor: pointer; }
+      @media (max-width: 75em) {
+        .go-back-button--replacement-Container {
+          left: -7.6rem; } }
+      @media (max-width: 56.25em) {
+        .go-back-button--replacement-Container {
+          left: -11rem; } }
+      @media (max-width: 37.5em) {
+        .go-back-button--replacement-Container {
+          left: -15rem;
+          top: 5rem; } }
+    .go-back-button--replacement:hover {
+      fill: rgba(0, 102, 255, 0.63); }
 
 .yes, .no {
   width: 7rem;
@@ -551,6 +575,7 @@ select {
   left: 0; }
 
 .answers-container {
+  position: relative;
   display: none;
   border-radius: 0.3rem;
   margin: 0 auto;
@@ -558,7 +583,6 @@ select {
   width: 77%;
   max-height: 37rem;
   overflow-y: auto;
-  overflow-x: hidden;
   margin-top: 2rem;
   -webkit-box-shadow: 0px 0px 5px 0px #f37b43;
   -moz-box-shadow: 0px 0px 5px 0px #f37b43;

@@ -42,11 +42,11 @@ body {
 .container {
     width: 85vw;
     min-height: 95vh;
-    margin-top: 3vh;
     padding-bottom: 5vh;
     background-color: rgba(255, 255, 255, 0.979);
     margin: 0 auto;
     border-radius: 1rem 1rem 0 0;
+    margin-top: 3vh;
 
     filter: blur(0px);  //we make it blurry when popup is displayed. 3px
 

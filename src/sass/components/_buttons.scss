@@ -149,6 +149,33 @@
     margin-top: 1rem;
     margin-left:1rem;
     &:hover { background-color: rgba(0, 102, 255, 0.63); }
+
+    &--replacement {
+
+        &-Container {
+            position: absolute;
+            top: 120px;
+            // top: 12rem;
+            // left: -5rem;
+            left: -50px;
+            @include respond(tab-land) { left: -7.6rem; }
+            @include respond(tab-port) { left: -11rem; }
+            @include respond(phone) { left: -15rem; top:5rem; }
+            transition:all .5s;
+
+            // it start hidden. it appears on scroll
+            opacity: 0;
+            visibility: hidden;
+            cursor: pointer;
+
+            // &:hover 
+        }
+
+        height: 3rem;
+        fill:  rgba(0, 174, 255, 0.692);
+        &:hover { fill: rgba(0, 102, 255, 0.63); }
+
+    }
 }
 
 .yes , .no {

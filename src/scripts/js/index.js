@@ -39,6 +39,8 @@ const ctrlStartQuiz = async () => {
     } 
     catch(err) { console.log('Error : Questions Not Found !') }
     
+    if(state.questionsObj.questions.length === 0) { alert('ERROR : SERVER IS DOWN !') }
+
     // we start the quiz
     startView.startQuiz();
     
@@ -186,6 +188,10 @@ const ctrlDisplayAnswers = () => {
     if(elements.tableBody.childElementCount === 0) {
         answersView.generateAnswers(state.questionsObj.questions);
     }
+
+    // when we scoll we change the goback button
+    changeGobackBtnOnScroll();
+
 }
 
 const ctrlGoBackToScore = () => {
@@ -325,6 +331,52 @@ window.addEventListener('click', el => {
    console.log(el.target)
 })
  */
+
+
+
+
+
+
+
+
+const changeGobackBtnOnScroll = () => {
+
+    elements.answersContainer.onscroll = function() {
+        var currenScrollPos = elements.answersContainer.scrollTop
+        console.log(currenScrollPos);
+    
+        if (elements.answersContainer.scrollTop > 45 ) {
+        // we show the new button
+            answersView.showGoBackToScoreButtonReplacementContainer();
+            elements.goBackToScoreButtonReplacementContainer.addEventListener('click' , () => {
+                ctrlGoBackToScore();
+                answersView.hideGoBackToScoreButtonReplacementContainer();
+            })
+        } 
+        else {
+            // we hide the new button. and deattach the event listener from it.
+            answersView.hideGoBackToScoreButtonReplacementContainer();
+            elements.goBackToScoreButtonReplacementContainer.removeEventListener('click' , ctrlGoBackToScore)
+        }
+    
+    
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,12 +9,12 @@ export default class Start {
 
     async getResults() {
         try {
-            const res = await axios(`https://opentdb.com/api.php?amount=${this.numOfQuestions}&category=${this.categoryID}&difficulty=${this.difficulty}`);
+            const res = await axios(`https://opentdb.com/api.php?mount=${this.numOfQuestions}&category=${this.categoryID}&difficulty=${this.difficulty}`);
             this.questions = res.data.results;
             // console.log('this is the result from the API')
             // console.log(res);
         }
-        catch (err) { alert('Error')};
+        catch(err) { alert('Error')};
     }
 } 
 

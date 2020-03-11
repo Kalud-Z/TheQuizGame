@@ -37,7 +37,9 @@ export const elements = {
     answersContainer:               document.querySelector('.answers-container'),
     tableBody:                      document.querySelector('.table__body'),
     answersButton:                  document.querySelector('.answers-button'),
-    goBackToScoreButton:            document.querySelector('.go-back-button')
+    goBackToScoreButton:            document.querySelector('.go-back-button'),
+    goBackToScoreButtonReplacement: document.querySelector('.go-back-button--replacement'),
+    goBackToScoreButtonReplacementContainer: document.querySelector('.go-back-button--replacement-Container')
 }
 
 export const DOMString = {   
