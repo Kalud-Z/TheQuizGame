@@ -137,7 +137,7 @@
 }
 
 .go-back-button {
-    width: 13rem;
+    // width: 13rem;
     height: 3.85rem;
     background-color: rgba(0, 174, 255, 0.692);
     color: beige;
@@ -148,6 +148,7 @@
     margin-bottom: 2rem;
     margin-top: 1rem;
     margin-left:1rem;
+    padding: 0 2rem;
     &:hover { background-color: rgba(0, 102, 255, 0.63); }
 
     &--replacement {

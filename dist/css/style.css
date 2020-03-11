@@ -145,6 +145,17 @@ body {
 .fill-bar {
   background-position: left bottom !important; }
 
+.display-Letter {
+  margin-right: 0rem !important; }
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .title-change-color {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-image: linear-gradient(to top, #4a260300, #4a260386, #4a2603); } }
+
 *,
 *::after,
 *::before {
@@ -199,14 +210,30 @@ select {
   background: transparent; }
 
 .header {
-  font-size: 2.2rem;
   width: 100%;
   border-bottom: 4px solid #645e5e;
-  padding: 2.5rem 0;
+  padding: 5.5rem 0;
   background-color: #becaf3;
   border-radius: 1rem 1rem 0 0;
-  font-weight: 700;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
+  .header .AppTitle {
+    width: 25.3rem;
+    font-weight: 700;
+    font-size: 4rem;
+    font-family: 'Merienda One', cursive;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: absolute;
+    left: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
+    .header .AppTitle__letter {
+      margin-right: 47rem;
+      transition: all 1s ease-in; }
 
 .btn {
   text-align: center;
@@ -320,7 +347,6 @@ select {
   margin-left: 2rem; }
 
 .go-back-button {
-  width: 13rem;
   height: 3.85rem;
   background-color: rgba(0, 174, 255, 0.692);
   color: beige;
@@ -330,7 +356,8 @@ select {
   letter-spacing: 0.1rem;
   margin-bottom: 2rem;
   margin-top: 1rem;
-  margin-left: 1rem; }
+  margin-left: 1rem;
+  padding: 0 2rem; }
   .go-back-button:hover {
     background-color: rgba(0, 102, 255, 0.63); }
   .go-back-button--replacement {

@@ -203,7 +203,6 @@ const ctrlGoBackToScore = () => {
 
 // click buttons Event Listeners §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
 
-
 // choose caterogy listener
 elements.categoriesContainer.addEventListener('click', e => {
     if(e.target.matches('.'+DOMString.category))
@@ -307,7 +306,16 @@ window.addEventListener('keydown', event => {
 });
 
 
-// Other Event Listeners §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§ 
+// load and Scroll event Listeners §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§ 
+
+
+// title animation !
+window.addEventListener('load', () => {
+    const allLetters = elements.AppTitle__letter;
+    allLetters.forEach((el,i) => { el.classList.add('display-Letter'); })   
+    setTimeout(() => { elements.AppTitle.classList.add('title-change-color'); }, 1000);  //doesnt work in firefox !
+})
+ 
 
 // Display Images nicely. And , if necessary , Handle Media queries 
 window.addEventListener('load', () => {
@@ -347,8 +355,6 @@ const changeGobackBtnOnScroll = () => {
     }
 }
  
-
-
 
 
 

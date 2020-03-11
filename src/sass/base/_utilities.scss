@@ -49,6 +49,26 @@
 
 
 
+.display-Letter {
+    margin-right: 0rem !important; // starts 47rem. ends = 0rem
+}
+
+.title-change-color {
+    
+    @supports (-webkit-background-clip: text) or (background-clip: text) {  //if the browser supports these then do the following
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+
+        background-image: linear-gradient(to top, #4a260300, #4a260386, #4a2603);
+    }
+
+}
+
+
+
+
 
 
 

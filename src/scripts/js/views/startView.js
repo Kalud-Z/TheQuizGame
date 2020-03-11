@@ -2,12 +2,12 @@ import { elements , clearLoader, DOMString } from './base'
 
 
 export const displayImages = () => {
-     // it displays the coupons when we first load the page.
+     // it displays the images when we first load the page.
         const allImages = document.querySelectorAll('.'+DOMString.catergoryImage)
 
         for(let i = 0 ; i < allImages.length ; i++) {
             (function() {
-                    setTimeout(function(){  // display coupons one after the other ==> Nice Animation
+                    setTimeout(function(){  // display images one after the other ==> Nice Animation
                     const allImages = document.querySelectorAll('.'+DOMString.catergoryImage)
                     allImages[i].classList.add('showImage');
                 } ,222 * i); //you need to wait a lil bit.

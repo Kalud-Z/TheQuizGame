@@ -2,6 +2,8 @@
 
 export const elements = {
     popupContainer:                 document.querySelector('.popups'),
+    AppTitle:                       document.querySelector('.AppTitle'),
+    AppTitle__letter:               document.querySelectorAll('.AppTitle__letter'),
     exitPopup:                      document.querySelector('.exit-popup'),
     container:                      document.querySelector('.container'),
     numOfQuestionsToPlay:           document.querySelector('.number-of-questions-to-play'),

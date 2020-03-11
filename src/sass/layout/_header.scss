@@ -1,12 +1,43 @@
 
 .header {
-    font-size: 2.2rem;
+    
     width: 100%;
     border-bottom: 4px solid rgb(100, 94, 94);
-    padding: 2.5rem 0;
+    padding: 5.5rem 0;
     background-color: #becaf3;
     border-radius: 1rem 1rem 0 0;
-    font-weight: 700;
     
     position: relative;
+
+    overflow: hidden;
+    
+    & .AppTitle {
+        width: 25.3rem;
+        font-weight: 700;
+        font-size: 4rem;
+        font-family: 'Merienda One', cursive;
+        color : black;
+        // color : transparent;
+        // -webkit-background-clip: text;
+        // background-clip: text;
+        // background-image: linear-gradient(to top, #4a260300, #4a260386, #4a2603);
+
+        display: flex;
+        align-items: center;
+        justify-content: start;
+
+        position: absolute;
+        left: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+
+        &__letter {
+            margin-right: 47rem; // starts 47rem. ends = 0rem
+            transition:all 1s ease-in;
+        }
+
+    }
+
 }
+
