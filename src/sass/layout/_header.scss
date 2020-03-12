@@ -9,22 +9,17 @@
     
     position: relative;
 
-    overflow: hidden;
+    // overflow: hidden;
     
     & .AppTitle {
-        width: 25.3rem;
+        width: 29rem;
         font-weight: 700;
         font-size: 4rem;
         font-family: 'Merienda One', cursive;
         color : black;
-        // color : transparent;
-        // -webkit-background-clip: text;
-        // background-clip: text;
-        // background-image: linear-gradient(to top, #4a260300, #4a260386, #4a2603);
 
         display: flex;
-        align-items: center;
-        justify-content: start;
+     
 
         position: absolute;
         left: 50%;
@@ -33,6 +28,7 @@
         transform: translate(-50%,-50%);
 
         &__letter {
+            // border: 2px solid yellow;
             margin-right: 47rem; // starts 47rem. ends = 0rem
             transition:all 1s ease-in;
         }

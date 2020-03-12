@@ -10,8 +10,6 @@ export const loadScorePage = () => {
 export const displayFinalScore = (finalScore , maxScore) => {
     const finalScoreInPercentage = Math.ceil((finalScore * 100) / maxScore); 
 
-    console.log('finalScoreInPercentage' , finalScoreInPercentage )
-
     if(finalScoreInPercentage === 0) {
         elements.scoreOutput.innerText =  0 + '%';
     } 

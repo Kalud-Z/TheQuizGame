@@ -64,16 +64,12 @@ const ctrlStartQuiz = async () => {
 };
 
 export const ctrlGotoNextQuestion = () => {
-    console.log('NEXT QUESTION IS CALLED')
-    // we go through with the function only if  one answer is chosen.
-    // if(questionView.isAnswerSelected()) {
     state.nextQuestionIndex++;
 
     // get the chosen answer from the user input & added it to the current question object.
     var chosenAnswer = questionView.getChosenAnswer();
     if(typeof chosenAnswer === 'undefined') { chosenAnswer = 'No Answer'; console.log('NEXTQUESZION :no asnwer is assigned.') }
-    // console.log('thisi the chosen asnwer')
-    // console.log(chosenAnswer);
+
     state.questionsObj.questions[state.nextQuestionIndex-1].chosen_answer = chosenAnswer;
     
     // display the next question. we pass the whole question object.
@@ -144,12 +140,9 @@ const ctrlExit = () => {
 }
 
 export const ctrlShowScore = () => {
-        console.log('SHOW SCORE IS CALLED')
         // get the chosen answer from the user input & added it to the current question object.
         var chosenAnswer = questionView.getChosenAnswer();
-        if(!chosenAnswer) { chosenAnswer = 'No Answer'; console.log('SHOW SCORE :no asnwer is assigned.') }
-        // console.log('thisi the chosen asnwer')
-        // console.log(chosenAnswer);
+        if(!chosenAnswer) { chosenAnswer = 'No Answer'; }
         state.questionsObj.questions[state.nextQuestionIndex].chosen_answer = chosenAnswer;
 
         // we hide the prevQuestionButton , the timer
@@ -312,8 +305,8 @@ window.addEventListener('keydown', event => {
 // title animation !
 window.addEventListener('load', () => {
     const allLetters = elements.AppTitle__letter;
-    allLetters.forEach((el,i) => { el.classList.add('display-Letter'); })   
-    setTimeout(() => { elements.AppTitle.classList.add('title-change-color'); }, 1000);  //doesnt work in firefox !
+    allLetters.forEach(el => el.classList.add('display-Letter'))   
+    // setTimeout(() => { elements.AppTitle.classList.add('title-change-color'); }, 1000);  //doesnt work in firefox !
 })
  
 
@@ -333,12 +326,14 @@ window.addEventListener('load', () => {
 
 const changeGobackBtnOnScroll = () => {
 
+    console.log('chnge go back button is called.')
+
     elements.answersContainer.onscroll = function() {
-        var currenScrollPos = elements.answersContainer.scrollTop
-        console.log(currenScrollPos);
     
         if (elements.answersContainer.scrollTop > 45 ) {
         // we show the new button
+    console.log('we are pased 45 . and we shold show he button')
+
             answersView.showGoBackToScoreButtonReplacementContainer();
             elements.goBackToScoreButtonReplacementContainer.addEventListener('click' , () => {
                 answersView.hideGoBackToScoreButtonReplacementContainer();

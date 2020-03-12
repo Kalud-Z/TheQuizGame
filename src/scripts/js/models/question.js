@@ -11,8 +11,6 @@ let interval = null;
 
 const timerMain = () => {
     counter++;
-    
-    console.log(counter);
 
     if(counter === 7) {
         restartTimer();
@@ -27,7 +25,6 @@ const timerMain = () => {
 
 export const  startTimer = () => {  // you call this one to start the timer.
         interval = window.setInterval(timerMain, 1000);
-        console.log('startTimer is called')
 }
 
 export const  restartTimer = () => {

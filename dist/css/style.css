@@ -44,7 +44,7 @@ phone     :
   box-sizing: inherit; }
 
 html {
-  font-size: 80%; }
+  font-size: 70%; }
   @media (max-width: 75em) {
     html {
       font-size: 60%; } }
@@ -164,7 +164,7 @@ body {
   box-sizing: inherit; }
 
 html {
-  font-size: 80%; }
+  font-size: 70%; }
   @media (max-width: 75em) {
     html {
       font-size: 60%; } }
@@ -215,17 +215,14 @@ select {
   padding: 5.5rem 0;
   background-color: #becaf3;
   border-radius: 1rem 1rem 0 0;
-  position: relative;
-  overflow: hidden; }
+  position: relative; }
   .header .AppTitle {
-    width: 25.3rem;
+    width: 29rem;
     font-weight: 700;
     font-size: 4rem;
     font-family: 'Merienda One', cursive;
     color: black;
     display: flex;
-    align-items: center;
-    justify-content: start;
     position: absolute;
     left: 50%;
     left: 50%;
