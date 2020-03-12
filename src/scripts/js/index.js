@@ -18,13 +18,16 @@ window.q = state;
 
 
 
+const ctrlToggleSwitch = () => {
+    startView.toggleTimerSwitch();
+}
 
 
 const ctrlStartQuiz = async () => { 
     // we get the number of questions from the user ,  the selected Category , and the difficulty
     const numOfQuestions        = startView.getNumOfQuestionsInput();
     const selectedCategoryID    = startView.getSelectedCategoryID();
-    const difficulty            = startView.getDifficulty();
+    const difficulty            = startView.getDifficulty();    
 
     
     // we create a new object.
@@ -53,10 +56,14 @@ const ctrlStartQuiz = async () => {
     // display exit button and Activate timer
     questionView.showExitButton();
 
-    // we show and we activate the timer
-    questionView.showTimerUI()
-    questionView.activateTimerUI();
-    question.startTimer();
+    // we determine whether we play with timer or without.
+    if(startView.isTimerOn()) {
+        // we show and we activate the timer
+        questionView.showTimerUI()
+        questionView.activateTimerUI();
+        question.startTimer();
+    }
+
     
 
     // we reset the selected category
@@ -76,13 +83,19 @@ export const ctrlGotoNextQuestion = () => {
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
     
     // we expose the prev-question AND exit buttons ALSO : activate question timer. in this case a track bar
-    questionView.showPrevQuestionButton(); 
-    questionView.showExitButton();
-
-    questionView.resetTimerUI();
-    setTimeout(() => { questionView.activateTimerUI() }, 100);
     
-    question.restartTimer();
+    if(!startView.isTimerOn()) {
+        questionView.showPrevQuestionButton(); 
+    } 
+    else {
+        questionView.resetTimerUI();
+        setTimeout(() => { questionView.activateTimerUI() }, 100);
+        
+        question.restartTimer();
+    }
+    
+
+    questionView.showExitButton();
     
     // if it is the last question.
     if(state.nextQuestionIndex === state.questionsObj.numOfQuestions - 1) {
@@ -130,6 +143,9 @@ const ctrlExit = () => {
             // we start all over !
             ctrlPlayAgain();
 
+            // we reset the timer if it is On.
+            if(startView.isTimerOn()) { question.resetTimer(); }
+
             // we hide the buttons
             questionView.hidePrevQuestionButton();
             questionView.hideExitButton(); 
@@ -149,6 +165,7 @@ export const ctrlShowScore = () => {
         questionView.hidePrevQuestionButton();
         questionView.hideTimerUI();
 
+        // we reset the timer
         question.resetTimer();
 
         // load score page
@@ -195,6 +212,10 @@ const ctrlGoBackToScore = () => {
 // ####################################################################################################################################################################
 
 // click buttons Event Listeners §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+
+
+// listens to timer toggle switch
+elements.toggleTimerSwitch.addEventListener('click', ctrlToggleSwitch);
 
 // choose caterogy listener
 elements.categoriesContainer.addEventListener('click', e => {
@@ -310,10 +331,11 @@ window.addEventListener('load', () => {
 })
  
 
-// Display Images nicely. And , if necessary , Handle Media queries 
+// Handle Media queries 
 window.addEventListener('load', () => {
     //generate the category elements. 
     const tab_land = 1200;
+    const phone_small = 497;
     const windowWidth = document.documentElement.clientWidth;   // returns the width of the screen in pixels.
     if(windowWidth <= tab_land) {
         mediaQueries.rotateCategories();
@@ -321,6 +343,10 @@ window.addEventListener('load', () => {
 
     // display images
     startView.displayImages();
+
+    if(windowWidth <= phone_small) {
+        mediaQueries.changeText();
+    }
 })
 
 
@@ -360,6 +386,15 @@ window.addEventListener('click', el => {
    console.log(el.target)
 })
  */
+
+
+
+
+
+
+
+
+
 
 
 

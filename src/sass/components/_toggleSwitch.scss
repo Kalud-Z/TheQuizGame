@@ -1,0 +1,67 @@
+
+
+$toggleTimerSwitch_Width   : 5rem;
+$toggleTimerSwitch_Height  :  calc(#{$toggleTimerSwitch_Width} / 2) ;
+
+// height: calc(100% - #{$body_padding})
+
+
+
+.toggleTimerSwitch {
+
+    // @include respond(phone-small) { margin-top:0;}
+
+    cursor: pointer;
+    border-radius: 100rem;
+    background-color: pink;
+    width: $toggleTimerSwitch_Width;
+    height: $toggleTimerSwitch_Height;
+    transition: all 1s;
+
+    display: flex;
+    justify-content: start;
+
+
+    &__button {
+        height: $toggleTimerSwitch_Height;
+        width: $toggleTimerSwitch_Height;
+        border-radius: 50%;
+        transition: all .3s;
+        
+        // it starts dim
+        background-color: rgba(161, 66, 82, 0.308);
+        
+        transform: translateX(0);
+
+    }
+}
+
+
+.toggleTimerSwitch-On { 
+    transform: translateX(100%);
+    background-color: rgb(161, 66, 82);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

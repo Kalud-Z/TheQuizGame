@@ -1,6 +1,13 @@
 import { elements , clearLoader, DOMString } from './base'
 
 
+export const isTimerOn = () =>  elements.toggleTimerSwitchButton.matches('.toggleTimerSwitch-On')
+
+
+export const  toggleTimerSwitch = () => {
+    elements.toggleTimerSwitchButton.classList.toggle('toggleTimerSwitch-On');
+}
+
 export const displayImages = () => {
      // it displays the images when we first load the page.
         const allImages = document.querySelectorAll('.'+DOMString.catergoryImage)
@@ -14,6 +21,7 @@ export const displayImages = () => {
             })(i);
          }
 }
+
 
 export const getSelectedCategoryID = () => {
     let idStr , id;

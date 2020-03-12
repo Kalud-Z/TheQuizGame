@@ -25,7 +25,27 @@ export const rotateCategories = () => {
         `;
 
         elements.categoriesTableBody.insertAdjacentHTML('afterbegin', markup);
-    }
+}
+
+
+export const changeText = () => {
+    document.querySelector('.start-page-container__select-number-container label').innerText = 'Questions';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
 
 
 

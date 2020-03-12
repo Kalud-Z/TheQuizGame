@@ -8,6 +8,8 @@ export const elements = {
     container:                      document.querySelector('.container'),
     numOfQuestionsToPlay:           document.querySelector('.number-of-questions-to-play'),
     difficulty:                     document.querySelector('.difficulty'), //this is the select element 
+    toggleTimerSwitch:              document.querySelector('.toggleTimerSwitch'),
+    toggleTimerSwitchButton:        document.querySelector('.toggleTimerSwitch__button'),
     categoriesContainer:            document.querySelector('.categories-container'),
     categoriesTableBody:            document.querySelector('.categories__table-body'),
     catergories:                    document.querySelectorAll('.category-name'),

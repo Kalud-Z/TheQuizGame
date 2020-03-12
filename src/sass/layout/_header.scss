@@ -13,6 +13,7 @@
     
     & .AppTitle {
         width: 29rem;
+        @include respond(phone) { width: 26.6rem;}
         font-weight: 700;
         font-size: 4rem;
         font-family: 'Merienda One', cursive;
