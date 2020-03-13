@@ -645,7 +645,7 @@ select {
   margin: 0 auto;
   background-color: rgba(0, 0, 255, 0.041);
   width: 77%;
-  max-height: 37rem;
+  max-height: 40rem;
   overflow-y: auto;
   margin-top: 2rem;
   -webkit-box-shadow: 0px 0px 5px 0px #f37b43;
@@ -653,13 +653,13 @@ select {
   box-shadow: 0px 0px 5px 0px #f37b43; }
   @media (max-width: 75em) {
     .answers-container {
-      max-height: 37rem; } }
+      max-height: 34rem; } }
   @media (max-width: 56.25em) {
     .answers-container {
-      max-height: 47rem; } }
+      max-height: 43rem; } }
   @media (max-width: 37.5em) {
     .answers-container {
-      max-height: 42rem;
+      max-height: 37rem;
       width: 99%; } }
 
 .chosen-answer-is-correct {
