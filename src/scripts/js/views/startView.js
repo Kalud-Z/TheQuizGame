@@ -92,6 +92,10 @@ export const loadStartPage =  () => {
     // elements.questionContainer.classList.remove('show-QuestionContainer-flex'); 
     elements.resultsContainer.classList.remove('show');
     elements.startPageContainer.classList.add('show-startPage');
+    elements.container.style.transform = "scale(0.75)";
+    setTimeout(() => {
+        elements.container.style.transform = "scale(1)";
+    }, 500);
     deactivatePlayBtn();
 }
 

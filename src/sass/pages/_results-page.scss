@@ -8,6 +8,8 @@
     display:none;
     padding-left: 2rem;
     padding-right: 2rem;
+    transform: scale(0.2);  //it fully grows upon showing up.
+    transition: all 0.5s;
 
     @include respond(phone) { width: 89%; }
 

@@ -189,7 +189,9 @@ export const ctrlShowScore = () => {
         const maxScore =   state.questionsObj.numOfQuestions * score.pointsPerCorrentAnswer;
         
         // display Final score
-        scoreView.displayFinalScore(finalScore,maxScore);
+        setTimeout(() => {
+            scoreView.displayFinalScore(finalScore,maxScore);
+        }, 50);
 
 }
 
@@ -202,6 +204,9 @@ const ctrlPlayAgain = () => {
     questionView.hideScoreButton();
     answersView.resetAnswersPage();
     questionView.resetTimerUI();
+
+    // reset score page animation
+    scoreView.scorePageScaleDown();
 }
 
 const ctrlDisplayAnswers = () => {
@@ -239,7 +244,7 @@ elements.categoriesContainer.addEventListener('click', e => {
 // clicking start button after choosing how many questions to play.
 elements.startButton.addEventListener('click', ctrlStartQuiz);
 
-// attached to nextQuestionButton OR prevQuestionButton OR showScoreButton. delegate event to the parent.
+// attached to nextQuestionButton OR prevQuestionButton OR showScoreButton OR exit button delegate event to the parent.
 elements.questionContainer.addEventListener('click', e => {
     if(e.target.matches('.next-question-button')) { ctrlGotoNextQuestion(); }
     else if(e.target.matches('.score-button')) { ctrlShowScore(); }

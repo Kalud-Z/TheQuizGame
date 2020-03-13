@@ -1,12 +1,24 @@
 import { elements } from './base'
 import * as questionView    from './questionView'
 
+export const scorePageScaleUp = () => {
+    elements.resultsContainer.classList.add('score-page-scaleUp');
+}
+
+export const scorePageScaleDown = () => {
+    elements.resultsContainer.classList.remove('score-page-scaleUp');
+}
+
 
 
 export const loadScorePage = () => {
     questionView.hideQuestionContainer();
-    // elements.questionContainer.classList.remove('show');
+
     elements.resultsContainer.classList.add('show');
+    setTimeout(() => {
+        // elements.resultsContainer.style.transform = "scale(1)"; 
+        scorePageScaleUp();
+    }, 10);
 }
 
 export const displayFinalScore = (finalScore , maxScore) => {
