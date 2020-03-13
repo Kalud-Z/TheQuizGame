@@ -38,12 +38,12 @@
 
 <div class="container">
 
+    
 
                 <!-- center-element -->
     <div class="header center-element"> 
         
-    <!-- <div class="AppTitle">a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bsdgsgs</div>    -->
-    <div class="AppTitle"> 
+     <div class="AppTitle"> 
     <span class="AppTitle__letter"> &nbsp;</span>
     <span class="AppTitle__letter">Q</span>
     <span class="AppTitle__letter">u</span>
@@ -61,8 +61,7 @@
       
     </div>   
                                 <!-- turn-visible -->
-    <div class="go-back-button--replacement-Container "> <svg class="go-back-button--replacement"> <use href="./img/symbol-defs.svg#icon-arrow-left"></use> </svg> </div>
-    <!-- <div class="go-back-button--replacement-Container turn-visible "> fgfgfg </div> -->
+    <div class="go-back-button--replacement-Container"> <svg class="go-back-button--replacement"> <use href="./img/symbol-defs.svg#icon-arrow-left"></use> </svg> </div>
 
     </div>
     <div class="timer-trackBar">
@@ -76,7 +75,7 @@
         <div class="selectNumberAndDifficultyWrapper">
 
             <div class="start-page-container__select-number-container">
-                <label for="num-select"> Number of Questions : </label>
+                <label for="num-select"> Number of Questions </label>
                 <select name="number" id="num-select" class="number-of-questions-to-play" autofocus>
                     <option value="two">2</option>
                     <option value="four">4</option>
@@ -85,12 +84,10 @@
                     <option value="ten" focused>10</option>
                   
                 </select>
-            </div>
-    
-            
+            </div> 
             
             <div class="start-page-container__select-difficulty-container">
-                <label for="diff-select"> Difficulty : </label>
+                <label for="diff-select"> Difficulty  </label>
                 <select name="number" id="diff-select" class="difficulty" autofocus>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
@@ -98,6 +95,17 @@
                   
                 </select>
             </div>
+
+            <div class="start-page-container__toggleTimer-container">
+                <span class="start-page-container__toggleTimer-container-text"> Timer </span>
+
+                <div class="toggleTimerSwitch">
+                    <span class="toggleTimerSwitch__button"></span>
+                </div>
+                
+            </div>
+
+
     
             
 
@@ -111,7 +119,7 @@
                      <tr>
                         <td> <div class="category-name" id="cat-21"> Sports </div>  <img src="img/sports.jpg" alt="sports" class="category__image"> </td>
                         <td> <div class="category-name" id="cat-27"> Animals </div> <img src="img/animals.jpg" alt="sports" class="category__image"> </td>
-                        <td> <div class="category-name" id="cat-25"> Art </div> <img src="img/art.jpg" alt="sports" class="category__image"> </td>
+                        <td> <div class="category-name" id="cat-24"> Politics </div> <img src="img/politics.jpg" alt="sports" class="category__image"> </td>
                     </tr>
 
                     <tr>
@@ -160,7 +168,7 @@
                 </div>
 
             </div>
-            
+           
             <input type="button" value="Next >" class="btn next-question-button show">
             <input type="button" value="See results >" class="btn score-button">
         </form>
@@ -281,6 +289,7 @@
 
     <!-- <script src="scripts/script.js"></script> -->
     <script type="module" src="scripts/js/index.js"></script>
+
 <script type="text/javascript" src="js/bundle.js"></script></body>
 
 

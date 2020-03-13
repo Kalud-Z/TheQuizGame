@@ -53,7 +53,9 @@ export const DOMString = {
     category: 'category-name',
     catergoryImage: 'category__image',
     exitButton: 'exit-button',
-    questionTimer: 'foreground'
+    questionTimer: 'foreground',
+    theQuestion : 'question',
+    radioGroup: 'form__radio-group'
 }
 
 export const renderLoader = parent => {

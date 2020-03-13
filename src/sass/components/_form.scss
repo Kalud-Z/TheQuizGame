@@ -18,6 +18,11 @@
     &__radio-group {
         display: inline-block;
         margin-left: 2rem;
+
+        transform: translateX(92rem);
+        transition: all 0.5s;
+        transition-timing-function: cubic-bezier(.7,.09,.83,1.13);
+
     }
 
     &__radio-label {

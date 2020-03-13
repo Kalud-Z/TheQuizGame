@@ -72,7 +72,17 @@ export const displayQuestion = (questionObj,index) => {
 
     // insert everything after the track-bar
     document.querySelector(`.${DOMString.trackBar}`).insertAdjacentHTML('afterend', markup); 
-    // document.querySelector('body').insertAdjacentHTML('afterend', markup); 
+    
+    // we slide the question and the options to their proper position.
+    setTimeout(() => {
+        document.querySelector('.'+DOMString.theQuestion).style.transform = "translateX(0)";
+        
+        const allRadioGroups = document.querySelectorAll('.form__radio-group');
+        Array.from(allRadioGroups).forEach(el => {
+            el.style.transform = "translateX(0)";
+        })
+
+    }, 50);
 
     // update track bar : we make the current bar child highlighted.
     updateTrackBar(index);        

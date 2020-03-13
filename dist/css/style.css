@@ -409,7 +409,10 @@ select {
     transition: all .3s; }
   .form__radio-group {
     display: inline-block;
-    margin-left: 2rem; }
+    margin-left: 2rem;
+    transform: translateX(92rem);
+    transition: all 0.5s;
+    transition-timing-function: cubic-bezier(0.7, 0.09, 0.83, 1.13); }
   .form__radio-label {
     font-size: 1.55rem;
     cursor: pointer;
@@ -706,6 +709,7 @@ select {
     flex-direction: column; }
 
 .questionAndOptionsContainer {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -716,7 +720,10 @@ select {
 
 .question {
   margin-left: 2rem;
-  margin-right: 2rem; }
+  margin-right: 2rem;
+  transform: translateX(92rem);
+  transition: all 0.5s;
+  transition-timing-function: cubic-bezier(0.7, 0.09, 0.83, 1.13); }
 
 .temp_style_for_question_container {
   display: block !important;

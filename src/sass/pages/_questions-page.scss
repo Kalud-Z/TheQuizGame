@@ -49,6 +49,7 @@
 
 
 .questionAndOptionsContainer {
+    overflow:hidden;
     display : flex;
     flex-direction: column;
     align-items: flex-start;
@@ -65,14 +66,10 @@
 .question {
     margin-left: 2rem;
     margin-right: 2rem;
+    transform: translateX(92rem);
+    transition: all 0.5s;
+    transition-timing-function: cubic-bezier(.7,.09,.83,1.13);
 }
-
-
-
-
-
-
-
 
 
 
