@@ -1,5 +1,5 @@
 import { elements , clearLoader, DOMString } from './base'
-
+import * as questionView    from './questionView'
 
 export const isTimerOn = () =>  elements.toggleTimerSwitchButton.matches('.toggleTimerSwitch-On')
 
@@ -82,12 +82,14 @@ export const resetCategories = () => {
 
 export const startQuiz = () => {
     clearLoader();
-    elements.questionContainer.classList.add('show');
+    questionView.showQuestionContainer();
+    // elements.questionContainer.classList.add('show-QuestionContainer-flex');  //refactor this. put it in a function.
 }
  
 
 export const loadStartPage =  () => {
-    elements.questionContainer.classList.remove('show');
+    questionView.hideQuestionContainer();
+    // elements.questionContainer.classList.remove('show-QuestionContainer-flex'); 
     elements.resultsContainer.classList.remove('show');
     elements.startPageContainer.classList.add('show-startPage');
     deactivatePlayBtn();

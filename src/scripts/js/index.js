@@ -44,6 +44,16 @@ const ctrlStartQuiz = async () => {
     
     if(state.questionsObj.questions.length === 0) { alert('ERROR : SERVER IS DOWN !') }
 
+ 
+    // we generate the track-bar and display it
+    questionView.generateAndDisplayTrackBar(numOfQuestions);
+
+    // we determine the biggest height. and set it to all the next generated questions.
+    state.height = questionView.getQuestionContainerHeight(state.questionsObj.questions);
+
+    questionView.adjustQuestionContainerHeight(state.height);
+
+
     // we start the quiz
     startView.startQuiz();
     
@@ -64,10 +74,11 @@ const ctrlStartQuiz = async () => {
         question.startTimer();
     }
 
-    
-
+ 
     // we reset the selected category
     startView.resetCategories();
+
+
 };
 
 export const ctrlGotoNextQuestion = () => {
@@ -82,8 +93,10 @@ export const ctrlGotoNextQuestion = () => {
     // display the next question. we pass the whole question object.
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
     
+    // we adjust the height
+    questionView.adjustQuestionContainerHeight(state.height);
+
     // we expose the prev-question AND exit buttons ALSO : activate question timer. in this case a track bar
-    
     if(!startView.isTimerOn()) {
         questionView.showPrevQuestionButton(); 
     } 
@@ -253,7 +266,7 @@ window.addEventListener('keypress', event => {
         if(elements.startPageContainer.matches('.show-startPage')) { ctrlStartQuiz(); }
 
         // if we are in the question page ############
-        else if(elements.questionContainer.matches('.show')) {
+        else if(elements.questionContainer.matches('.show-QuestionContainer-flex')) {
 
             // if score button is shown.
             if(document.querySelector('.score-button').matches('.show')) { ctrlShowScore();  } //sometimes I just CANT use the elements object from base.js !!!!!!!!
@@ -285,7 +298,7 @@ window.addEventListener('keydown', event => {
         }
 
         // if the we are in the question view. then we do our work
-        if(elements.questionContainer.matches('.show')) {
+        if(elements.questionContainer.matches('.show-QuestionContainer-flex')) {
 
             const allOptions = document.querySelectorAll(`span[class^="option"]`);
 
@@ -315,7 +328,7 @@ window.addEventListener('keydown', event => {
 window.addEventListener('keydown', event => {
     if(event.keyCode === 8) {  //if backspace key is pressed
         // if we are in the question page . AND not in the first question
-        if(elements.questionContainer.matches('.show') && state.nextQuestionIndex > 0) {  ctrlGotoPrevQuestion(); }
+        if(elements.questionContainer.matches('.show-QuestionContainer-flex') && state.nextQuestionIndex > 0) {  ctrlGotoPrevQuestion(); }
     }
 });
 
@@ -358,8 +371,6 @@ const changeGobackBtnOnScroll = () => {
     
         if (elements.answersContainer.scrollTop > 45 ) {
         // we show the new button
-    console.log('we are pased 45 . and we shold show he button')
-
             answersView.showGoBackToScoreButtonReplacementContainer();
             elements.goBackToScoreButtonReplacementContainer.addEventListener('click' , () => {
                 answersView.hideGoBackToScoreButtonReplacementContainer();

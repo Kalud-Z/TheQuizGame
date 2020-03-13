@@ -1,6 +1,28 @@
 import { elements , DOMString ,  renderLoader} from './base'
 
 
+// we create all questions. and return the biggest height.
+export const getQuestionContainerHeight = (allQuestions) => {
+    const numOfQuestions = allQuestions.length;
+    var allHeights = [];
+
+    // *we generate all the questions. keep them hidden though.
+    for(var i = 0 ; i < numOfQuestions ; i++){
+        displayQuestion(allQuestions[i],i);
+        // we add the temp class. so we can read its heights
+        elements.questionContainer.classList.add('temp_style_for_question_container');
+        var height = elements.questionContainer.offsetHeight; 
+
+        // we add the height to the array.
+        allHeights.push(height);
+    }
+
+    const biggestHeight = Math.max(...allHeights) 
+    elements.questionContainer.classList.remove('temp_style_for_question_container');
+
+    return biggestHeight;
+}
+
 export const generateAndDisplayTrackBar =  numOfQuestions => {
     //first we delete the trackbar if it exists.
 
@@ -21,7 +43,6 @@ export const generateAndDisplayTrackBar =  numOfQuestions => {
     // when it is a dynamically generated element. you have to write a new query each time you wanna use it. 
     document.querySelectorAll('.'+DOMString.trackBarChild).forEach(el => el.style.flex = '1');    
 }
-
 
 export const isAnswerSelected = () => getChosenAnswer()
 
@@ -51,13 +72,23 @@ export const displayQuestion = (questionObj,index) => {
 
     // insert everything after the track-bar
     document.querySelector(`.${DOMString.trackBar}`).insertAdjacentHTML('afterend', markup); 
+    // document.querySelector('body').insertAdjacentHTML('afterend', markup); 
 
     // update track bar : we make the current bar child highlighted.
     updateTrackBar(index);        
 }
 
+export const adjustQuestionContainerHeight = height => {
+    elements.questionContainer.style.height =  `${height}px`;
+}
 
+export const showQuestionContainer = () => {
+    elements.questionContainer.classList.add('show-QuestionContainer-flex');
+}
 
+export const hideQuestionContainer = () => {
+    elements.questionContainer.classList.remove('show-QuestionContainer-flex');
+}
 
 // timer track bar functions
 export const resetTimerUI = () => {
@@ -84,10 +115,6 @@ export const hideTimerUI = () => {
     // console.log('remove timer is called')
     elements.questionTimerContainer.classList.remove('turn-visible');
 }
-
-
-// timer logic functions
-
 
 
 

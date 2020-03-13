@@ -1,9 +1,11 @@
 import { elements } from './base'
+import * as questionView    from './questionView'
 
 
 
 export const loadScorePage = () => {
-    elements.questionContainer.classList.remove('show');
+    questionView.hideQuestionContainer();
+    // elements.questionContainer.classList.remove('show');
     elements.resultsContainer.classList.add('show');
 }
 

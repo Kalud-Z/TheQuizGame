@@ -1,9 +1,12 @@
 import { elements } from './base'
+import * as questionView    from './questionView'
+
 
 
 
 export const loadAnswersPage = () => {
-    elements.questionContainer.classList.remove('show');
+    
+    elements.questionContainer.classList.remove('.show');
     elements.resultsContainer.classList.remove('show');
     elements.startPageContainer.classList.remove('show');
     elements.answersContainer.classList.add('show');
@@ -40,7 +43,8 @@ export const generateAnswers = questions => {
 }
 
 export const goBack = () => {
-    elements.questionContainer.classList.remove('show');
+    questionView.hideQuestionContainer();
+    // elements.questionContainer.classList.remove('show');
     elements.resultsContainer.classList.add('show');
     elements.startPageContainer.classList.remove('show');
     elements.answersContainer.classList.remove('show');

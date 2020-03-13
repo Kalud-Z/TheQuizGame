@@ -8,8 +8,8 @@ export const rotateCategories = () => {
 
         const markup=`
         <tr>
+            <td> <div class="category-name" id="cat-24"> Politics </div> <img src="img/politics.jpg" alt="sports" class="category__image"> </td>
             <td> <div class="category-name" id="cat-27"> Animals </div> <img src="img/animals.jpg" alt="sports" class="category__image"> </td>
-            <td> <div class="category-name" id="cat-25"> Art </div> <img src="img/art.jpg" alt="sports" class="category__image"> </td>
         </tr>
 
     <tr>

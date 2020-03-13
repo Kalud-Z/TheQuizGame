@@ -36,6 +36,12 @@
     display: flex !important;
 }
 
+.show-QuestionContainer-flex {
+    display: flex !important;
+    flex-direction: column !important;
+    // justify-content: center;
+}
+
 .turn-visible {
     opacity: 1 !important;
     visibility: visible !important;
