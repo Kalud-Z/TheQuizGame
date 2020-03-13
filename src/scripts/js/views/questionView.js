@@ -3,7 +3,7 @@ import { elements , DOMString ,  renderLoader} from './base'
 
 // we create all questions. and return the biggest height.
 export const getQuestionContainerHeight = (allQuestions) => {
-    const numOfQuestions = allQuestions.length;
+    var numOfQuestions = allQuestions.length;
     var allHeights = [];
 
     // *we generate all the questions. keep them hidden though.
@@ -12,13 +12,19 @@ export const getQuestionContainerHeight = (allQuestions) => {
         // we add the temp class. so we can read its heights
         elements.questionContainer.classList.add('temp_style_for_question_container');
         var height = elements.questionContainer.offsetHeight; 
+        console.log('this is the height inside the for loop :' , height)
 
         // we add the height to the array.
         allHeights.push(height);
     }
 
-    const biggestHeight = Math.max(...allHeights) 
+    console.log('this is allheights array : ' , allHeights);
+
+    var biggestHeight = Math.max(...allHeights) 
     elements.questionContainer.classList.remove('temp_style_for_question_container');
+
+    
+    // console.log('')
 
     return biggestHeight;
 }
@@ -88,8 +94,17 @@ export const displayQuestion = (questionObj,index) => {
     updateTrackBar(index);        
 }
 
+
+export const  resetQuestionContainerHeight = () => {
+    elements.questionContainer.style.height =  'auto';
+} 
+    
+    
+
 export const adjustQuestionContainerHeight = height => {
     elements.questionContainer.style.height =  `${height}px`;
+    console.log('adjustQuestionContainerHeight is called.')
+    console.log('height is ', height)
 }
 
 export const showQuestionContainer = () => {

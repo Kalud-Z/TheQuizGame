@@ -49,9 +49,9 @@ const ctrlStartQuiz = async () => {
     questionView.generateAndDisplayTrackBar(numOfQuestions);
 
     // we determine the biggest height. and set it to all the next generated questions.
-    state.height = questionView.getQuestionContainerHeight(state.questionsObj.questions);
-
-    questionView.adjustQuestionContainerHeight(state.height);
+    // state.height = questionView.getQuestionContainerHeight(state.questionsObj.questions);
+    let height = questionView.getQuestionContainerHeight(state.questionsObj.questions);
+    questionView.adjustQuestionContainerHeight(height);
 
 
     // we start the quiz
@@ -94,7 +94,7 @@ export const ctrlGotoNextQuestion = () => {
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
     
     // we adjust the height
-    questionView.adjustQuestionContainerHeight(state.height);
+    // questionView.adjustQuestionContainerHeight(state.height);
 
     // we expose the prev-question AND exit buttons ALSO : activate question timer. in this case a track bar
     if(!startView.isTimerOn()) {
@@ -207,6 +207,10 @@ const ctrlPlayAgain = () => {
 
     // reset score page animation
     scoreView.scorePageScaleDown();
+
+    // we reset the container height
+    questionView.resetQuestionContainerHeight();
+
 }
 
 const ctrlDisplayAnswers = () => {

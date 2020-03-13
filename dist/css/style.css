@@ -686,6 +686,7 @@ select {
   text-align: center;
   background-color: #d9d9d9;
   max-width: 80%;
+  height: auto;
   margin: 5vh auto;
   padding-bottom: 0.009rem;
   font-size: 1.6rem;
