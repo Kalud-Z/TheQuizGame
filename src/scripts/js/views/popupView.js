@@ -1,7 +1,6 @@
 import { elements } from './base'
 
 
-
 export const showExitPopup = () => {
     // we show the popup container
     elements.popupContainer.classList.add('show-popupContainer');
@@ -15,7 +14,6 @@ export const showExitPopup = () => {
 
 
 export const hideExitPopup = () => {
-
     // we hide the popup itsef
     elements.exitPopup.classList.remove('show-popup');
 

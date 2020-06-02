@@ -271,7 +271,6 @@ const generateOptionsMarkup = (allOptions , chosenAnswerStr) => {
     return finalStr;
 }
 
-
 // remove all child nodes except the first. Parameter : the target parent node.
 const removeAllChildrenExpectFirstTwo = parentElement => {
     while(parentElement.children.length > 2) {

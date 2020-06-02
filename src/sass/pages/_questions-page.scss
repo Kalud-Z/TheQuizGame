@@ -1,13 +1,10 @@
 
 .question-container {
-
-
     position: relative;
     text-align: center;
     background-color: #d9d9d9;
     max-width: 80%;
     height: auto;
-    // margin: 5% auto;
     margin: 5vh auto;
     padding-bottom: 0.009rem;   // u have to give it a lil bit of paddin , otherwise the bottom-margin of next button woulndt take place !
     font-size: 1.6rem;
@@ -18,8 +15,6 @@
     
     // it start hidden
     display:none;
-    // opacity: 0;
-    // visibility: hidden;
 
     @include respond(phone) {
         max-width: 83%;
@@ -73,21 +68,11 @@
 
 
 
-
-
-
-
-
 .temp_style_for_question_container {
     display:block !important;
     opacity: 0 !important;
     visibility: hidden !important;
 }
-
-
-
-
-
 
 
 

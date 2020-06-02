@@ -1,15 +1,11 @@
 
 .header {
-    
     width: 100%;
     border-bottom: 4px solid rgb(100, 94, 94);
     padding: 5.5rem 0;
     background-color: #becaf3;
     border-radius: 1rem 1rem 0 0;
-    
     position: relative;
-
-    // overflow: hidden;
     
     & .AppTitle {
         width: 29rem;
@@ -18,10 +14,8 @@
         font-size: 4rem;
         font-family: 'Merienda One', cursive;
         color : black;
-
         display: flex;
      
-
         position: absolute;
         left: 50%;
         left: 50%;
@@ -29,7 +23,6 @@
         transform: translate(-50%,-50%);
 
         &__letter {
-            // border: 2px solid yellow;
             margin-right: 47rem; // starts 47rem. ends = 0rem
             transition:all 1s ease-in;
         }

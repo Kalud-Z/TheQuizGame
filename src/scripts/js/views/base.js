@@ -34,7 +34,6 @@ export const elements = {
     option_2_text:                  document.querySelector('.option-2-text'),
     option_3_text:                  document.querySelector('.option-3-text'),
     allOptions:                     document.querySelectorAll(`span[class^="option"]`), //select all span , whose classes start with ..
-
     resultsContainer:               document.querySelector('.results-container'),
     scoreOutput:                    document.querySelector('.results-container__score'),
     playAgainButton:                document.querySelector('.play-again-button'),

@@ -1,11 +1,7 @@
 import { elements } from './base'
 import * as questionView    from './questionView'
 
-
-
-
 export const loadAnswersPage = () => {
-    
     elements.questionContainer.classList.remove('.show');
     elements.resultsContainer.classList.remove('show');
     elements.startPageContainer.classList.remove('show');
@@ -14,7 +10,6 @@ export const loadAnswersPage = () => {
 } 
 
 export const generateAnswers = questions => {
-
     let html , status, choseAnswerClass;
 
         questions.forEach((el,index) => {
@@ -42,9 +37,9 @@ export const generateAnswers = questions => {
         })
 }
 
+
 export const goBack = () => {
     questionView.hideQuestionContainer();
-    // elements.questionContainer.classList.remove('show');
     elements.resultsContainer.classList.add('show');
     elements.startPageContainer.classList.remove('show');
     elements.answersContainer.classList.remove('show');
@@ -62,3 +57,5 @@ export const showGoBackToScoreButtonReplacementContainer = () => {
 export const hideGoBackToScoreButtonReplacementContainer = () => {
     elements.goBackToScoreButtonReplacementContainer.classList.remove('turn-visible')
 }
+
+

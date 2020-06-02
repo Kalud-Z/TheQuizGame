@@ -1,10 +1,6 @@
 //TODO : refactor. the method of this module to take the stuff from the main controller as arguments ! 
-
 import { elements } from '../views/base'
-
 import { state ,  ctrlShowScore , ctrlGotoNextQuestion } from '../index'  
-
-
 
 let counter = 0;
 let interval = null;
@@ -37,4 +33,9 @@ export const resetTimer = () => {  //you call this one to only reset the timer
     window.clearInterval(interval);
     counter = 0;
 }
+
+
+
+
+
 

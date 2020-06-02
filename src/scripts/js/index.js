@@ -10,12 +10,9 @@ import * as popupView       from './views/popupView'
 import * as mediaQueries       from './views/media-queries'
 
 
-// state.questionsObj.questions ==> Questions : array of objects 
-// state.questions.questions[0]. question/correct_answer/difficulty/incorrect_answers(array of 3 strings)
 export const state = { nextQuestionIndex: 0 };
 
 window.q = state;
-
 
 
 const ctrlToggleSwitch = () => {
@@ -28,7 +25,6 @@ const ctrlStartQuiz = async () => {
     const numOfQuestions        = startView.getNumOfQuestionsInput();
     const selectedCategoryID    = startView.getSelectedCategoryID();
     const difficulty            = startView.getDifficulty();    
-
     
     // we create a new object.
     state.questionsObj = new Start(numOfQuestions, selectedCategoryID , difficulty);
@@ -74,11 +70,8 @@ const ctrlStartQuiz = async () => {
         question.startTimer();
     }
 
- 
     // we reset the selected category
     startView.resetCategories();
-
-
 };
 
 export const ctrlGotoNextQuestion = () => {
@@ -94,7 +87,6 @@ export const ctrlGotoNextQuestion = () => {
     questionView.displayQuestion(state.questionsObj.questions[state.nextQuestionIndex], state.nextQuestionIndex);
     
     // we adjust the height
-    // questionView.adjustQuestionContainerHeight(state.height);
 
     // we expose the prev-question AND exit buttons ALSO : activate question timer. in this case a track bar
     if(!startView.isTimerOn()) {
@@ -141,8 +133,7 @@ const ctrlGotoPrevQuestion = () => {
 const ctrlExit = () => {
     // show pop up. making u wanna exit.
     popupView.showExitPopup();
-
-        
+ 
     // Exit popup listerns
     elements.exitPopup.addEventListener('click', e => {
         if(e.target.matches('.no')) {
@@ -164,7 +155,6 @@ const ctrlExit = () => {
             questionView.hideExitButton(); 
         }
     });
-
 
 }
 
@@ -210,7 +200,6 @@ const ctrlPlayAgain = () => {
 
     // we reset the container height
     questionView.resetQuestionContainerHeight();
-
 }
 
 const ctrlDisplayAnswers = () => {
@@ -223,7 +212,6 @@ const ctrlDisplayAnswers = () => {
 
     // when we scoll we change the goback button
     changeGobackBtnOnScroll();
-
 }
 
 const ctrlGoBackToScore = () => {
@@ -276,7 +264,6 @@ window.addEventListener('keypress', event => {
 
         // if we are in the question page ############
         else if(elements.questionContainer.matches('.show-QuestionContainer-flex')) {
-
             // if score button is shown.
             if(document.querySelector('.score-button').matches('.show')) { ctrlShowScore();  } //sometimes I just CANT use the elements object from base.js !!!!!!!!
 
@@ -288,7 +275,6 @@ window.addEventListener('keypress', event => {
 
 // up and down arrows  (*choose an answers)
 window.addEventListener('keydown', event => {
-
     // if up OR down is pressed.
     if([38, 40].includes(event.keyCode)) {
 
@@ -373,9 +359,6 @@ window.addEventListener('load', () => {
 
 
 const changeGobackBtnOnScroll = () => {
-
-    console.log('chnge go back button is called.')
-
     elements.answersContainer.onscroll = function() {
     
         if (elements.answersContainer.scrollTop > 45 ) {
@@ -392,45 +375,9 @@ const changeGobackBtnOnScroll = () => {
             elements.goBackToScoreButtonReplacementContainer.removeEventListener('click' , ctrlGoBackToScore)
         }
     
-    
     }
 }
  
-
-
-
-
-
-/* 
-window.addEventListener('click', el => {
-   console.log(el.target)
-})
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

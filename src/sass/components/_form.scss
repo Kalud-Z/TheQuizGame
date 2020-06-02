@@ -3,16 +3,11 @@
 .form {
     padding-left: 4rem !important;
 
-
-    &__radio-input {
-        display: none;
-    }
+    &__radio-input { display: none;}
 
     &__radio-input:checked ~ &__radio-label &__radio-button::after { opacity: 1; }
     
-    &__label {
-        transition: all .3s;
-    }
+    &__label {  transition: all .3s; }
 
 
     &__radio-group {
@@ -22,7 +17,6 @@
         transform: translateX(92rem);
         transition: all 0.5s;
         transition-timing-function: cubic-bezier(.7,.09,.83,1.13);
-
     }
 
     &__radio-label {

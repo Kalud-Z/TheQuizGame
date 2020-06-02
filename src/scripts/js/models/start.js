@@ -12,19 +12,11 @@ export default class Start {
             const res = await axios(`https://opentdb.com/api.php?amount=${this.numOfQuestions}&category=${this.categoryID}&difficulty=${this.difficulty}`);
             this.questions = res.data.results;
             // console.log('this is the result from the API')
-            // console.log(res);
+            console.log(res);
         }
         catch(err) { alert('Error')};
     }
 } 
-
-
-
-
-
-
-
-
 
 
 

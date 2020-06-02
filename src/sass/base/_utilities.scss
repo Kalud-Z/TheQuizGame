@@ -39,7 +39,6 @@
 .show-QuestionContainer-flex {
     display: flex !important;
     flex-direction: column !important;
-    // justify-content: center;
 }
 
 .turn-visible {
@@ -49,7 +48,6 @@
 
 
 .fill-bar {
-    // background-color: rgba(245, 16, 176, 0.5);
     background-position:left bottom !important; //upon hover : red comes from left to right , and it covers the whole surface
 }
 
@@ -60,7 +58,6 @@
 }
 
 .title-change-color {
-    
     @supports (-webkit-background-clip: text) or (background-clip: text) {  //if the browser supports these then do the following
         background-clip: text;
         -webkit-background-clip: text;
@@ -73,7 +70,6 @@
 }
 
 
-    // elements.resultsContainer.style.transform = "scale(1)"; 
 .score-page-scaleUp {
     transform : scale(1) !important;
 }

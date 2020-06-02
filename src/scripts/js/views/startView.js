@@ -48,8 +48,6 @@ export const getNumOfQuestionsInput = () => {
     q_text = q.options[q.selectedIndex].text;
     
     q_final = parseInt(q_text);
-
-
     return q_final;
 }
 
@@ -83,13 +81,11 @@ export const resetCategories = () => {
 export const startQuiz = () => {
     clearLoader();
     questionView.showQuestionContainer();
-    // elements.questionContainer.classList.add('show-QuestionContainer-flex');  //refactor this. put it in a function.
 }
  
 
 export const loadStartPage =  () => {
     questionView.hideQuestionContainer();
-    // elements.questionContainer.classList.remove('show-QuestionContainer-flex'); 
     elements.resultsContainer.classList.remove('show');
     elements.startPageContainer.classList.add('show-startPage');
     elements.container.style.transform = "scale(0.75)";

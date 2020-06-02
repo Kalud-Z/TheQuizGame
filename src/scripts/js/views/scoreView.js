@@ -10,7 +10,6 @@ export const scorePageScaleDown = () => {
 }
 
 
-
 export const loadScorePage = () => {
     questionView.hideQuestionContainer();
 
@@ -20,6 +19,7 @@ export const loadScorePage = () => {
         scorePageScaleUp();
     }, 10);
 }
+
 
 export const displayFinalScore = (finalScore , maxScore) => {
     const finalScoreInPercentage = Math.ceil((finalScore * 100) / maxScore); 
@@ -51,7 +51,6 @@ const setDeceleratingTimeout = (callback, factor, times) =>
             if (--tick >= 0) {
                 if(times >= 50 && times <= 100) { limit = (20 * times)/100 ; } else { limit = (25 * times)/100 }
                 if(tick < limit) { counter = counter + 10 } else { counter++ }
-                // console.log(counter);
                 window.setTimeout(internalCallback, counter * factor );
                 callback();
             }
